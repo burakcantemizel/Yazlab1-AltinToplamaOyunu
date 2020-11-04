@@ -37,6 +37,8 @@ public class Oyuncu {
     this.b = 0;
     this.altin = 200;
     this.kalanHareket = 3;
+    
+    
     this.hedefkare = null;
     this.hedefYol = null;
     this.hedefKareIndeks = -1;
@@ -73,8 +75,37 @@ public class Oyuncu {
   void hedefBelirle(Harita harita){
   //En kısa nesneyi belirleyeceğiz
                 AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                List<Node> enKisaYol = as.findPathTo(harita.altinOlanKareler.get(0).koordinatX, harita.altinOlanKareler.get(0).koordinatY);
+                List<Node> enKisaYol = null;
+                for(Kare kare : harita.kareler){
+                    if(kare.altin == true){
+                        enKisaYol = as.findPathTo(kare.koordinatX, kare.koordinatY);
+                        break;
+                    }
+                }
                 this.hedefKareIndeks = 0;
+                
+                //Altin olan kareler yerine direkt karelerde altin varsa diye bakarsak
+                
+                for(int i = 0; i < harita.kareler.size(); i++){
+                    if(harita.kareler.get(i).altin == true){
+                        as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
+                        List<Node> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                         if(yol != null){
+                            if(yol.get(yol.size()-1).g < enKisaYol.get(enKisaYol.size()-1).g){
+                              enKisaYol = yol;
+                              this.hedefKareIndeks = i;
+                            }
+                         }
+                    }
+                }
+                
+                this.mevcutHedefVarMi = true;
+                this.hedefYol = enKisaYol;
+                this.hedefkare = enKisaYol.get(enKisaYol.size()-1);
+                this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
+                System.out.println(this.hedefYol);
+                
+                /*
                 for(int i = 0; i < harita.altinOlanKareler.size(); i++){
                     as = new AStar(harita.maaliyetsizMatris,this.koordinatX, this.koordinatY,false);
 
@@ -87,36 +118,16 @@ public class Oyuncu {
                       }
                     }
                     //Burda en kisa yolu bulduk. artik En Kisa Yol bize en kisa yol bilgisini veriyor
-                }
-                
+                }                
                 this.mevcutHedefVarMi = true;
                 this.hedefYol = enKisaYol;
                 this.hedefkare = enKisaYol.get(enKisaYol.size()-1);
                 this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
+                System.out.println(this.hedefYol);
+                */
   }
   
   
-  void maaliyetliHedefBelirle(Harita harita){
-      //Sadece altin olan karelere bakacak gizli altinlari göremeyecek
-      AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-      List<Node> enKisaYol = as.findPathTo(harita.altinOlanKareler.get(0).koordinatX, harita.altinOlanKareler.get(0).koordinatY);
-      this.hedefKareIndeks = 0;
-      for(int i = 0; i < harita.altinOlanKareler.size(); i++){
-          as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-          
-          List<Node> yol = as.findPathTo(harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY);
-          if(yol != null){
-              if(yol.get(yol.size()-1).g < enKisaYol.get(enKisaYol.size()-1).g){
-                  enKisaYol = yol;
-                  this.hedefKareIndeks = i;
-              }
-          }
-      }
-      
-      this.mevcutHedefVarMi = true;
-      this.hedefYol = enKisaYol;
-      this.hedefkare = enKisaYol.get(enKisaYol.size()-1);
-      this.hedefYol.remove(0);
-  }
+
   
 }
