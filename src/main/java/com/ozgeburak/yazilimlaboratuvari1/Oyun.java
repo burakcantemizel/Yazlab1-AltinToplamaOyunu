@@ -59,30 +59,11 @@ public class Oyun extends JPanel {
         //OYNANİS
         if(tur % 4 == 0){
           //A OYUNCUSU
+          
+          //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
           if(oyuncuA.mevcutHedefVarMi == false){
               System.out.println("A oynuyor");
-               //En kısa nesneyi belirleyeceğiz
-                AStar as = new AStar(harita.maaliyetsizMatris, oyuncuA.koordinatX, oyuncuA.koordinatY, false);
-                List<Node> enKisaYol = as.findPathTo(harita.altinOlanKareler.get(0).koordinatX, harita.altinOlanKareler.get(0).koordinatY);
-                oyuncuA.hedefKareIndeks = 0;
-                for(int i = 0; i < harita.altinOlanKareler.size(); i++){
-                    as = new AStar(harita.maaliyetsizMatris,oyuncuA.koordinatX, oyuncuA.koordinatY,false);
-
-                    //Altın olan tüm kareleri geziyoruz ve oraya olan uzakligi buluyoruz.
-                    List<Node> yol = as.findPathTo(harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY);
-                    if(yol != null){
-                      if(yol.get(yol.size()-1).g < enKisaYol.get(enKisaYol.size()-1).g){
-                        enKisaYol = yol;
-                        oyuncuA.hedefKareIndeks = i;
-                      }
-                    }
-                    //Burda en kisa yolu bulduk. artik En Kisa Yol bize en kisa yol bilgisini veriyor
-                }
-                
-                oyuncuA.mevcutHedefVarMi = true;
-                oyuncuA.hedefYol = enKisaYol;
-                oyuncuA.hedefkare = enKisaYol.get(enKisaYol.size()-1);
-                oyuncuA.hedefYol.remove(0); // üstünde durduğu node'u sildik.
+               oyuncuA.hedefBelirle(harita);
                 
                 }
           
@@ -115,6 +96,10 @@ public class Oyun extends JPanel {
                             //Altini da listeden silecegiz.
                             if(harita.altinOlanKareler.size() > 0){
                             harita.altinOlanKareler.remove(oyuncuA.hedefKareIndeks);
+                            
+                            //Bu Noktadan sonra altını aldı ve hedefsiz kaldı
+                            oyuncuA.hedefBelirle(harita);
+                            
                             }
                             
                             System.out.println("altin aldi");
@@ -123,6 +108,14 @@ public class Oyun extends JPanel {
                             Thread.sleep(1000);
                             break;
                             
+                        }
+                        
+                        //Ve her harekette gizli altina geldi mi diye de bakmamiz gerek gizli altinlari normal altina çevireceğiz
+                        for(Kare kare : harita.altinOlanKareler){
+                            if(kare.koordinatX == oyuncuA.koordinatX && kare.koordinatY == oyuncuA.koordinatY){
+                               kare.gizliAltin = false;
+                               kare.altin = true;
+                            }
                         }
 
                     }
@@ -154,10 +147,14 @@ public class Oyun extends JPanel {
 
         harita.Cizdir(g2d);
         oyuncuA.Cizdir(g2d);
+        oyuncuA.HedefCizdir(g2d);
+        
         oyuncuB.Cizdir(g2d);
         oyuncuC.Cizdir(g2d);
         oyuncuD.Cizdir(g2d);
         harita.altinCizdir(g2d);
+        
+        oyuncuA.YolCizdir(g2d);
         
         //BilgiGoster();
     }
