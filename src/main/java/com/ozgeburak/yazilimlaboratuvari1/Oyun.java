@@ -126,6 +126,61 @@ public class Oyun extends JPanel {
         }else if(tur % 4 == 1){
           //B OYUNCUSU
           System.out.println("B oynuyor");
+          if(oyuncuB.mevcutHedefVarMi == false){
+              oyuncuB.hedefBelirle(harita);
+          }
+          
+          for(int i = 0; i < oyuncuB.kalanHareket; i++){
+              if(oyuncuB.mevcutHedefVarMi == true && oyuncuB.hedefYol.size() > 0){
+                            oyuncuB.koordinatX = oyuncuB.hedefYol.get(0).x;
+                            oyuncuB.koordinatY = oyuncuB.hedefYol.get(0).y;
+                            oyuncuB.hedefYol.remove(0);
+                            this.repaint();
+                            Thread.sleep(1000);
+              }
+              
+              
+                     //Her hareketten sonra altini aldi mi diye bakacagiz
+                    if(oyuncuB.koordinatX == oyuncuB.hedefkare.x && oyuncuB.koordinatY == oyuncuB.hedefkare.y){
+                            //Ayni yerdeyse altini alacak ve hareket etmeyecek.
+                            for(Kare kare: harita.kareler){
+                                if(kare.koordinatX == oyuncuB.koordinatX && kare.koordinatY == oyuncuB.koordinatY){
+                                    kare.altin = false;
+                                    break;
+                                }
+                            }
+                            oyuncuB.mevcutHedefVarMi = false;
+                            oyuncuB.hedefYol = null;
+                            oyuncuB.hedefkare = null;
+                            //Altini da listeden silecegiz.
+                            if(harita.altinOlanKareler.size() > 0){
+                            harita.altinOlanKareler.remove(oyuncuB.hedefKareIndeks);
+                            
+                            //Bu Noktadan sonra altını aldı ve hedefsiz kaldı
+                            oyuncuB.hedefBelirle(harita);
+                            
+                            }
+                            
+                            System.out.println("altin aldi");
+                            //Altını aldığında mevcut hedefi kalmıyor
+                            this.repaint();
+                            Thread.sleep(1000);
+                            break;
+                            
+                    }
+                    
+                    //Ve her harekette gizli altina geldi mi diye de bakmamiz gerek gizli altinlari normal altina çevireceğiz
+                        for(Kare kare : harita.altinOlanKareler){
+                            if(kare.koordinatX == oyuncuB.koordinatX && kare.koordinatY == oyuncuB.koordinatY){
+                               kare.gizliAltin = false;
+                               kare.altin = true;
+                            }
+                        }
+              
+          }
+          
+
+          tur++;
 
         }else if(tur % 4 == 2){
           //C OYUNCUSU
@@ -150,11 +205,14 @@ public class Oyun extends JPanel {
         oyuncuA.HedefCizdir(g2d);
         
         oyuncuB.Cizdir(g2d);
+        oyuncuB.HedefCizdir(g2d);
+        
         oyuncuC.Cizdir(g2d);
         oyuncuD.Cizdir(g2d);
         harita.altinCizdir(g2d);
         
         oyuncuA.YolCizdir(g2d);
+        oyuncuB.YolCizdir(g2d);
         
         //BilgiGoster();
     }
