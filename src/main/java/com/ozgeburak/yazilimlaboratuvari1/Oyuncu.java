@@ -103,28 +103,59 @@ public class Oyuncu {
                 this.hedefYol = enKisaYol;
                 this.hedefkare = enKisaYol.get(enKisaYol.size()-1);
                 this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
-                System.out.println(this.hedefYol);
+                System.out.println(this.hedefYol.get(this.hedefYol.size()-1).g);
                 
-                /*
-                for(int i = 0; i < harita.altinOlanKareler.size(); i++){
-                    as = new AStar(harita.maaliyetsizMatris,this.koordinatX, this.koordinatY,false);
-
-                    //Altın olan tüm kareleri geziyoruz ve oraya olan uzakligi buluyoruz.
-                    List<Node> yol = as.findPathTo(harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY);
-                    if(yol != null){
-                      if(yol.get(yol.size()-1).g < enKisaYol.get(enKisaYol.size()-1).g){
-                        enKisaYol = yol;
-                        this.hedefKareIndeks = i;
-                      }
+  }
+  
+  void maaliyetliHedefBelirle(Harita harita){
+        //En kısa nesneyi belirleyeceğiz
+                AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
+                List<Node> enKisaYol = null;
+                Kare maaliyetAlinacakKare = null;
+                double kar = 0;
+                for(Kare kare : harita.kareler){
+                    if(kare.altin == true){
+                        enKisaYol = as.findPathTo(kare.koordinatX, kare.koordinatY);
+                        maaliyetAlinacakKare = kare;
+                        break;
                     }
-                    //Burda en kisa yolu bulduk. artik En Kisa Yol bize en kisa yol bilgisini veriyor
-                }                
+                }
+                this.hedefKareIndeks = 0;
+                
+                //Altin olan kareler yerine direkt karelerde altin varsa diye bakarsak
+                
+                // .g bize yolun uzunlugunu veriyor 
+                // 5 adımda gidilecekse .g = 5
+                // biz 3 adim 3 adim ilerliyoruz her hamlede belli bir maaliyetimiz var
+                // 3/3 = 1 4/3 = 2 5/3 = 2 6/3 = 2 
+                // g'yi hamledeki adim sayisina bölüp üste yuvarlayacağız
+                // g / hamledeki adim sayisi * hamle maaliyeti - hedefteki altin miktari
+                // üsteki formül bize karli hamleyi verecek ve bunlari kiyaslicaz
+                
+                
+                for(int i = 0; i < harita.kareler.size(); i++){
+                    if(harita.kareler.get(i).altin == true){
+                        as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
+                        List<Node> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                         if(yol != null){
+                            //En kisa bulma kismi artik farkli olacak
+                            if( (  (int)Math.ceil((yol.get(yol.size()-1).g / 3)) * 5) - harita.kareler.get(i).altinMiktari
+                                    < ( ( (int)Math.ceil(enKisaYol.get(enKisaYol.size()-1).g / 3 )) * 5) - maaliyetAlinacakKare.altinMiktari ) {
+                              enKisaYol = yol;
+                              maaliyetAlinacakKare = harita.kareler.get(i);
+                              kar = ((yol.get(yol.size()-1).g / 3) * 5) - harita.kareler.get(i).altinMiktari;
+                              this.hedefKareIndeks = i;
+                            }
+                         }
+                    }
+                }
+                
                 this.mevcutHedefVarMi = true;
                 this.hedefYol = enKisaYol;
                 this.hedefkare = enKisaYol.get(enKisaYol.size()-1);
                 this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
-                System.out.println(this.hedefYol);
-                */
+                System.out.println((int)kar);
+                
   }
   
   
