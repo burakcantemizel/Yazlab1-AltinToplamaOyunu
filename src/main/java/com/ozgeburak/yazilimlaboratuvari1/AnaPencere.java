@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class AnaPencere extends JFrame {
     
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException{
         JFrame pencere = new JFrame("Yazılım Laboratuvarı 1");
         Oyun oyun = new Oyun();
         oyun.setPreferredSize(new Dimension(Oyun.OYUN_GENISLIK, Oyun.OYUN_YUKSEKLIK));

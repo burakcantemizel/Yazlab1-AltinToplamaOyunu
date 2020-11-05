@@ -235,6 +235,7 @@ public class Oyun extends JPanel {
         } else if (tur % 4 == 3) {
             //D Oyuncusu
             //System.out.println("D oynuyor");
+            tur++;
 
         }
 

@@ -123,4 +123,5 @@ class AStar {
             }
         }
         Collections.sort(this.open);
-    }
+}
+}
