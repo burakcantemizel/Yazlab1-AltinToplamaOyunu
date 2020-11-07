@@ -297,7 +297,7 @@ public class Oyun extends JPanel {
             //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
             if (oyuncuD.mevcutHedefVarMi == false) {
 
-                oyuncuD.maaliyetliHedefBelirle(harita);
+                oyuncuD.sezgiselMaaliyetliHedefBelirle(harita, oyuncuA, oyuncuB, oyuncuC);
                 oyuncuD.altin -= 20;
                 Thread.sleep(oyunHizi.getValue());
 
@@ -308,7 +308,7 @@ public class Oyun extends JPanel {
             for (int i = 0; i < oyuncuD.kalanHareket; i++) {
                 if (oyuncuD.hedefAltin != null) {
                     if (oyuncuD.hedefAltin.altin == false) {
-                        oyuncuD.maaliyetliHedefBelirle(harita);
+                        oyuncuD.sezgiselMaaliyetliHedefBelirle(harita, oyuncuA, oyuncuB, oyuncuC);
                         Thread.sleep(oyunHizi.getValue());
                     }
                 }
@@ -341,7 +341,7 @@ public class Oyun extends JPanel {
 
                     //altini aldiysak
                     if (oyuncuD.mevcutHedefVarMi == false) {
-                        oyuncuD.maaliyetliHedefBelirle(harita);
+                        oyuncuD.sezgiselMaaliyetliHedefBelirle(harita, oyuncuA, oyuncuB, oyuncuC);
                         oyuncuD.altin -= 15;
                         Thread.sleep(oyunHizi.getValue());
                     }
