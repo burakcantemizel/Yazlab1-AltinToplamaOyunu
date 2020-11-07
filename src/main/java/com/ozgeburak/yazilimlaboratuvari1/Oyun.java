@@ -1,6 +1,7 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
 import com.ozgeburak.yazilimlaboratuvari1.AStar.Node;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -56,53 +57,76 @@ public class Oyun extends JPanel {
     public void guncelle() throws InterruptedException {
         //OYNANİS
         if (tur % 4 == 0) {
-            
+            //Tur başı beklemesi
+            Thread.sleep(300);
+
             //A OYUNCUSU
             System.out.println("A oynuyor");
-            //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
-            if (oyuncuA.mevcutHedefVarMi == false) {
+            if (oyuncuA != null) {
+                
+                //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
+                if (oyuncuA.mevcutHedefVarMi == false) {
 
-                oyuncuA.hedefBelirle(harita);
+                    oyuncuA.hedefBelirle(harita);
+                    oyuncuA.altin -= 15;
 
-            }
+                    if (oyuncuA.altin <= 0) {
+                        oyuncuA = null;
+                    }
 
-            //Mevcut bir hedefi var ve ilerliyor.
-            //Artık oyuncuA her tur ilerleyerek hedefe gidebilir 3 kare ilerleyerek
-            for (int i = 0; i < oyuncuA.kalanHareket; i++) {
-                //Hareket ediyor
-                if (oyuncuA.mevcutHedefVarMi == true && oyuncuA.hedefYol.size() > 0) {
-                    oyuncuA.koordinatX = oyuncuA.hedefYol.get(0).x;
-                    oyuncuA.koordinatY = oyuncuA.hedefYol.get(0).y;
-                    oyuncuA.hedefYol.remove(0);
-                    this.repaint();
-                    Thread.sleep(1000);
+                    Thread.sleep(300);
+
                 }
 
-                //Her hareketten sonra altini aldi mi diye bakacagiz
-                if (oyuncuA.koordinatX == oyuncuA.hedefkare.x && oyuncuA.koordinatY == oyuncuA.hedefkare.y) {
-                    //Ayni yerdeyse altini alacak ve hareket etmeyecek.
-                    for (Kare kare : harita.kareler) {
-                        if (kare.koordinatX == oyuncuA.koordinatX && kare.koordinatY == oyuncuA.koordinatY) {
-                            kare.altin = false;
-                            break;
-                        }
+                //Mevcut bir hedefi var ve ilerliyor.
+                //Artık oyuncuA her tur ilerleyerek hedefe gidebilir 3 kare ilerleyerek
+                for (int i = 0; i < oyuncuA.kalanHareket; i++) {
+                    //Hareket ediyor
+                    if (oyuncuA.mevcutHedefVarMi == true && oyuncuA.hedefYol.size() > 0) {
+                        oyuncuA.koordinatX = oyuncuA.hedefYol.get(0).x;
+                        oyuncuA.koordinatY = oyuncuA.hedefYol.get(0).y;
+                        oyuncuA.hedefYol.remove(0);
+                        this.repaint();
+                        Thread.sleep(1000);
                     }
-                    oyuncuA.mevcutHedefVarMi = false;
-                    oyuncuA.hedefYol = null;
-                    oyuncuA.hedefkare = null;
-                    //Altini da listeden silecegiz.
-                    System.out.println("altin aldi");
 
+                    //Her hamlede hamle maaliyeti kadar azalcak constant
+                    //oyuncuA.altin -= 5;
+                    //Her hareketten sonra altini aldi mi diye bakacagiz
+                    if (oyuncuA.koordinatX == oyuncuA.hedefkare.x && oyuncuA.koordinatY == oyuncuA.hedefkare.y) {
+                        //Ayni yerdeyse altini alacak ve hareket etmeyecek.
+                        for (Kare kare : harita.kareler) {
+                            if (kare.koordinatX == oyuncuA.koordinatX && kare.koordinatY == oyuncuA.koordinatY) {
+                                System.out.println("Alinan Altin Miktari " + kare.altinMiktari);
+                                oyuncuA.altin += kare.altinMiktari;
+                                kare.altin = false;
+                                //altin miktarini oyuncuya ekleyecegiz
+                                Thread.sleep(300);
+                                break;
+                            }
+                        }
+                        oyuncuA.mevcutHedefVarMi = false;
+                        oyuncuA.hedefYol = null;
+                        oyuncuA.hedefkare = null;
+                        //Altini da listeden silecegiz.
+                        System.out.println("altin aldi");
 
                         //Bu Noktadan sonra altını aldı ve hedefsiz kaldı
-                        oyuncuA.hedefBelirle(harita);
+                        if (oyuncuA.mevcutHedefVarMi == false) {
+                            oyuncuA.hedefBelirle(harita);
+                            oyuncuA.altin -= 15;
+                            if (oyuncuA.altin <= 0) {
+                                oyuncuA = null;
+                            }
+                            Thread.sleep(300);
+                        }
 
-            
-                    
-                    //Altını aldığında mevcut hedefi kalmıyor
-                    this.repaint();
-                    Thread.sleep(1000);
-                    break;
+                        //Altını aldığında mevcut hedefi kalmıyor
+                        this.repaint();
+                        Thread.sleep(1000);
+                        break;
+
+                    }
 
                 }
 
@@ -111,12 +135,16 @@ public class Oyun extends JPanel {
             tur++;
             //}
         } else if (tur % 4 == 1) {
-           //B Oyuncusu
+            //B Oyuncusu
+            Thread.sleep(300);
+
             System.out.println("B oynuyor");
             //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
             if (oyuncuB.mevcutHedefVarMi == false) {
 
                 oyuncuB.maaliyetliHedefBelirle(harita);
+                oyuncuB.altin -= 10;
+                Thread.sleep(300);
 
             }
 
@@ -137,7 +165,9 @@ public class Oyun extends JPanel {
                     //Ayni yerdeyse altini alacak ve hareket etmeyecek.
                     for (Kare kare : harita.kareler) {
                         if (kare.koordinatX == oyuncuB.koordinatX && kare.koordinatY == oyuncuB.koordinatY) {
+                            oyuncuB.altin += kare.altinMiktari;
                             kare.altin = false;
+                            Thread.sleep(300);
                             break;
                         }
                     }
@@ -146,16 +176,14 @@ public class Oyun extends JPanel {
                     oyuncuB.hedefkare = null;
                     //Altini da listeden silecegiz.
                     System.out.println("altin aldi");
-                    
+
                     //altini aldiysak
-                    
-
-
+                    if (oyuncuB.mevcutHedefVarMi == false) {
                         oyuncuB.maaliyetliHedefBelirle(harita);
+                        oyuncuB.altin -= 15;
+                        Thread.sleep(300);
+                    }
 
-
-
-                    
                     //Altını aldığında mevcut hedefi kalmıyor
                     this.repaint();
                     Thread.sleep(1000);
@@ -169,18 +197,17 @@ public class Oyun extends JPanel {
 
         } else if (tur % 4 == 2) {
             //C Oyuncusu
-            
+            Thread.sleep(300);
             oyuncuC.gizliAltinlariAcigaCikart(harita, 2);
-             
-             
-             
-            
-            
+            Thread.sleep(300);
+
             System.out.println("C oynuyor");
             //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
             if (oyuncuC.mevcutHedefVarMi == false) {
 
                 oyuncuC.maaliyetliHedefBelirle(harita);
+                oyuncuC.altin -= 15;
+                Thread.sleep(300);
 
             }
 
@@ -201,7 +228,9 @@ public class Oyun extends JPanel {
                     //Ayni yerdeyse altini alacak ve hareket etmeyecek.
                     for (Kare kare : harita.kareler) {
                         if (kare.koordinatX == oyuncuC.koordinatX && kare.koordinatY == oyuncuC.koordinatY) {
+                            oyuncuC.altin += kare.altinMiktari;
                             kare.altin = false;
+                            Thread.sleep(300);
                             break;
                         }
                     }
@@ -210,16 +239,14 @@ public class Oyun extends JPanel {
                     oyuncuC.hedefkare = null;
                     //Altini da listeden silecegiz.
                     System.out.println("altin aldi");
-                    
+
                     //altini aldiysak
-                    
-
-
+                    if (oyuncuC.mevcutHedefVarMi == false) {
                         oyuncuC.maaliyetliHedefBelirle(harita);
+                        oyuncuC.altin -= 15;
+                        Thread.sleep(300);
+                    }
 
-
-
-                    
                     //Altını aldığında mevcut hedefi kalmıyor
                     this.repaint();
                     Thread.sleep(1000);
@@ -230,7 +257,6 @@ public class Oyun extends JPanel {
             }
 
             tur++;
-
 
         } else if (tur % 4 == 3) {
             //D Oyuncusu
@@ -247,6 +273,7 @@ public class Oyun extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        //g2d.scale(2, 2);
         harita.Cizdir(g2d);
         oyuncuA.Cizdir(g2d);
         oyuncuA.HedefCizdir(g2d);
@@ -256,7 +283,7 @@ public class Oyun extends JPanel {
 
         oyuncuC.Cizdir(g2d);
         oyuncuC.HedefCizdir(g2d);
-        
+
         oyuncuD.Cizdir(g2d);
 
         harita.altinCizdir(g2d);
@@ -265,7 +292,15 @@ public class Oyun extends JPanel {
         oyuncuB.YolCizdir(g2d);
         oyuncuC.YolCizdir(g2d);
 
-        //BilgiGoster();
+        BilgiGoster(g2d);
+    }
+
+    public void BilgiGoster(Graphics2D g) {
+        g.setColor(Color.BLACK);
+        g.drawString("Oyuncu A Altin: " + oyuncuA.altin, 700, 20);
+        g.drawString("Oyuncu B Altin: " + oyuncuB.altin, 700, 40);
+        g.drawString("Oyuncu C Altin: " + oyuncuC.altin, 700, 60);
+        g.drawString("Oyuncu D Altin: " + oyuncuD.altin, 700, 80);
     }
 
 }

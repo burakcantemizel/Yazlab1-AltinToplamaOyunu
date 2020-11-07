@@ -24,6 +24,7 @@ public class Oyuncu {
   Node hedefkare;
   List<Node> hedefYol;
   int hedefKareIndeks;
+  Kare hedefAltin;
   
   Oyuncu(int koordinatX, int koordinatY){
     this.koordinatX = koordinatX;
@@ -42,6 +43,7 @@ public class Oyuncu {
     this.hedefkare = null;
     this.hedefYol = null;
     this.hedefKareIndeks = -1;
+    this.hedefAltin = null;
   }
   
   void Cizdir(Graphics2D G){
@@ -102,8 +104,16 @@ public class Oyuncu {
                 this.mevcutHedefVarMi = true;
                 this.hedefYol = enKisaYol;
                 this.hedefkare = enKisaYol.get(enKisaYol.size()-1);
+                
+                for(Kare kare : harita.altinOlanKareler){
+                    if(kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y){
+                        this.hedefAltin = kare;
+                        break;
+                    }
+                }
+                
                 this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
-                System.out.println(this.hedefYol.get(this.hedefYol.size()-1).g);
+                //System.out.println(this.hedefYol.get(this.hedefYol.size()-1).g);
                 
   }
   
@@ -112,7 +122,7 @@ public class Oyuncu {
                 AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
                 List<Node> enKisaYol = null;
                 Kare maaliyetAlinacakKare = null;
-                double kar = 0;
+                int kar = 0;
                 for(Kare kare : harita.kareler){
                     if(kare.altin == true){
                         enKisaYol = as.findPathTo(kare.koordinatX, kare.koordinatY);
@@ -139,11 +149,11 @@ public class Oyuncu {
                         List<Node> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
                          if(yol != null){
                             //En kisa bulma kismi artik farkli olacak
-                            if( (  (int)Math.ceil((yol.get(yol.size()-1).g / 3)) * 5) - harita.kareler.get(i).altinMiktari
-                                    < ( ( (int)Math.ceil(enKisaYol.get(enKisaYol.size()-1).g / 3 )) * 5) - maaliyetAlinacakKare.altinMiktari ) {
+                            if( (  (int)Math.ceil((yol.get(yol.size()-1).g / 3.0)) * 5) - harita.kareler.get(i).altinMiktari
+                                    < ( ( (int)Math.ceil(enKisaYol.get(enKisaYol.size()-1).g / 3.0 )) * 5) - maaliyetAlinacakKare.altinMiktari ) {
                               enKisaYol = yol;
                               maaliyetAlinacakKare = harita.kareler.get(i);
-                              kar = ((yol.get(yol.size()-1).g / 3) * 5) - harita.kareler.get(i).altinMiktari;
+                              kar = (  (int)Math.ceil((yol.get(yol.size()-1).g / 3.0)) * 5) - harita.kareler.get(i).altinMiktari;
                               this.hedefKareIndeks = i;
                             }
                          }
@@ -153,8 +163,16 @@ public class Oyuncu {
                 this.mevcutHedefVarMi = true;
                 this.hedefYol = enKisaYol;
                 this.hedefkare = enKisaYol.get(enKisaYol.size()-1);
+                
+                for(Kare kare : harita.altinOlanKareler){
+                    if(kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y){
+                        this.hedefAltin = kare;
+                        break;
+                    }
+                }
+                
                 this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
-                System.out.println((int)kar);
+                //System.out.println((int)kar);
                 
   }
   
