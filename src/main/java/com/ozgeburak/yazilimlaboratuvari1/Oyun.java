@@ -54,8 +54,8 @@ public class Oyun extends JPanel {
                 tur++;
             }
         });
-        
-        oyunHizi = new JSlider(1,1000,1);
+
+        oyunHizi = new JSlider(1, 1000, 1);
         oyunHizi.setValue(300);
         oyunHizi.setBounds(OYUN_GENISLIK - 120, OYUN_YUKSEKLIK - 60, 120, 30);
         this.add(oyunHizi);
@@ -291,7 +291,70 @@ public class Oyun extends JPanel {
 
         } else if (tur % 4 == 3) {
             //D Oyuncusu
-            //System.out.println("D oynuyor");
+            Thread.sleep(oyunHizi.getValue());
+
+            System.out.println("D oynuyor");
+            //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
+            if (oyuncuD.mevcutHedefVarMi == false) {
+
+                oyuncuD.maaliyetliHedefBelirle(harita);
+                oyuncuD.altin -= 20;
+                Thread.sleep(oyunHizi.getValue());
+
+            }
+
+            //Mevcut bir hedefi var ve ilerliyor.
+            //Artık oyuncuA her tur ilerleyerek hedefe gidebilir 3 kare ilerleyerek
+            for (int i = 0; i < oyuncuD.kalanHareket; i++) {
+                if (oyuncuD.hedefAltin != null) {
+                    if (oyuncuD.hedefAltin.altin == false) {
+                        oyuncuD.maaliyetliHedefBelirle(harita);
+                        Thread.sleep(oyunHizi.getValue());
+                    }
+                }
+
+                //Hareket ediyor
+                if (oyuncuD.mevcutHedefVarMi == true && oyuncuD.hedefYol.size() > 0) {
+                    oyuncuD.koordinatX = oyuncuD.hedefYol.get(0).x;
+                    oyuncuD.koordinatY = oyuncuD.hedefYol.get(0).y;
+                    oyuncuD.hedefYol.remove(0);
+                    this.repaint();
+                    Thread.sleep(oyunHizi.getValue() * 3);
+                }
+
+                //Her hareketten sonra altini aldi mi diye bakacagiz
+                if (oyuncuD.koordinatX == oyuncuD.hedefkare.x && oyuncuD.koordinatY == oyuncuD.hedefkare.y) {
+                    //Ayni yerdeyse altini alacak ve hareket etmeyecek.
+                    for (Kare kare : harita.kareler) {
+                        if (kare.koordinatX == oyuncuD.koordinatX && kare.koordinatY == oyuncuD.koordinatY) {
+                            oyuncuD.altin += kare.altinMiktari;
+                            kare.altin = false;
+                            Thread.sleep(oyunHizi.getValue());
+                            break;
+                        }
+                    }
+                    oyuncuD.mevcutHedefVarMi = false;
+                    oyuncuD.hedefYol = null;
+                    oyuncuD.hedefkare = null;
+                    //Altini da listeden silecegiz.
+                    System.out.println("altin aldi");
+
+                    //altini aldiysak
+                    if (oyuncuD.mevcutHedefVarMi == false) {
+                        oyuncuD.maaliyetliHedefBelirle(harita);
+                        oyuncuD.altin -= 15;
+                        Thread.sleep(oyunHizi.getValue());
+                    }
+
+                    //Altını aldığında mevcut hedefi kalmıyor
+                    this.repaint();
+                    Thread.sleep(oyunHizi.getValue() * 3);
+                    break;
+
+                }
+
+            }
+
             tur++;
 
         }
@@ -316,12 +379,14 @@ public class Oyun extends JPanel {
         oyuncuC.HedefCizdir(g2d);
 
         oyuncuD.Cizdir(g2d);
+        oyuncuD.HedefCizdir(g2d);
 
         harita.altinCizdir(g2d);
 
         oyuncuA.YolCizdir(g2d);
         oyuncuB.YolCizdir(g2d);
         oyuncuC.YolCizdir(g2d);
+        oyuncuD.YolCizdir(g2d);
 
         BilgiGoster(g2d);
     }
