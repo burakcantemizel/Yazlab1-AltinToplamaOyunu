@@ -177,6 +177,11 @@ public class Oyuncu {
   }
   
   
+  void sezgiselMaaliyetliHedefBelirle(Harita harita){
+  
+  }
+  
+  
 
   
 }
