@@ -26,8 +26,8 @@ public class Kare {
   Kare(int koordinatX, int koordinatY){
     this.koordinatX = koordinatX;
     this.koordinatY = koordinatY;
-    genislik = 32;
-    yukseklik = 32;
+    genislik = 128;
+    yukseklik = 128;
     this.pozisyonX = koordinatX * genislik;
     this.pozisyonY = koordinatY * yukseklik;
   }
@@ -59,14 +59,14 @@ public class Kare {
   void altinCizdir(Graphics2D g){
    if(altin == true){
         g.setColor(Color.YELLOW);
-        g.fillOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, 12, 12);
+        g.fillOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, genislik/2, yukseklik/2);
         g.setColor(Color.BLACK);
-        g.drawOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, 12, 12);
+        g.drawOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, genislik/2, yukseklik/2);
     }else if(gizliAltin == true){
         g.setColor(Color.ORANGE);
-        g.fillOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, 12, 12);
+        g.fillOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, genislik/2, yukseklik/2);
         g.setColor(Color.BLACK);
-        g.drawOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, 12, 12);
+        g.drawOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, genislik/2, yukseklik/2);
     }
     
     if(altin == true || gizliAltin == true){

@@ -30,8 +30,8 @@ public class Oyuncu {
   Oyuncu(int koordinatX, int koordinatY){
     this.koordinatX = koordinatX;
     this.koordinatY = koordinatY;
-    this.genislik = 32;
-    this.yukseklik = 32;
+    this.genislik = 128;
+    this.yukseklik = 128;
     this.pozisyonX = koordinatX * genislik;
     this.pozisyonY = koordinatY * yukseklik;
     this.r = 0;

@@ -17,11 +17,17 @@ import javax.swing.JSlider;
 
 public class Oyun extends JPanel {
 
+    public static final int KARE_GENISLIK = 128;
+    public static final int KARE_YUKSEKLIK = 128;
+    
     public static final int OYUN_GENISLIK = 1280;
     public static final int OYUN_YUKSEKLIK = 720;
 
     private final static int YATAY_KARE_SAYISI = 20;
     private final static int DIKEY_KARE_SAYISI = 20;
+    
+    public static final int TAHTA_GENISLIK = YATAY_KARE_SAYISI * KARE_GENISLIK;
+    public static final int TAHTA_YUKSEKLIK = YATAY_KARE_SAYISI * KARE_YUKSEKLIK;
 
     private Harita harita;
     private OyuncuA oyuncuA;
@@ -367,7 +373,13 @@ public class Oyun extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        //g2d.scale(2, 2);
+        int kaymaX = 0;
+        int kaymaY = 0;
+        float olcekX = 0.5f;
+        float olcekY = 0.5f;
+        
+        g2d.translate(kaymaX, kaymaY);
+        g2d.scale(olcekX, olcekY);
         harita.Cizdir(g2d);
         oyuncuA.Cizdir(g2d);
         oyuncuA.HedefCizdir(g2d);
@@ -387,11 +399,16 @@ public class Oyun extends JPanel {
         oyuncuB.YolCizdir(g2d);
         oyuncuC.YolCizdir(g2d);
         oyuncuD.YolCizdir(g2d);
+        
+        //g2d.translate(-kaymaX, -kaymaY);
+        //g2d.scale(4 * olcekX, 4 * olcekY);
 
-        BilgiGoster(g2d);
+        //BilgiGoster(g2d);
     }
 
     public void BilgiGoster(Graphics2D g) {
+        
+        //Arayüz elemanlariyla yapalim bunlari
         g.setColor(Color.BLACK);
         g.drawString("Oyuncu A Altin: " + oyuncuA.altin, 700, 20);
         g.drawString("Oyuncu B Altin: " + oyuncuB.altin, 700, 40);
