@@ -2,6 +2,7 @@ package com.ozgeburak.yazilimlaboratuvari1;
 
 import com.ozgeburak.yazilimlaboratuvari1.AStar.Node;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -22,6 +23,9 @@ public class Oyun extends JPanel {
     
     public static final int OYUN_GENISLIK = 1280;
     public static final int OYUN_YUKSEKLIK = 720;
+    
+    public static int PENCERE_GENISLIK = 1280;
+    public static int PENCERE_YUKSEKLIK = 720;
 
     private final static int YATAY_KARE_SAYISI = 20;
     private final static int DIKEY_KARE_SAYISI = 20;
@@ -65,6 +69,8 @@ public class Oyun extends JPanel {
         oyunHizi.setValue(300);
         oyunHizi.setBounds(OYUN_GENISLIK - 120, OYUN_YUKSEKLIK - 60, 120, 30);
         this.add(oyunHizi);
+        
+        this.setBackground(new Color(141,183,242));
     }
 
     public void guncelle() throws InterruptedException {
@@ -373,13 +379,15 @@ public class Oyun extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        int kaymaX = 0;
-        int kaymaY = 0;
-        float olcekX = 0.5f;
-        float olcekY = 0.5f;
+        float kenarlik = 0.9f;
+        float olcekX = (float)PENCERE_YUKSEKLIK * kenarlik / (float)TAHTA_GENISLIK;
+        float olcekY = (float)PENCERE_YUKSEKLIK * kenarlik / (float)TAHTA_YUKSEKLIK;
+        int kaymaX = (int)((float)PENCERE_GENISLIK - ((float)TAHTA_GENISLIK * olcekX) )/2;
+        int kaymaY = (int)((float)PENCERE_YUKSEKLIK - ((float)TAHTA_YUKSEKLIK * olcekY) )/2;
         
         g2d.translate(kaymaX, kaymaY);
         g2d.scale(olcekX, olcekY);
+        
         harita.Cizdir(g2d);
         oyuncuA.Cizdir(g2d);
         oyuncuA.HedefCizdir(g2d);
@@ -400,20 +408,23 @@ public class Oyun extends JPanel {
         oyuncuC.YolCizdir(g2d);
         oyuncuD.YolCizdir(g2d);
         
-        //g2d.translate(-kaymaX, -kaymaY);
-        //g2d.scale(4 * olcekX, 4 * olcekY);
+        g2d.scale(1 / olcekX, 1 / olcekY);
+        g2d.translate(-kaymaX, -kaymaY);
+        
+        
 
-        //BilgiGoster(g2d);
+        BilgiGoster(g2d);
     }
 
     public void BilgiGoster(Graphics2D g) {
         
         //Arayüz elemanlariyla yapalim bunlari
         g.setColor(Color.BLACK);
-        g.drawString("Oyuncu A Altin: " + oyuncuA.altin, 700, 20);
-        g.drawString("Oyuncu B Altin: " + oyuncuB.altin, 700, 40);
-        g.drawString("Oyuncu C Altin: " + oyuncuC.altin, 700, 60);
-        g.drawString("Oyuncu D Altin: " + oyuncuD.altin, 700, 80);
+        g.setFont(new Font("Arial",Font.PLAIN, 15));
+        g.drawString("Oyuncu A Altin: " + oyuncuA.altin, PENCERE_GENISLIK - 200, 20);
+        g.drawString("Oyuncu B Altin: " + oyuncuB.altin, PENCERE_GENISLIK - 200, 40);
+        g.drawString("Oyuncu C Altin: " + oyuncuC.altin, PENCERE_GENISLIK - 200, 60);
+        g.drawString("Oyuncu D Altin: " + oyuncuD.altin, PENCERE_GENISLIK - 200, 80);
     }
 
 }

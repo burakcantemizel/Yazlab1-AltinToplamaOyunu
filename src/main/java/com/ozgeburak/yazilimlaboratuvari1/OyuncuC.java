@@ -1,7 +1,12 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
 import com.ozgeburak.yazilimlaboratuvari1.AStar.Node;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 public class OyuncuC extends Oyuncu {
 
@@ -10,6 +15,12 @@ public class OyuncuC extends Oyuncu {
         this.r = 0;
         this.g = 0;
         this.b = 255;
+        
+                try {
+            this.resim = ImageIO.read(new File("kaynaklar/oyuncuC.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(OyuncuA.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     void gizliAltinlariAcigaCikart(Harita harita, int adet) {

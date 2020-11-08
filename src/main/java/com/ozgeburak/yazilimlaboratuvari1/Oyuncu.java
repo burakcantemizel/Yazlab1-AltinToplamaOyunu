@@ -5,11 +5,14 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Oyuncu {
+  BufferedImage resim;
   int koordinatX;
   int koordinatY;
   int pozisyonX;
@@ -48,10 +51,11 @@ public class Oyuncu {
   }
   
   void Cizdir(Graphics2D G){
-      G.setColor(new Color(r,g,b));
-      G.fillRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
-      G.setColor(Color.BLACK);
-      G.drawRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
+      //G.setColor(new Color(r,g,b));
+      //G.fillRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
+      //G.setColor(Color.BLACK);
+      //G.drawRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
+      G.drawImage(this.resim, koordinatX * genislik, koordinatY * yukseklik, null);
   }
   
   void HedefCizdir(Graphics2D G){
