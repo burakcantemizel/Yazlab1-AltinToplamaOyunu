@@ -27,8 +27,8 @@ public class Oyun extends JPanel {
     public static int PENCERE_GENISLIK = 1280;
     public static int PENCERE_YUKSEKLIK = 720;
 
-    private final static int YATAY_KARE_SAYISI = 20;
-    private final static int DIKEY_KARE_SAYISI = 20;
+    private final static int YATAY_KARE_SAYISI = 15;
+    private final static int DIKEY_KARE_SAYISI = 15;
     
     public static final int TAHTA_GENISLIK = YATAY_KARE_SAYISI * KARE_GENISLIK;
     public static final int TAHTA_YUKSEKLIK = YATAY_KARE_SAYISI * KARE_YUKSEKLIK;
