@@ -24,13 +24,13 @@ public class AnaPencere extends JFrame {
     
     public static void main(String[] args) throws InterruptedException{
         
-        try {
+        
             LafManager.install();
             JFrame pencere = new JFrame("Yazılım Laboratuvarı 1");
             
             
             
-            
+            /*
             
             SecimEkrani secimEkrani = new SecimEkrani();
   
@@ -41,7 +41,8 @@ public class AnaPencere extends JFrame {
             pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             pencere.setLocationRelativeTo(null);
             
-            /*
+            */
+            
             Oyun oyun = new Oyun();
             oyun.setPreferredSize(new Dimension(Oyun.PENCERE_GENISLIK, Oyun.PENCERE_YUKSEKLIK));
             
@@ -67,13 +68,9 @@ public class AnaPencere extends JFrame {
             oyun.guncelle();
             Thread.sleep(1);
             }
-            */
-        } catch (FontFormatException ex) {
-            Logger.getLogger(AnaPencere.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AnaPencere.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
         
+            
 
         
     }
