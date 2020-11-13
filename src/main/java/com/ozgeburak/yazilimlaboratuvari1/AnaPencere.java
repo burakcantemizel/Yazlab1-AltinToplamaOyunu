@@ -40,11 +40,12 @@ public class AnaPencere extends JFrame {
             pencere.setVisible(true);
             pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             pencere.setLocationRelativeTo(null);
-            
             */
             
+            
+            
             Oyun oyun = new Oyun();
-            oyun.setPreferredSize(new Dimension(Oyun.PENCERE_GENISLIK, Oyun.PENCERE_YUKSEKLIK));
+            oyun.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
             
             pencere.add(oyun);
             
@@ -56,8 +57,8 @@ public class AnaPencere extends JFrame {
             
             pencere.addComponentListener(new ComponentAdapter( ) {
             public void componentResized(ComponentEvent ev) {
-            Oyun.PENCERE_GENISLIK = oyun.getWidth();
-            Oyun.PENCERE_YUKSEKLIK = oyun.getHeight();
+            Oyun.pencereGenislik = oyun.getWidth();
+            Oyun.pencereYukseklik = oyun.getHeight();
             }
             });
             
@@ -69,7 +70,7 @@ public class AnaPencere extends JFrame {
             Thread.sleep(1);
             }
             
-        
+            
             
 
         

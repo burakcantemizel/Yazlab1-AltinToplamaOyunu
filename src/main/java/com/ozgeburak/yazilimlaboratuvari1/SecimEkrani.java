@@ -40,7 +40,7 @@ public class SecimEkrani extends javax.swing.JPanel {
      * Creates new form SecimEkrani
      */
     public SecimEkrani() {
-        this.setPreferredSize(new Dimension(Oyun.PENCERE_GENISLIK, Oyun.PENCERE_YUKSEKLIK));
+        this.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
         //SecimMenusu.setOpaque(false);
         r = new Random();
         

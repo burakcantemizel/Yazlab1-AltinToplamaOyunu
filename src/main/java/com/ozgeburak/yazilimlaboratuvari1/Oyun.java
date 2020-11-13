@@ -17,59 +17,41 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 public class Oyun extends JPanel {
+    //Sabitler üzerinden hesaplanan değişkenler ve yeni sabitler
+    public static int pencereGenislik = 1280;
+    public static int pencereYukseklik = 720;
+    public static final int TAHTA_GENISLIK = Sabitler.HARITA_SUTUN * Sabitler.KARE_GENISLIK;
+    public static final int TAHTA_YUKSEKLIK = Sabitler.HARITA_SATIR * Sabitler.KARE_YUKSEKLIK;
 
-    public static final int KARE_GENISLIK = 128;
-    public static final int KARE_YUKSEKLIK = 128;
-    
-    public static final int OYUN_GENISLIK = 1280;
-    public static final int OYUN_YUKSEKLIK = 720;
-    
-    public static int PENCERE_GENISLIK = 1280;
-    public static int PENCERE_YUKSEKLIK = 720;
-
-    private final static int YATAY_KARE_SAYISI = 20;
-    private final static int DIKEY_KARE_SAYISI = 20;
-    
-    public static final int TAHTA_GENISLIK = YATAY_KARE_SAYISI * KARE_GENISLIK;
-    public static final int TAHTA_YUKSEKLIK = YATAY_KARE_SAYISI * KARE_YUKSEKLIK;
-
+    //Değişkenler 
     private Harita harita;
     private OyuncuA oyuncuA;
     private OyuncuB oyuncuB;
     private OyuncuC oyuncuC;
     private OyuncuD oyuncuD;
-
-    JButton turButon;
-    JSlider oyunHizi;
-
+    private JSlider oyunHizi;
     private int tur;
 
     public Oyun() {
-
+        //tanımlamalar,atamalar ve ayarlamalar ayarla metodunda yapiliyor.
     }
 
     public void ayarla() {
-        harita = new Harita(YATAY_KARE_SAYISI, DIKEY_KARE_SAYISI);
+        //Nesneler oluşturuluyor.
+        harita = new Harita(Sabitler.HARITA_SUTUN, Sabitler.HARITA_SATIR);
         oyuncuA = new OyuncuA(0, 0);
         oyuncuB = new OyuncuB(harita.yatayKareSayisi - 1, 0);
         oyuncuC = new OyuncuC(0, harita.dikeyKareSayisi - 1);
         oyuncuD = new OyuncuD(harita.yatayKareSayisi - 1, harita.dikeyKareSayisi - 1);
-        turButon = new JButton("Tur ilerle");
-        this.add(turButon);
-        turButon.setBounds(OYUN_GENISLIK - 120, OYUN_YUKSEKLIK - 30, 120, 30);
-
-        turButon.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tur++;
-            }
-        });
 
         oyunHizi = new JSlider(1, 1000, 1);
         oyunHizi.setValue(300);
-        oyunHizi.setBounds(OYUN_GENISLIK - 120, OYUN_YUKSEKLIK - 60, 120, 30);
+        
+        //Slider pozisyonu ayarlanacak -------------------------------------------------------------------------------------------------------------------------------------------
+        oyunHizi.setBounds(Sabitler.OYUN_GENISLIK - 120, Sabitler.OYUN_YUKSEKLIK - 60, 120, 30);
         this.add(oyunHizi);
         
+        //Arkaplan
         this.setBackground(new Color(141,183,242));
     }
 
@@ -171,7 +153,7 @@ public class Oyun extends JPanel {
             //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
             if (oyuncuB.mevcutHedefVarMi == false) {
 
-                oyuncuB.maaliyetliHedefBelirle(harita);
+                oyuncuB.maaliyetliHedefBelirle(harita, Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
                 oyuncuB.altin -= 10;
                 Thread.sleep(oyunHizi.getValue());
 
@@ -182,7 +164,7 @@ public class Oyun extends JPanel {
             for (int i = 0; i < oyuncuB.kalanHareket; i++) {
                 if (oyuncuB.hedefAltin != null) {
                     if (oyuncuB.hedefAltin.altin == false) {
-                        oyuncuB.maaliyetliHedefBelirle(harita);
+                        oyuncuB.maaliyetliHedefBelirle(harita, Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
                         Thread.sleep(oyunHizi.getValue());
                     }
                 }
@@ -215,7 +197,7 @@ public class Oyun extends JPanel {
 
                     //altini aldiysak
                     if (oyuncuB.mevcutHedefVarMi == false) {
-                        oyuncuB.maaliyetliHedefBelirle(harita);
+                        oyuncuB.maaliyetliHedefBelirle(harita, Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
                         oyuncuB.altin -= 15;
                         Thread.sleep(oyunHizi.getValue());
                     }
@@ -241,7 +223,7 @@ public class Oyun extends JPanel {
             //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
             if (oyuncuC.mevcutHedefVarMi == false) {
 
-                oyuncuC.maaliyetliHedefBelirle(harita);
+                oyuncuC.maaliyetliHedefBelirle(harita, Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
                 oyuncuC.altin -= 15;
                 Thread.sleep(oyunHizi.getValue());
 
@@ -252,7 +234,7 @@ public class Oyun extends JPanel {
             for (int i = 0; i < oyuncuC.kalanHareket; i++) {
                 if (oyuncuC.hedefAltin != null) {
                     if (oyuncuC.hedefAltin.altin == false) {
-                        oyuncuC.maaliyetliHedefBelirle(harita);
+                        oyuncuC.maaliyetliHedefBelirle(harita, Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
                         Thread.sleep(oyunHizi.getValue());
                     }
                 }
@@ -285,7 +267,7 @@ public class Oyun extends JPanel {
 
                     //altini aldiysak
                     if (oyuncuC.mevcutHedefVarMi == false) {
-                        oyuncuC.maaliyetliHedefBelirle(harita);
+                        oyuncuC.maaliyetliHedefBelirle(harita, Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
                         oyuncuC.altin -= 15;
                         Thread.sleep(oyunHizi.getValue());
                     }
@@ -379,52 +361,52 @@ public class Oyun extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        //Oyun tahtasını çoklu çözünürlüklü hale getirme ve pencereye ortalama
         float kenarlik = 0.9f;
-        float olcekX = (float)PENCERE_YUKSEKLIK * kenarlik / (float)TAHTA_GENISLIK;
-        float olcekY = (float)PENCERE_YUKSEKLIK * kenarlik / (float)TAHTA_YUKSEKLIK;
-        int kaymaX = (int)((float)PENCERE_GENISLIK - ((float)TAHTA_GENISLIK * olcekX) )/2;
-        int kaymaY = (int)((float)PENCERE_YUKSEKLIK - ((float)TAHTA_YUKSEKLIK * olcekY) )/2;
+        float olcekX = (float)pencereYukseklik * kenarlik / (float)TAHTA_GENISLIK;
+        float olcekY = (float)pencereYukseklik * kenarlik / (float)TAHTA_YUKSEKLIK;
+        int kaymaX = (int)((float)pencereGenislik - ((float)TAHTA_GENISLIK * olcekX) )/2;
+        int kaymaY = (int)((float)pencereYukseklik - ((float)TAHTA_YUKSEKLIK * olcekY) )/2;
         
         g2d.translate(kaymaX, kaymaY);
         g2d.scale(olcekX, olcekY);
         
+        //Elemanların çizdirilmesi
         harita.Cizdir(g2d);
         oyuncuA.Cizdir(g2d);
         oyuncuA.HedefCizdir(g2d);
-
+        
         oyuncuB.Cizdir(g2d);
         oyuncuB.HedefCizdir(g2d);
-
+        
         oyuncuC.Cizdir(g2d);
         oyuncuC.HedefCizdir(g2d);
-
+        
         oyuncuD.Cizdir(g2d);
         oyuncuD.HedefCizdir(g2d);
-
+        
         harita.altinCizdir(g2d);
-
+        
         oyuncuA.YolCizdir(g2d);
         oyuncuB.YolCizdir(g2d);
         oyuncuC.YolCizdir(g2d);
         oyuncuD.YolCizdir(g2d);
         
+        //Diğer elemanların düzgün çizdirilmesi için ölçeği eski haline getiriyoruz.
         g2d.scale(1 / olcekX, 1 / olcekY);
         g2d.translate(-kaymaX, -kaymaY);
         
-        
-
         BilgiGoster(g2d);
     }
 
     public void BilgiGoster(Graphics2D g) {
-        
-        //Arayüz elemanlariyla yapalim bunlari
+        //Bilgileri ekrana çizen fonksiyon
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial",Font.PLAIN, 15));
-        g.drawString("Oyuncu A Altin: " + oyuncuA.altin, PENCERE_GENISLIK - 200, 20);
-        g.drawString("Oyuncu B Altin: " + oyuncuB.altin, PENCERE_GENISLIK - 200, 40);
-        g.drawString("Oyuncu C Altin: " + oyuncuC.altin, PENCERE_GENISLIK - 200, 60);
-        g.drawString("Oyuncu D Altin: " + oyuncuD.altin, PENCERE_GENISLIK - 200, 80);
+        g.drawString("Oyuncu A Altin: " + oyuncuA.altin, pencereGenislik - 200, 20);
+        g.drawString("Oyuncu B Altin: " + oyuncuB.altin, pencereGenislik - 200, 40);
+        g.drawString("Oyuncu C Altin: " + oyuncuC.altin, pencereGenislik - 200, 60);
+        g.drawString("Oyuncu D Altin: " + oyuncuD.altin, pencereGenislik - 200, 80);
     }
 
 }
