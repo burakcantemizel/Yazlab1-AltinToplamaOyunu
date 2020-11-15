@@ -59,8 +59,8 @@ public class OyuncuA extends Oyuncu {
             this.hedefYol = enKisaYol;
             this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
 
-            for (Kare kare : harita.altinOlanKareler) {
-                if (kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
+            for (Kare kare : harita.kareler) {
+                if (kare.altin == true && kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
                     this.hedefAltin = kare;
                     break;
                 }

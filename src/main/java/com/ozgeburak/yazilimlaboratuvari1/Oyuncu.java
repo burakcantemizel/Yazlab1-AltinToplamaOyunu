@@ -142,8 +142,8 @@ public class Oyuncu {
             this.hedefYol = enKisaYol;
             this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
 
-            for (Kare kare : harita.altinOlanKareler) {
-                if (kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
+            for (Kare kare : harita.kareler) {
+                if (kare.altin == true && kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
                     this.hedefAltin = kare;
                     break;
                 }
@@ -153,12 +153,18 @@ public class Oyuncu {
             //System.out.println((int)kar);
             this.altin -= hedefBelirlemeMaaliyeti;
             
-            if(oyuncu == "B"){
+            if(oyuncu == "B" && this.hedefkare != null && this.hedefYol != null){
                 Oyun.fwOyuncuB.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
                 Oyun.fwOyuncuB.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
                 Oyun.fwOyuncuB.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
-            }else if(oyuncu == "C"){
+            }else if(oyuncu == "C" && this.hedefkare != null && this.hedefYol != null){
                 Oyun.fwOyuncuC.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
+                //System.out.println(this.hedefYol);
+                //System.out.println(this.hedefYol.size());
+                //System.out.println(this.hedefYol.get(this.hedefYol.size() - 1));
+                //System.out.println(this.hedefYol.get(this.hedefYol.size() - 1).g);
+                //System.out.println(this.hedefAltin);
+                //System.out.println(Oyun.fwOyuncuC);
                 Oyun.fwOyuncuC.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
                 Oyun.fwOyuncuC.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
             }

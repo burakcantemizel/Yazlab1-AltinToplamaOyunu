@@ -66,7 +66,7 @@ public class OyuncuC extends Oyuncu {
                         && kare.koordinatY == enKisaGizliAltinYol.get(enKisaGizliAltinYol.size() - 1).y) {
                     kare.gizliAltin = false;
                     kare.altin = true;
-                    Oyun.fwOyuncuC.write("Gizli altin aciga cikarildi. x: " + Integer.toString(kare.koordinatX) + " y: " + Integer.toString(kare.koordinatY));
+                    Oyun.fwOyuncuC.write("Gizli altin aciga cikarildi. x: " + Integer.toString(kare.koordinatX) + " y: " + Integer.toString(kare.koordinatY) + "\n");
                 }
             }
 

@@ -124,7 +124,7 @@ public class Harita {
     }
 
     Kare KareBul(int koordinatX, int koordinatY) {
-        return kareler.get(koordinatY * yatayKareSayisi + koordinatX);
+        return kareler.get(koordinatX * dikeyKareSayisi + koordinatY);
     }
 
 }
