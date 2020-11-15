@@ -23,7 +23,7 @@ public class OyuncuC extends Oyuncu {
         }
     }
 
-    void gizliAltinlariAcigaCikart(Harita harita, int adet) {
+    void gizliAltinlariAcigaCikart(Harita harita, int adet) throws IOException {
         //Her turun başında 2 tane en yakin gizli altini aciga cikaracak
         int acigaCikan = 0;
         
@@ -43,6 +43,7 @@ public class OyuncuC extends Oyuncu {
             if(gizliAltinVarMi == false){
                 return;
             }
+            
             
 
             //En kisa gizli altini bulcaz
@@ -65,6 +66,7 @@ public class OyuncuC extends Oyuncu {
                         && kare.koordinatY == enKisaGizliAltinYol.get(enKisaGizliAltinYol.size() - 1).y) {
                     kare.gizliAltin = false;
                     kare.altin = true;
+                    Oyun.fwOyuncuC.write("Gizli altin aciga cikarildi. x: " + Integer.toString(kare.koordinatX) + " y: " + Integer.toString(kare.koordinatY));
                 }
             }
 

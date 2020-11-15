@@ -22,7 +22,7 @@ public class AnaPencere extends JFrame {
 
     }
     
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException, IOException{
         
         
             LafManager.install();
