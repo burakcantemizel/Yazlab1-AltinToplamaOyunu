@@ -1,0 +1,168 @@
+Tur : 1
+Hamle Maaliyeti: 5 kalan altin: 190
+x: 18 y: 0konumuna hareket etti. 
+x: 17 y: 0konumuna hareket etti. 
+x: 16 y: 0konumuna hareket etti. 
+Tur : 2
+x: 15 y: 0konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 195
+Tur : 3
+x: 14 y: 0konumuna hareket etti. 
+x: 13 y: 0konumuna hareket etti. 
+x: 13 y: 1konumuna hareket etti. 
+Tur : 4
+x: 13 y: 2konumuna hareket etti. 
+x: 13 y: 3konumuna hareket etti. 
+x: 13 y: 4konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 190
+Tur : 5
+x: 12 y: 4konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 180
+Tur : 6
+x: 12 y: 5konumuna hareket etti. 
+x: 12 y: 6konumuna hareket etti. 
+x: 12 y: 7konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 185
+Tur : 7
+x: 12 y: 8konumuna hareket etti. 
+x: 13 y: 8konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 190
+Tur : 8
+x: 13 y: 7konumuna hareket etti. 
+x: 14 y: 7konumuna hareket etti. 
+x: 15 y: 7konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 195
+Tur : 9
+x: 15 y: 6konumuna hareket etti. 
+x: 16 y: 6konumuna hareket etti. 
+x: 17 y: 6konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 195
+Tur : 10
+x: 17 y: 7konumuna hareket etti. 
+x: 18 y: 7konumuna hareket etti. 
+x: 19 y: 7konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 195
+Tur : 11
+x: 19 y: 8konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 200
+Tur : 12
+x: 18 y: 8konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 200
+Tur : 13
+x: 17 y: 8konumuna hareket etti. 
+x: 16 y: 8konumuna hareket etti. 
+x: 15 y: 8konumuna hareket etti. 
+Tur : 14
+x: 14 y: 8konumuna hareket etti. 
+x: 13 y: 8konumuna hareket etti. 
+x: 12 y: 8konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 175
+Tur : 15
+x: 12 y: 9konumuna hareket etti. 
+x: 12 y: 10konumuna hareket etti. 
+x: 12 y: 11konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 175
+Tur : 16
+x: 12 y: 12konumuna hareket etti. 
+x: 12 y: 13konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 175
+Tur : 17
+x: 12 y: 12konumuna hareket etti. 
+x: 12 y: 11konumuna hareket etti. 
+x: 12 y: 10konumuna hareket etti. 
+Tur : 18
+x: 13 y: 10konumuna hareket etti. 
+x: 14 y: 10konumuna hareket etti. 
+x: 15 y: 10konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 165
+Tur : 19
+x: 15 y: 11konumuna hareket etti. 
+x: 16 y: 11konumuna hareket etti. 
+x: 17 y: 11konumuna hareket etti. 
+Tur : 20
+x: 18 y: 11konumuna hareket etti. 
+x: 19 y: 11konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 160
+Tur : 21
+x: 19 y: 10konumuna hareket etti. 
+x: 19 y: 9konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 150
+Tur : 22
+x: 19 y: 8konumuna hareket etti. 
+x: 19 y: 7konumuna hareket etti. 
+x: 19 y: 6konumuna hareket etti. 
+Tur : 23
+x: 19 y: 5konumuna hareket etti. 
+x: 19 y: 4konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 135
+Tur : 24
+x: 18 y: 4konumuna hareket etti. 
+x: 17 y: 4konumuna hareket etti. 
+x: 17 y: 3konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 130
+Tur : 25
+x: 16 y: 3konumuna hareket etti. 
+x: 16 y: 2konumuna hareket etti. 
+x: 16 y: 1konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 120
+Tur : 26
+x: 15 y: 1konumuna hareket etti. 
+x: 14 y: 1konumuna hareket etti. 
+x: 13 y: 1konumuna hareket etti. 
+Tur : 27
+x: 12 y: 1konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 75
+Tur : 28
+x: 11 y: 1konumuna hareket etti. 
+x: 11 y: 2konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 70
+Tur : 29
+x: 10 y: 2konumuna hareket etti. 
+x: 9 y: 2konumuna hareket etti. 
+x: 8 y: 2konumuna hareket etti. 
+Tur : 30
+x: 7 y: 2konumuna hareket etti. 
+x: 6 y: 2konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 65
+Tur : 31
+x: 6 y: 3konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 65
+Tur : 32
+x: 5 y: 3konumuna hareket etti. 
+x: 4 y: 3konumuna hareket etti. 
+x: 3 y: 3konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 65
+Tur : 33
+x: 3 y: 4konumuna hareket etti. 
+x: 3 y: 5konumuna hareket etti. 
+x: 4 y: 5konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 70
+Tur : 34
+x: 5 y: 5konumuna hareket etti. 
+x: 6 y: 5konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 60
+Tur : 35
+x: 6 y: 4konumuna hareket etti. 
+x: 6 y: 3konumuna hareket etti. 
+x: 6 y: 2konumuna hareket etti. 
+Tur : 36
+x: 7 y: 2konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 45
+Tur : 37
+x: 7 y: 1konumuna hareket etti. 
+x: 7 y: 0konumuna hareket etti. 
+x: 8 y: 0konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 40
+Tur : 38
+x: 9 y: 0konumuna hareket etti. 
+x: 10 y: 0konumuna hareket etti. 
+x: 11 y: 0konumuna hareket etti. 
+Tur : 39
+x: 12 y: 0konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 25
+Tur : 40
+x: 12 y: 1konumuna hareket etti. 
+x: 13 y: 1konumuna hareket etti. 
+x: 14 y: 1konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 15
+Tur : 41

@@ -76,7 +76,7 @@
             <Property name="text" type="java.lang.String" value="Harita Yatay Kare Say&#x131;s&#x131;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="girdi1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -96,7 +96,7 @@
             <Property name="text" type="java.lang.String" value="Harita Dikey Kare Say&#x131;s&#x131;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="girdi2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -117,7 +117,7 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider1">
+        <Component class="javax.swing.JSlider" name="girdi3">
           <Properties>
             <Property name="value" type="int" value="20"/>
           </Properties>
@@ -133,7 +133,7 @@
             <Property name="text" type="java.lang.String" value="Harita Gizli Alt&#x131;n Oran&#x131;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider2">
+        <Component class="javax.swing.JSlider" name="girdi4">
           <Properties>
             <Property name="value" type="int" value="10"/>
           </Properties>
@@ -149,7 +149,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu Ba&#x15f;lang&#x131;&#xe7; Alt&#x131;n Miktar&#x131;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="girdi5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -169,7 +169,7 @@
             <Property name="text" type="java.lang.String" value="Hamle Ad&#x131;m Say&#x131;s&#x131;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
+        <Component class="javax.swing.JTextField" name="girdi6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -189,7 +189,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu A Hamle Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
+        <Component class="javax.swing.JTextField" name="girdi7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -209,7 +209,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu A Hedef Belirleme Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField8">
+        <Component class="javax.swing.JTextField" name="girdi8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -229,7 +229,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu B Hamle Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="girdi9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -249,7 +249,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu B Hedef Belirleme Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField10">
+        <Component class="javax.swing.JTextField" name="girdi10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -269,7 +269,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu C Hamle Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField11">
+        <Component class="javax.swing.JTextField" name="girdi11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -289,7 +289,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu C Hedef Belirleme Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField12">
+        <Component class="javax.swing.JTextField" name="girdi12">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -309,7 +309,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu C Gizli Alt&#x131;n A&#xe7;ma Say&#x131;s&#x131;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField13">
+        <Component class="javax.swing.JTextField" name="girdi13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -329,7 +329,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu D Hamle Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField14">
+        <Component class="javax.swing.JTextField" name="girdi14">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -349,7 +349,7 @@
             <Property name="text" type="java.lang.String" value="Oyuncu D Hedef Belirleme Maaliyeti"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField15">
+        <Component class="javax.swing.JTextField" name="girdi15">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed Extra Bold" size="14" style="0"/>
@@ -377,6 +377,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Oyunu Ba&#x15f;lat"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>

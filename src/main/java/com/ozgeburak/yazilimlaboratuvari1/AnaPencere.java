@@ -27,11 +27,7 @@ public class AnaPencere extends JFrame {
         
             LafManager.install();
             JFrame pencere = new JFrame("Yazılım Laboratuvarı 1");
-            
-            
-            
-            /*
-            
+           
             SecimEkrani secimEkrani = new SecimEkrani();
   
             pencere.add(secimEkrani);
@@ -40,9 +36,9 @@ public class AnaPencere extends JFrame {
             pencere.setVisible(true);
             pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             pencere.setLocationRelativeTo(null);
-            */
             
             
+            pencere.remove(secimEkrani);
             
             Oyun oyun = new Oyun();
             oyun.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
@@ -72,7 +68,7 @@ public class AnaPencere extends JFrame {
             
             
             
-
+            
         
     }
     

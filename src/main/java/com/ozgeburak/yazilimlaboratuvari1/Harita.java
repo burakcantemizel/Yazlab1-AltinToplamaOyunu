@@ -17,9 +17,9 @@ public class Harita {
     ArrayList<Kare> altinOlanKareler;
 
     public Harita(int yatayKareSayisi, int dikeyKareSayisi) {
-        maaliyetsizMatris = new int[yatayKareSayisi][dikeyKareSayisi];
-        for (int i = 0; i < yatayKareSayisi; i++) {
-            for (int j = 0; j < dikeyKareSayisi; j++) {
+        maaliyetsizMatris = new int[dikeyKareSayisi][yatayKareSayisi];
+        for (int i = 0; i < dikeyKareSayisi; i++) {
+            for (int j = 0; j < yatayKareSayisi; j++) {
                 maaliyetsizMatris[i][j] = 0;
             }
         }
@@ -42,8 +42,8 @@ public class Harita {
     }
 
     void Olustur() {
-        for (int i = 0; i < dikeyKareSayisi; i++) {
-            for (int j = 0; j < yatayKareSayisi; j++) {
+        for (int i = 0; i < yatayKareSayisi; i++) {
+            for (int j = 0; j < dikeyKareSayisi; j++) {
                 kareler.add(new Kare(i, j));
             }
         }

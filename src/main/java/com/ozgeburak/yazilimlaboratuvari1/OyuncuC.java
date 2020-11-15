@@ -1,6 +1,6 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
-import com.ozgeburak.yazilimlaboratuvari1.AStar.Node;
+import com.ozgeburak.yazilimlaboratuvari1.AStar.Dugum;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -29,7 +29,7 @@ public class OyuncuC extends Oyuncu {
         
         for (int tekrar = 0; tekrar < adet; tekrar++) {
             AStar as;
-            List<AStar.Node> enKisaGizliAltinYol = null;
+            List<AStar.Dugum> enKisaGizliAltinYol = null;
             boolean gizliAltinVarMi = false;
             for (Kare kare : harita.kareler) {
                 if (kare.gizliAltin == true) {
@@ -49,7 +49,7 @@ public class OyuncuC extends Oyuncu {
             for (int i = 0; i < harita.kareler.size(); i++) {
                 if (harita.kareler.get(i).gizliAltin == true) {
                     as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                    List<Node> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    List<Dugum> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
                     if (yol != null) {
                         if (yol.get(yol.size() - 1).g < enKisaGizliAltinYol.get(enKisaGizliAltinYol.size() - 1).g) {
                             enKisaGizliAltinYol = yol;

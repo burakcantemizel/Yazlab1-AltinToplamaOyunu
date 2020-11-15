@@ -1,12 +1,13 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
-import com.ozgeburak.yazilimlaboratuvari1.AStar.Node;
+import com.ozgeburak.yazilimlaboratuvari1.AStar.Dugum;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +26,11 @@ public class Oyuncu {
     int altin;
     boolean mevcutHedefVarMi = false;
     int kalanHareket;
-    Node hedefkare;
-    List<Node> hedefYol;
+    Dugum hedefkare;
+    List<Dugum> hedefYol;
     int hedefKareIndeks;
     Kare hedefAltin;
+    boolean yasiyor = true;
 
     Oyuncu(int koordinatX, int koordinatY) {
         this.koordinatX = koordinatX;
@@ -41,7 +43,7 @@ public class Oyuncu {
         this.g = 0;
         this.b = 0;
         this.altin = Sabitler.OYUNCU_ALTIN_MIKTARI;
-        this.kalanHareket = 3;
+        this.kalanHareket = Sabitler.HAMLE_ADIM_SAYISI;
 
         this.hedefkare = null;
         this.hedefYol = null;
@@ -54,34 +56,46 @@ public class Oyuncu {
         //G.fillRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
         //G.setColor(Color.BLACK);
         //G.drawRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
+
         G.drawImage(this.resim, koordinatX * genislik, koordinatY * yukseklik, null);
+        
+
     }
 
     void HedefCizdir(Graphics2D G) {
 
-        if (this.hedefkare != null) {
-            G.setColor(new Color(r, g, b));
-            G.setStroke(new BasicStroke(5.0f));
-            G.drawRect(this.hedefkare.x * genislik, this.hedefkare.y * yukseklik, genislik, yukseklik);
-            G.setStroke(new BasicStroke(1f));
-        }
+            if (this.hedefkare != null) {
+                G.setColor(new Color(r, g, b));
+                G.setStroke(new BasicStroke(5.0f));
+                G.drawRect(this.hedefkare.x * genislik, this.hedefkare.y * yukseklik, genislik, yukseklik);
+                G.setStroke(new BasicStroke(1f));
+            }
+        
 
     }
 
     void YolCizdir(Graphics2D G) {
-        if (this.hedefYol != null) {
-            for (int i = 0; i < this.hedefYol.size(); i++) {
-                G.setColor(new Color(r, g, b));
-                G.fillOval(this.hedefYol.get(i).x * genislik + genislik / 2 - genislik / 12, this.hedefYol.get(i).y * yukseklik + yukseklik / 2 - yukseklik / 12, genislik / 6, yukseklik / 6);
+
+            if (this.hedefYol != null) {
+                for (int i = 0; i < this.hedefYol.size(); i++) {
+                    G.setColor(new Color(r, g, b));
+                    G.fillOval(this.hedefYol.get(i).x * genislik + genislik / 2 - genislik / 12, this.hedefYol.get(i).y * yukseklik + yukseklik / 2 - yukseklik / 12, genislik / 6, yukseklik / 6);
+                }
             }
-        }
+        
+
     }
 
     //B ve C Oyuncuları Ortak Kullanıyor.
-    void maaliyetliHedefBelirle(Harita harita, int hamleMaaliyeti, int hedefBelirlemeMaaliyeti) {
+    void maaliyetliHedefBelirle(Harita harita, int hamleMaaliyeti, int hedefBelirlemeMaaliyeti) throws IOException {
+         
+       if(altinKaldiMiKontrol(harita) == false){
+            return;
+        }
+        
         //En kısa nesneyi belirleyeceğiz
         AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-        List<Node> enKisaYol = null;
+        List<Dugum> enKisaYol = null;
         Kare maaliyetAlinacakKare = null;
         int kar = 0;
         for (Kare kare : harita.kareler) {
@@ -104,7 +118,7 @@ public class Oyuncu {
         for (int i = 0; i < harita.kareler.size(); i++) {
             if (harita.kareler.get(i).altin == true) {
                 as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                List<Node> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                List<Dugum> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
                 if (yol != null) {
                     //En kisa bulma kismi artik farkli olacak
                     if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.kareler.get(i).altinMiktari
@@ -127,10 +141,10 @@ public class Oyuncu {
                 }
             }
         }
-
         this.mevcutHedefVarMi = true;
         this.hedefYol = enKisaYol;
         this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
+        
 
         for (Kare kare : harita.altinOlanKareler) {
             if (kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
@@ -141,7 +155,44 @@ public class Oyuncu {
 
         this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
         //System.out.println((int)kar);
+        
+       // Oyun.fwOyuncuB.write("En yakın hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
+       // Oyun.fwOyuncuB.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size()-1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
+       // Oyun.fwOyuncuB.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
+    }
 
+    boolean YasiyorMu() {
+        if (this.altin > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    boolean olumKontrol() {
+        if (YasiyorMu() == false) {
+            yasiyor = false;
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+        boolean altinKaldiMiKontrol(Harita harita){
+             int kalanaltin = 0;
+        
+        for(Kare kare : harita.altinOlanKareler){
+            if(kare.altin == true){
+                kalanaltin++;
+            }
+        }
+            
+        if(kalanaltin <= 0){
+            return false;
+        }
+        
+        return true;
     }
 
 }

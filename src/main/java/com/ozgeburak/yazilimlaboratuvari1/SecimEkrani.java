@@ -145,35 +145,35 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         SecimMenusu = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        girdi1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        girdi2 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        girdi3 = new javax.swing.JSlider();
         jLabel19 = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
+        girdi4 = new javax.swing.JSlider();
         jLabel20 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        girdi5 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        girdi6 = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        girdi7 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        girdi8 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        girdi9 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        girdi10 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        girdi11 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        girdi12 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        girdi13 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        girdi14 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        girdi15 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -189,20 +189,20 @@ public class SecimEkrani extends javax.swing.JPanel {
         jLabel16.setText("Harita Yatay Kare Sayısı");
         SecimMenusu.add(jLabel16);
 
-        jTextField3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("20");
-        SecimMenusu.add(jTextField3);
+        girdi1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi1.setText("20");
+        SecimMenusu.add(girdi1);
 
         jLabel17.setBackground(new java.awt.Color(193, 142, 59));
         jLabel17.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel17.setText("Harita Dikey Kare Sayısı");
         SecimMenusu.add(jLabel17);
 
-        jTextField2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("20");
-        SecimMenusu.add(jTextField2);
+        girdi2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi2.setText("20");
+        SecimMenusu.add(girdi2);
 
         jLabel18.setBackground(new java.awt.Color(193, 142, 59));
         jLabel18.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
@@ -210,127 +210,127 @@ public class SecimEkrani extends javax.swing.JPanel {
         jLabel18.setToolTipText("");
         SecimMenusu.add(jLabel18);
 
-        jSlider1.setValue(20);
-        SecimMenusu.add(jSlider1);
+        girdi3.setValue(20);
+        SecimMenusu.add(girdi3);
 
         jLabel19.setBackground(new java.awt.Color(193, 142, 59));
         jLabel19.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel19.setText("Harita Gizli Altın Oranı");
         SecimMenusu.add(jLabel19);
 
-        jSlider2.setValue(10);
-        SecimMenusu.add(jSlider2);
+        girdi4.setValue(10);
+        SecimMenusu.add(girdi4);
 
         jLabel20.setBackground(new java.awt.Color(193, 142, 59));
         jLabel20.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel20.setText("Oyuncu Başlangıç Altın Miktarı");
         SecimMenusu.add(jLabel20);
 
-        jTextField5.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setText("200");
-        SecimMenusu.add(jTextField5);
+        girdi5.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi5.setText("200");
+        SecimMenusu.add(girdi5);
 
         jLabel21.setBackground(new java.awt.Color(193, 142, 59));
         jLabel21.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel21.setText("Hamle Adım Sayısı");
         SecimMenusu.add(jLabel21);
 
-        jTextField6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setText("3");
-        SecimMenusu.add(jTextField6);
+        girdi6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi6.setText("3");
+        SecimMenusu.add(girdi6);
 
         jLabel22.setBackground(new java.awt.Color(193, 142, 59));
         jLabel22.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel22.setText("Oyuncu A Hamle Maaliyeti");
         SecimMenusu.add(jLabel22);
 
-        jTextField7.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setText("5");
-        SecimMenusu.add(jTextField7);
+        girdi7.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi7.setText("5");
+        SecimMenusu.add(girdi7);
 
         jLabel23.setBackground(new java.awt.Color(193, 142, 59));
         jLabel23.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel23.setText("Oyuncu A Hedef Belirleme Maaliyeti");
         SecimMenusu.add(jLabel23);
 
-        jTextField8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.setText("15");
-        SecimMenusu.add(jTextField8);
+        girdi8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi8.setText("15");
+        SecimMenusu.add(girdi8);
 
         jLabel24.setBackground(new java.awt.Color(193, 142, 59));
         jLabel24.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel24.setText("Oyuncu B Hamle Maaliyeti");
         SecimMenusu.add(jLabel24);
 
-        jTextField9.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setText("5");
-        SecimMenusu.add(jTextField9);
+        girdi9.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi9.setText("5");
+        SecimMenusu.add(girdi9);
 
         jLabel25.setBackground(new java.awt.Color(193, 142, 59));
         jLabel25.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel25.setText("Oyuncu B Hedef Belirleme Maaliyeti");
         SecimMenusu.add(jLabel25);
 
-        jTextField10.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.setText("10");
-        SecimMenusu.add(jTextField10);
+        girdi10.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi10.setText("10");
+        SecimMenusu.add(girdi10);
 
         jLabel26.setBackground(new java.awt.Color(193, 142, 59));
         jLabel26.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel26.setText("Oyuncu C Hamle Maaliyeti");
         SecimMenusu.add(jLabel26);
 
-        jTextField11.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.setText("5");
-        SecimMenusu.add(jTextField11);
+        girdi11.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi11.setText("5");
+        SecimMenusu.add(girdi11);
 
         jLabel27.setBackground(new java.awt.Color(193, 142, 59));
         jLabel27.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel27.setText("Oyuncu C Hedef Belirleme Maaliyeti");
         SecimMenusu.add(jLabel27);
 
-        jTextField12.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField12.setText("15");
-        SecimMenusu.add(jTextField12);
+        girdi12.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi12.setText("15");
+        SecimMenusu.add(girdi12);
 
         jLabel28.setBackground(new java.awt.Color(193, 142, 59));
         jLabel28.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel28.setText("Oyuncu C Gizli Altın Açma Sayısı");
         SecimMenusu.add(jLabel28);
 
-        jTextField13.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField13.setText("2");
-        SecimMenusu.add(jTextField13);
+        girdi13.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi13.setText("2");
+        SecimMenusu.add(girdi13);
 
         jLabel29.setBackground(new java.awt.Color(193, 142, 59));
         jLabel29.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel29.setText("Oyuncu D Hamle Maaliyeti");
         SecimMenusu.add(jLabel29);
 
-        jTextField14.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField14.setText("5");
-        SecimMenusu.add(jTextField14);
+        girdi14.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi14.setText("5");
+        SecimMenusu.add(girdi14);
 
         jLabel30.setBackground(new java.awt.Color(193, 142, 59));
         jLabel30.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel30.setText("Oyuncu D Hedef Belirleme Maaliyeti");
         SecimMenusu.add(jLabel30);
 
-        jTextField15.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.setText("20");
-        jTextField15.setToolTipText("");
-        SecimMenusu.add(jTextField15);
+        girdi15.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        girdi15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        girdi15.setText("20");
+        girdi15.setToolTipText("");
+        SecimMenusu.add(girdi15);
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -338,6 +338,11 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jButton1.setText("Oyunu Başlat");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jButton2.setText("Çıkış");
@@ -378,9 +383,46 @@ public class SecimEkrani extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        //Değer atamalari
+        Sabitler.HARITA_SUTUN = Integer.parseInt(girdi1.getText());
+        Sabitler.HARITA_SATIR = Integer.parseInt(girdi2.getText());;
+        Sabitler.ALTIN_ORANI = girdi3.getValue();
+        Sabitler.GIZLI_ALTIN_ORANI = girdi4.getValue();
+        Sabitler.OYUNCU_ALTIN_MIKTARI = Integer.parseInt(girdi5.getText());;
+        Sabitler.HAMLE_ADIM_SAYISI = Integer.parseInt(girdi6.getText());;
+        Sabitler.OYUNCU_A_HAMLE_MAALIYET = Integer.parseInt(girdi7.getText());;
+        Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi8.getText());;
+        Sabitler.OYUNCU_B_HAMLE_MAALIYET = Integer.parseInt(girdi9.getText());;
+        Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi10.getText());;
+        Sabitler.OYUNCU_C_HAMLE_MAALIYET = Integer.parseInt(girdi11.getText());;
+        Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi12.getText());;
+        Sabitler.OYUNCU_C_ACILACAK_GIZLI_ALTIN_SAYISI = Integer.parseInt(girdi13.getText());;
+        Sabitler.OYUNCU_D_HAMLE_MAALIYET = Integer.parseInt(girdi14.getText());;
+        Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi15.getText());;
+        
+        
+    }//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel SecimMenusu;
+    private javax.swing.JTextField girdi1;
+    private javax.swing.JTextField girdi10;
+    private javax.swing.JTextField girdi11;
+    private javax.swing.JTextField girdi12;
+    private javax.swing.JTextField girdi13;
+    private javax.swing.JTextField girdi14;
+    private javax.swing.JTextField girdi15;
+    private javax.swing.JTextField girdi2;
+    private javax.swing.JSlider girdi3;
+    private javax.swing.JSlider girdi4;
+    private javax.swing.JTextField girdi5;
+    private javax.swing.JTextField girdi6;
+    private javax.swing.JTextField girdi7;
+    private javax.swing.JTextField girdi8;
+    private javax.swing.JTextField girdi9;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -400,21 +442,6 @@ public class SecimEkrani extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
     
