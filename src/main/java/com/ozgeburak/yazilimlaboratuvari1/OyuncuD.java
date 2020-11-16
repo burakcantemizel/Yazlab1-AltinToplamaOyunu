@@ -1,5 +1,6 @@
 package com.ozgeburak.yazilimlaboratuvari1;
-
+import com.ozgeburak.yazilimlaboratuvari1.AStar;
+import com.ozgeburak.yazilimlaboratuvari1.Dugum;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,8 +38,8 @@ public class OyuncuD extends Oyuncu {
 
             if (oyuncuA.yasiyor == true) {
                 //A'nın hedefine daha önce gidebiliyor mu?
-                as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                List<AStar.Dugum> Ayaolanyol = as.findPathTo(oyuncuA.hedefkare.x, oyuncuA.hedefkare.y);
+                as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                List<Dugum> Ayaolanyol = as.yolBul(oyuncuA.hedefkare.x, oyuncuA.hedefkare.y);
 
                 //Yolun uzakligina degil daha az hamlede yiyip yiyemedigine bakmam gerek
                 int Ayaolanuzaklik = (int) Ayaolanyol.get(Ayaolanyol.size() - 1).g;
@@ -55,8 +56,8 @@ public class OyuncuD extends Oyuncu {
 
             if (oyuncuB.yasiyor == true) {
                 //B'nin hedefine daha önce gidebiliyor mu?
-                as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                List<AStar.Dugum> Byeolanyol = as.findPathTo(oyuncuB.hedefkare.x, oyuncuB.hedefkare.y);
+                as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                List<Dugum> Byeolanyol = as.yolBul(oyuncuB.hedefkare.x, oyuncuB.hedefkare.y);
 
                 int Byeolanuzaklik = (int) Byeolanyol.get(Byeolanyol.size() - 1).g;
                 int BkacHamle = Byeolanuzaklik / 3; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
@@ -71,8 +72,8 @@ public class OyuncuD extends Oyuncu {
             }
 
             if (oyuncuC.yasiyor == true) {
-                as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                List<AStar.Dugum> Cyeolanyol = as.findPathTo(oyuncuC.hedefkare.x, oyuncuC.hedefkare.y);
+                as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                List<Dugum> Cyeolanyol = as.yolBul(oyuncuC.hedefkare.x, oyuncuC.hedefkare.y);
 
                 int Cyeolanuzaklik = (int) Cyeolanyol.get(Cyeolanyol.size() - 1).g;
                 int CkacHamle = Cyeolanuzaklik / 3; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
@@ -118,13 +119,13 @@ public class OyuncuD extends Oyuncu {
 
             //C'nin hedefine daha önce gidebiliyor mu?
             //En kısa nesneyi belirleyeceğiz
-            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-            List<AStar.Dugum> enKisaYol = null;
+            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+            List<Dugum> enKisaYol = null;
             Kare maaliyetAlinacakKare = null;
             int kar = 0;
             for (Kare kare : Dozelkareler) {
                 if (kare.altin == true) {
-                    enKisaYol = as.findPathTo(kare.koordinatX, kare.koordinatY);
+                    enKisaYol = as.yolBul(kare.koordinatX, kare.koordinatY);
                     maaliyetAlinacakKare = kare;
                     break;
                 }
@@ -141,8 +142,8 @@ public class OyuncuD extends Oyuncu {
             // üsteki formül bize karli hamleyi verecek ve bunlari kiyaslicaz
             for (int i = 0; i < Dozelkareler.size(); i++) {
                 if (Dozelkareler.get(i).altin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                    List<AStar.Dugum> yol = as.findPathTo(Dozelkareler.get(i).koordinatX, Dozelkareler.get(i).koordinatY);
+                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                    List<Dugum> yol = as.yolBul(Dozelkareler.get(i).koordinatX, Dozelkareler.get(i).koordinatY);
                     if (yol != null) {
                         //En kisa bulma kismi artik farkli olacak
                         if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - Dozelkareler.get(i).altinMiktari
@@ -179,6 +180,7 @@ public class OyuncuD extends Oyuncu {
             //System.out.println((int)kar);
             
             this.altin -= Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET;
+            this.harcananAltin += Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET;
             Oyun.fwOyuncuD.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
             Oyun.fwOyuncuD.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
             Oyun.fwOyuncuD.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");

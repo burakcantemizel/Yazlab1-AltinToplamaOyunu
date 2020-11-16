@@ -1,6 +1,9 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
 import static com.ozgeburak.yazilimlaboratuvari1.Oyun.fwOyuncuA;
+import com.ozgeburak.yazilimlaboratuvari1.AStar;
+import com.ozgeburak.yazilimlaboratuvari1.Dugum;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -31,11 +34,11 @@ public class OyuncuA extends Oyuncu {
             }
 
             //En kısa nesneyi belirleyeceğiz
-            AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-            List<AStar.Dugum> enKisaYol = null;
+            AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+            List<Dugum> enKisaYol = null;
             for (Kare kare : harita.kareler) {
                 if (kare.altin == true) {
-                    enKisaYol = as.findPathTo(kare.koordinatX, kare.koordinatY);
+                    enKisaYol = as.yolBul(kare.koordinatX, kare.koordinatY);
                     break;
                 }
             }
@@ -44,8 +47,8 @@ public class OyuncuA extends Oyuncu {
             //Altin olan kareler yerine direkt karelerde altin varsa diye bakarsak
             for (int i = 0; i < harita.kareler.size(); i++) {
                 if (harita.kareler.get(i).altin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                    List<AStar.Dugum> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                    List<Dugum> yol = as.yolBul(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
                     if (yol != null) {
                         if (yol.get(yol.size() - 1).g <= enKisaYol.get(enKisaYol.size() - 1).g) {
                             enKisaYol = yol;
@@ -69,6 +72,7 @@ public class OyuncuA extends Oyuncu {
             Oyun.fwOyuncuA.write("En yakın hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
             Oyun.fwOyuncuA.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
             this.altin -= Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET;
+            this.harcananAltin += Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET;
             Oyun.fwOyuncuA.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
             this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
             //System.out.println(this.hedefYol.get(this.hedefYol.size()-1).g);

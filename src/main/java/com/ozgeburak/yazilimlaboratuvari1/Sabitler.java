@@ -3,9 +3,9 @@ package com.ozgeburak.yazilimlaboratuvari1;
 
 public class Sabitler {
     //Ayarlanabilen sabitler
-    public static int HARITA_SUTUN = 25;
-    public static int HARITA_SATIR = 15;
-    public static int ALTIN_ORANI = 80;
+    public static int HARITA_SUTUN = 20;
+    public static int HARITA_SATIR = 20;
+    public static int ALTIN_ORANI = 20;
     public static int GIZLI_ALTIN_ORANI = 10;
     public static int OYUNCU_ALTIN_MIKTARI = 200;
     public static int HAMLE_ADIM_SAYISI = 3;

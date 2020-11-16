@@ -15,107 +15,73 @@ class AStar {
     private final int baslangicY;
     private int bitisX, bitisY;
  
-    // Dugum class for convienience
-    static class Dugum implements Comparable {
-        public Dugum parent;
-        public int x, y;
-        public double g;
-        public double h;
-        Dugum(Dugum parent, int xpos, int ypos, double g, double h) {
-            this.parent = parent;
-            this.x = xpos;
-            this.y = ypos;
-            this.g = g;
-            this.h = h;
-       }
-       // Compare by f value (g + h)
-       @Override
-       public int compareTo(Object o) {
-           Dugum that = (Dugum) o;
-           return (int)((this.g + this.h) - (that.g + that.h));
-       }
-   }
- 
-    AStar(int[][] maze, int xstart, int ystart, boolean diag) {
+
+    AStar(int[][] harita, int baslangicX, int baslangicY) {
         this.acikKume = new ArrayList<>();
         this.kapaliKume = new ArrayList<>();
         this.yol = new ArrayList<>();
-        this.harita = maze;
-        this.mevcutDugum = new Dugum(null, xstart, ystart, 0, 0);
-        this.baslangicX = xstart;
-        this.baslangicY = ystart;
+        this.harita = harita;
+        this.mevcutDugum = new Dugum(null, baslangicX, baslangicY, 0, 0);
+        this.baslangicX = baslangicX;
+        this.baslangicY = baslangicY;
     }
-    /*
-    ** Finds yol to bitisX/yend or returns null
-    **
-    ** @param (int) bitisX coordinates of the target position
-    ** @param (int) bitisY
-    ** @return (List<Node> | null) the yol
-    */
-    public List<Dugum> findPathTo(int xend, int yend) {
-        this.bitisX = xend;
-        this.bitisY = yend;
+    
+    // Girilen hedefX ve hedefY parametrelerine göre yol buluyor
+    // eğer bulamazsa null dönüyor.
+    
+    public List<Dugum> yolBul(int hedefX, int hedefY) {
+        this.bitisX = hedefX;
+        this.bitisY = hedefY;
         this.kapaliKume.add(this.mevcutDugum);
-        addNeigborsToOpenList();
+        acikKumeyeKomsuEkle();
         while (this.mevcutDugum.x != this.bitisX || this.mevcutDugum.y != this.bitisY) {
-            if (this.acikKume.isEmpty()) { // Nothing to examine
+            if (this.acikKume.isEmpty()) { // acikKume boşsa yani uygun yol yoksa null döndürüyoruz.
                 return null;
             }
-            this.mevcutDugum = this.acikKume.get(0); // get first node (lowest f score)
-            this.acikKume.remove(0); // remove it
-            this.kapaliKume.add(this.mevcutDugum); // and add to the kapaliKume
-            addNeigborsToOpenList();
+            this.mevcutDugum = this.acikKume.get(0); // ilk dugumu yani en dusuk f degeri olan dugumu mevcut belirledik
+            this.acikKume.remove(0); // daha sonra acikKumeden siliyoruz
+            this.kapaliKume.add(this.mevcutDugum); // daha sonra kapaliKumeye ekliyoruz
+            acikKumeyeKomsuEkle();
         }
         this.yol.add(0, this.mevcutDugum);
         while (this.mevcutDugum.x != this.baslangicX || this.mevcutDugum.y != this.baslangicY) {
-            this.mevcutDugum = this.mevcutDugum.parent;
+            this.mevcutDugum = this.mevcutDugum.ustDugum;
             this.yol.add(0, this.mevcutDugum);
         }
         return this.yol;
     }
-    /*
-    ** Looks in a given List<> for a node
-    **
-    ** @return (bool) NeightborInListFound
-    */
-    private static boolean findNeighborInList(List<Dugum> array, Dugum node) {
-        return array.stream().anyMatch((n) -> (n.x == node.x && n.y == node.y));
+
+    
+    //Verilen Listede dugumun olup olmadigina bakan fonksiyon
+    private static boolean listedeKomsuBul(List<Dugum> liste, Dugum dugum) {
+        return liste.stream().anyMatch((n) -> (n.x == dugum.x && n.y == dugum.y));
     }
-    /*
-    ** Calulate distance between this.mevcutDugum and bitisX/yend
-    **
-    ** @return (int) distance
-    */
-    private double distance(int dx, int dy) {
-            return Math.abs(this.mevcutDugum.x + dx - this.bitisX) + Math.abs(this.mevcutDugum.y + dy - this.bitisY); // else return "Manhattan distance"
+
+    //Mevcut dugum ile hedef arasindaki uzakligi donduruyor
+    private double uzaklik(int yonx, int yony) {
+            return Math.abs(this.mevcutDugum.x + yonx - this.bitisX) + Math.abs(this.mevcutDugum.y + yony - this.bitisY); // Manhattan uzakligini returnluyoruz
     }
-    private void addNeigborsToOpenList() {
-        Dugum node;
+    
+    private void acikKumeyeKomsuEkle() {
+        Dugum dugum;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
                 if ( x != 0 && y != 0) {
-                    continue; // skip if diagonal movement is not allowed
+                    continue; // 9 yön içinden 4 yön haricindeki yönleri atlıyoruz sadece 4 yöne hareket edicez x ve y den birisi 0sa 4 ana yöndeyizdir 
                 }
-                node = new Dugum(this.mevcutDugum, this.mevcutDugum.x + x, this.mevcutDugum.y + y, this.mevcutDugum.g, this.distance(x, y));
-                if ((x != 0 || y != 0) // not this.mevcutDugum
-                    && this.mevcutDugum.x + x >= 0 && this.mevcutDugum.x + x < this.harita[0].length // check harita boundaries
+                dugum = new Dugum(this.mevcutDugum, this.mevcutDugum.x + x, this.mevcutDugum.y + y, this.mevcutDugum.g, this.uzaklik(x, y));
+                if ((x != 0 || y != 0) // eğer bir yöndeysek , mevcut Dugumde degilsek
+                    && this.mevcutDugum.x + x >= 0 && this.mevcutDugum.x + x < this.harita[0].length // haritanın sınırlarına bakıyoruz
                     && this.mevcutDugum.y + y >= 0 && this.mevcutDugum.y + y < this.harita.length
-                    && this.harita[this.mevcutDugum.y + y][this.mevcutDugum.x + x] != -1 // check if square is walkable
-                    && !findNeighborInList(this.acikKume, node) && !findNeighborInList(this.kapaliKume, node)) { // if not already done
-                        node.g = node.parent.g + 1.; // Horizontal/vertical cost = 1.0
-                        node.g += harita[this.mevcutDugum.y + y][this.mevcutDugum.x + x]; // add movement cost for this square
- 
-                        // diagonal cost = sqrt(hor_cost² + vert_cost²)
-                        // in this example the cost would be 12.2 instead of 11
-                        /*
-                        if (diag && x != 0 && y != 0) {
-                            node.g += .4;	// Diagonal movement cost = 1.4
-                        }
-                        */
-                        this.acikKume.add(node);
+                    && this.harita[this.mevcutDugum.y + y][this.mevcutDugum.x + x] != -1 // eğer yürünebilir alansa (-1 yürünemez alanları ifade ediyor)
+                    && !listedeKomsuBul(this.acikKume, dugum) && !listedeKomsuBul(this.kapaliKume, dugum)) { // hala tamamlanmamissa hala devam ediyorsa
+                        dugum.g = dugum.ustDugum.g + 1.; // yatay/dikey birim maaliyeti = 1.0
+                        dugum.g += harita[this.mevcutDugum.y + y][this.mevcutDugum.x + x]; // kare icin birim maaliyetini ekliyoruz
+                        this.acikKume.add(dugum);
                 }
             }
         }
+        //acik kumeyi compare metoduyla siraliyoruz
         Collections.sort(this.acikKume);
 }
 }

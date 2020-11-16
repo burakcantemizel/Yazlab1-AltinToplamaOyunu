@@ -1,6 +1,7 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
-import com.ozgeburak.yazilimlaboratuvari1.AStar.Dugum;
+import com.ozgeburak.yazilimlaboratuvari1.AStar;
+import com.ozgeburak.yazilimlaboratuvari1.Dugum;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -29,12 +30,12 @@ public class OyuncuC extends Oyuncu {
         
         for (int tekrar = 0; tekrar < adet; tekrar++) {
             AStar as;
-            List<AStar.Dugum> enKisaGizliAltinYol = null;
+            List<Dugum> enKisaGizliAltinYol = null;
             boolean gizliAltinVarMi = false;
             for (Kare kare : harita.kareler) {
                 if (kare.gizliAltin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                    enKisaGizliAltinYol = as.findPathTo(kare.koordinatX, kare.koordinatY);
+                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                    enKisaGizliAltinYol = as.yolBul(kare.koordinatX, kare.koordinatY);
                     gizliAltinVarMi = true;
                     break;
                 }
@@ -49,8 +50,8 @@ public class OyuncuC extends Oyuncu {
             //En kisa gizli altini bulcaz
             for (int i = 0; i < harita.kareler.size(); i++) {
                 if (harita.kareler.get(i).gizliAltin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                    List<Dugum> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                    List<Dugum> yol = as.yolBul(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
                     if (yol != null) {
                         if (yol.get(yol.size() - 1).g < enKisaGizliAltinYol.get(enKisaGizliAltinYol.size() - 1).g) {
                             enKisaGizliAltinYol = yol;

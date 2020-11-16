@@ -1,6 +1,7 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
-import com.ozgeburak.yazilimlaboratuvari1.AStar.Dugum;
+import com.ozgeburak.yazilimlaboratuvari1.AStar;
+import com.ozgeburak.yazilimlaboratuvari1.Dugum;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -32,6 +33,10 @@ public class Oyuncu {
     Kare hedefAltin;
     boolean yasiyor = true;
 
+    int harcananAltin;
+    int toplananAltin;
+    int adimSayisi;
+    
     Oyuncu(int koordinatX, int koordinatY) {
         this.koordinatX = koordinatX;
         this.koordinatY = koordinatY;
@@ -49,6 +54,12 @@ public class Oyuncu {
         this.hedefYol = null;
         this.hedefKareIndeks = -1;
         this.hedefAltin = null;
+        
+        //Oyun Sonu Degerleri
+        //this.altin -> kasadaki altin miktari
+        this.harcananAltin = 0;
+        this.toplananAltin = 0;
+        this.adimSayisi = 0;
     }
 
     void Cizdir(Graphics2D G) {
@@ -91,13 +102,13 @@ public class Oyuncu {
             }
 
             //En kısa nesneyi belirleyeceğiz
-            AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
+            AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
             List<Dugum> enKisaYol = null;
             Kare maaliyetAlinacakKare = null;
             int kar = 0;
             for (Kare kare : harita.kareler) {
                 if (kare.altin == true) {
-                    enKisaYol = as.findPathTo(kare.koordinatX, kare.koordinatY);
+                    enKisaYol = as.yolBul(kare.koordinatX, kare.koordinatY);
                     maaliyetAlinacakKare = kare;
                     break;
                 }
@@ -114,8 +125,8 @@ public class Oyuncu {
             // üsteki formül bize karli hamleyi verecek ve bunlari kiyaslicaz
             for (int i = 0; i < harita.kareler.size(); i++) {
                 if (harita.kareler.get(i).altin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY, false);
-                    List<Dugum> yol = as.findPathTo(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+                    List<Dugum> yol = as.yolBul(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
                     if (yol != null) {
                         //En kisa bulma kismi artik farkli olacak
                         if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.kareler.get(i).altinMiktari
@@ -152,6 +163,7 @@ public class Oyuncu {
             this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
             //System.out.println((int)kar);
             this.altin -= hedefBelirlemeMaaliyeti;
+            this.harcananAltin += hedefBelirlemeMaaliyeti;
             
             if(oyuncu == "B" && this.hedefkare != null && this.hedefYol != null){
                 Oyun.fwOyuncuB.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");

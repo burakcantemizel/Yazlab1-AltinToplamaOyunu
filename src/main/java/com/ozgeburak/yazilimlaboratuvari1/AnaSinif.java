@@ -14,11 +14,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 
-public class AnaPencere extends JFrame {
+public class AnaSinif extends JFrame {
   
-
+    static JFrame pencere;
     
-    AnaPencere(){
+    AnaSinif(){
 
     }
     
@@ -26,20 +26,21 @@ public class AnaPencere extends JFrame {
         
         
             LafManager.install();
-            JFrame pencere = new JFrame("Yazılım Laboratuvarı 1");
+            pencere = new JFrame("Yazılım Laboratuvarı 1");
            
             SecimEkrani secimEkrani = new SecimEkrani();
   
             pencere.add(secimEkrani);
             pencere.pack();
-            pencere.setResizable(true);
+            pencere.setResizable(false);
             pencere.setVisible(true);
             pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             pencere.setLocationRelativeTo(null);
             
             
-            pencere.remove(secimEkrani);
+            //pencere.remove(secimEkrani);
             
+            /*
             Oyun oyun = new Oyun();
             oyun.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
             
@@ -65,6 +66,7 @@ public class AnaPencere extends JFrame {
             oyun.guncelle();
             Thread.sleep(1);
             }
+            */
             
             
             

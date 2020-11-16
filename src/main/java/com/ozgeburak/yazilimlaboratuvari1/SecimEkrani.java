@@ -8,6 +8,8 @@ package com.ozgeburak.yazilimlaboratuvari1;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +20,7 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -40,7 +43,7 @@ public class SecimEkrani extends javax.swing.JPanel {
      * Creates new form SecimEkrani
      */
     public SecimEkrani() {
-        this.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
+        //this.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
         //SecimMenusu.setOpaque(false);
         r = new Random();
         
@@ -357,19 +360,19 @@ public class SecimEkrani extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(422, Short.MAX_VALUE)
+                .addContainerGap(336, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(SecimMenusu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SecimMenusu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,7 +382,7 @@ public class SecimEkrani extends javax.swing.JPanel {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -402,7 +405,26 @@ public class SecimEkrani extends javax.swing.JPanel {
         Sabitler.OYUNCU_D_HAMLE_MAALIYET = Integer.parseInt(girdi14.getText());;
         Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi15.getText());;
         
-        
+        //Burada oyun nesnesi oluşacak
+        Oyun oyun = new Oyun();
+            oyun.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
+            
+            AnaSinif.pencere.add(oyun);
+            
+            AnaSinif.pencere.pack();
+            AnaSinif.pencere.setResizable(true);
+            AnaSinif.pencere.setVisible(true);
+            AnaSinif.pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            AnaSinif.pencere.setLocationRelativeTo(null);
+            
+            AnaSinif.pencere.addComponentListener(new ComponentAdapter( ) {
+                public void componentResized(ComponentEvent ev) {
+                Oyun.pencereGenislik = oyun.getWidth();
+                Oyun.pencereYukseklik = oyun.getHeight();
+                }
+            });
+            
+            AnaSinif.pencere.remove(this);
     }//GEN-LAST:event_jButton1MouseClicked
 
 

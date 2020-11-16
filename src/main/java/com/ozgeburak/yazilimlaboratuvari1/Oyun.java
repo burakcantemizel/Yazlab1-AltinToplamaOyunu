@@ -1,6 +1,7 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
-import com.ozgeburak.yazilimlaboratuvari1.AStar.Dugum;
+import com.ozgeburak.yazilimlaboratuvari1.AStar;
+import com.ozgeburak.yazilimlaboratuvari1.Dugum;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -43,21 +46,44 @@ public class Oyun extends JPanel {
 
     private JSlider oyunHizi;
     private int tur;
+    
+    
+    
+    Thread oyunDongusu;
 
     public Oyun() {
         //tanımlamalar,atamalar ve ayarlamalar ayarla metodunda yapiliyor.
         try {
             fwOyuncuA = new FileWriter("OyuncuA.txt");
-            writerOyuncuA = new BufferedWriter(fwOyuncuA);
             fwOyuncuB = new FileWriter("OyuncuB.txt");
-            writerOyuncuB = new BufferedWriter(fwOyuncuB);
             fwOyuncuC = new FileWriter("OyuncuC.txt");
-            writerOyuncuC = new BufferedWriter(fwOyuncuC);
             fwOyuncuD = new FileWriter("OyuncuD.txt");
-            writerOyuncuD = new BufferedWriter(fwOyuncuD);
         } catch (IOException e) {
             System.out.println("io hatasi");
         }
+        
+        
+        
+        oyunDongusu = new Thread(){
+            @Override
+            public void run(){
+                ayarla();
+                while(true){
+                    try {
+                        guncelle();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Oyun.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Oyun.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //Thread.sleep(1);
+            }
+            }
+        };
+        
+        oyunDongusu.start();
+         
+            
     }
 
     public void ayarla() {
@@ -107,6 +133,7 @@ public class Oyun extends JPanel {
                     //Hareket Döngüsüne girmeden önce altindan hamle altin maaliyeti bir kerelik düşecek
                     if (oyuncuA.yasiyor == true) {
                         oyuncuA.altin -= Sabitler.OYUNCU_A_HAMLE_MAALIYET;
+                        oyuncuA.harcananAltin += Sabitler.OYUNCU_A_HAMLE_MAALIYET;
                         fwOyuncuA.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_A_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuA.altin) + "\n");
                         oyuncuA.olumKontrol();
                     }
@@ -132,6 +159,7 @@ public class Oyun extends JPanel {
                                 oyuncuA.koordinatX = oyuncuA.hedefYol.get(0).x;
                                 oyuncuA.koordinatY = oyuncuA.hedefYol.get(0).y;
                                 oyuncuA.hedefYol.remove(0);
+                                oyuncuA.adimSayisi++;
                                 fwOyuncuA.write("x: " + Integer.toString(oyuncuA.koordinatX) + " y: " + Integer.toString(oyuncuA.koordinatY) + "konumuna hareket etti. \n");
                                 this.repaint();
                                 Thread.sleep(oyunHizi.getValue() * 3);
@@ -147,6 +175,7 @@ public class Oyun extends JPanel {
                                     if (kare.koordinatX == oyuncuA.koordinatX && kare.koordinatY == oyuncuA.koordinatY) {
                                         //System.out.println("Alinan Altin Miktari " + kare.altinMiktari);
                                         oyuncuA.altin += kare.altinMiktari;
+                                        oyuncuA.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuA.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuA.altin + "\n");
                                         //altin miktarini oyuncuya ekleyecegiz
@@ -206,8 +235,8 @@ public class Oyun extends JPanel {
                     //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
                     if (oyuncuB.mevcutHedefVarMi == false && oyuncuB.koordinatX == harita.yatayKareSayisi - 1 && oyuncuB.koordinatY == 0) {
 
-                        oyuncuB.maaliyetliHedefBelirle(harita,"B",Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
-                        
+                        oyuncuB.maaliyetliHedefBelirle(harita, "B", Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
+
                         oyuncuB.olumKontrol();
                         Thread.sleep(oyunHizi.getValue());
 
@@ -215,6 +244,7 @@ public class Oyun extends JPanel {
 
                     if (oyuncuB.yasiyor == true) {
                         oyuncuB.altin -= Sabitler.OYUNCU_B_HAMLE_MAALIYET;
+                        oyuncuB.harcananAltin += Sabitler.OYUNCU_B_HAMLE_MAALIYET;
                         fwOyuncuB.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_B_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuB.altin) + "\n");
                         oyuncuB.olumKontrol();
                     }
@@ -226,7 +256,7 @@ public class Oyun extends JPanel {
                         for (int i = 0; i < oyuncuB.kalanHareket; i++) {
                             if (oyuncuB.hedefAltin != null && yenidenHedefBelirlendi == false) {
                                 if (oyuncuB.hedefAltin.altin == false) {
-                                    oyuncuB.maaliyetliHedefBelirle(harita,"B",Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
+                                    oyuncuB.maaliyetliHedefBelirle(harita, "B", Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
                                     yenidenHedefBelirlendi = true;
                                     if (oyuncuB.olumKontrol()) {
                                         break;
@@ -241,6 +271,7 @@ public class Oyun extends JPanel {
                                 oyuncuB.koordinatY = oyuncuB.hedefYol.get(0).y;
                                 oyuncuB.hedefYol.remove(0);
                                 this.repaint();
+                                oyuncuB.adimSayisi++;
                                 fwOyuncuB.write("x: " + Integer.toString(oyuncuB.koordinatX) + " y: " + Integer.toString(oyuncuB.koordinatY) + "konumuna hareket etti. \n");
                                 Thread.sleep(oyunHizi.getValue() * 3);
                             }
@@ -251,6 +282,7 @@ public class Oyun extends JPanel {
                                 for (Kare kare : harita.kareler) {
                                     if (kare.koordinatX == oyuncuB.koordinatX && kare.koordinatY == oyuncuB.koordinatY) {
                                         oyuncuB.altin += kare.altinMiktari;
+                                        oyuncuB.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuB.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuB.altin + "\n");
                                         Thread.sleep(oyunHizi.getValue());
@@ -266,8 +298,8 @@ public class Oyun extends JPanel {
 
                                 //altini aldiysak
                                 if (oyuncuB.mevcutHedefVarMi == false) {
-                                    oyuncuB.maaliyetliHedefBelirle(harita,"B",Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
-                                    
+                                    oyuncuB.maaliyetliHedefBelirle(harita, "B", Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
+
                                     oyuncuB.olumKontrol();
                                     oyunSonuKontrol();
                                     Thread.sleep(oyunHizi.getValue());
@@ -309,8 +341,8 @@ public class Oyun extends JPanel {
 
                     //System.out.println("C oynuyor");
                     //Oyunun En başında hedefi yoksa bir kere hedef belirleyecek.
-                    if (oyuncuC.mevcutHedefVarMi == false && oyuncuC.koordinatX == 0 && oyuncuC.koordinatY ==  harita.dikeyKareSayisi - 1) {
-                        oyuncuC.maaliyetliHedefBelirle(harita,"C",Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
+                    if (oyuncuC.mevcutHedefVarMi == false && oyuncuC.koordinatX == 0 && oyuncuC.koordinatY == harita.dikeyKareSayisi - 1) {
+                        oyuncuC.maaliyetliHedefBelirle(harita, "C", Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
                         oyuncuC.olumKontrol();
                         Thread.sleep(oyunHizi.getValue());
 
@@ -318,6 +350,7 @@ public class Oyun extends JPanel {
 
                     if (oyuncuC.yasiyor == true) {
                         oyuncuC.altin -= Sabitler.OYUNCU_C_HAMLE_MAALIYET;
+                        oyuncuC.harcananAltin += Sabitler.OYUNCU_C_HAMLE_MAALIYET;
                         fwOyuncuC.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_C_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuC.altin) + "\n");
                         oyuncuC.olumKontrol();
                     }
@@ -329,7 +362,7 @@ public class Oyun extends JPanel {
                         for (int i = 0; i < oyuncuC.kalanHareket; i++) {
                             if (oyuncuC.hedefAltin != null && yenidenHedefBelirlendi == false) {
                                 if (oyuncuC.hedefAltin.altin == false) {
-                                    oyuncuC.maaliyetliHedefBelirle(harita,"C",Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
+                                    oyuncuC.maaliyetliHedefBelirle(harita, "C", Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
                                     yenidenHedefBelirlendi = true;
                                     if (oyuncuC.olumKontrol()) {
                                         break;
@@ -343,6 +376,7 @@ public class Oyun extends JPanel {
                                 oyuncuC.koordinatX = oyuncuC.hedefYol.get(0).x;
                                 oyuncuC.koordinatY = oyuncuC.hedefYol.get(0).y;
                                 oyuncuC.hedefYol.remove(0);
+                                oyuncuC.adimSayisi++;
                                 this.repaint();
                                 fwOyuncuC.write("x: " + Integer.toString(oyuncuC.koordinatX) + " y: " + Integer.toString(oyuncuC.koordinatY) + "konumuna hareket etti. \n");
                                 Thread.sleep(oyunHizi.getValue() * 3);
@@ -354,6 +388,7 @@ public class Oyun extends JPanel {
                                 for (Kare kare : harita.kareler) {
                                     if (kare.koordinatX == oyuncuC.koordinatX && kare.koordinatY == oyuncuC.koordinatY) {
                                         oyuncuC.altin += kare.altinMiktari;
+                                        oyuncuC.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuC.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuC.altin + "\n");
                                         Thread.sleep(oyunHizi.getValue());
@@ -369,7 +404,7 @@ public class Oyun extends JPanel {
 
                                 //altini aldiysak
                                 if (oyuncuC.mevcutHedefVarMi == false) {
-                                    oyuncuC.maaliyetliHedefBelirle(harita,"C",Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
+                                    oyuncuC.maaliyetliHedefBelirle(harita, "C", Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
                                     oyuncuC.olumKontrol();
                                     oyunSonuKontrol();
                                     Thread.sleep(oyunHizi.getValue());
@@ -417,6 +452,7 @@ public class Oyun extends JPanel {
 
                     if (oyuncuD.yasiyor == true) {
                         oyuncuD.altin -= Sabitler.OYUNCU_D_HAMLE_MAALIYET;
+                        oyuncuD.harcananAltin += Sabitler.OYUNCU_D_HAMLE_MAALIYET;
                         fwOyuncuD.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_D_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuD.altin) + "\n");
                         oyuncuD.olumKontrol();
                     }
@@ -443,6 +479,7 @@ public class Oyun extends JPanel {
                                 oyuncuD.koordinatX = oyuncuD.hedefYol.get(0).x;
                                 oyuncuD.koordinatY = oyuncuD.hedefYol.get(0).y;
                                 oyuncuD.hedefYol.remove(0);
+                                oyuncuD.adimSayisi++;
                                 fwOyuncuD.write("x: " + Integer.toString(oyuncuD.koordinatX) + " y: " + Integer.toString(oyuncuD.koordinatY) + "konumuna hareket etti. \n");
                                 this.repaint();
                                 Thread.sleep(oyunHizi.getValue() * 3);
@@ -454,6 +491,7 @@ public class Oyun extends JPanel {
                                 for (Kare kare : harita.kareler) {
                                     if (kare.koordinatX == oyuncuD.koordinatX && kare.koordinatY == oyuncuD.koordinatY) {
                                         oyuncuD.altin += kare.altinMiktari;
+                                        oyuncuD.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuD.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuB.altin + "\n");
                                         oyunSonuKontrol();
@@ -511,13 +549,21 @@ public class Oyun extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        //g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         if (oyunSonu == false) {
             //Oyun tahtasını çoklu çözünürlüklü hale getirme ve pencereye ortalama
             float kenarlik = 0.9f;
-            float olcekX = (float) pencereYukseklik * kenarlik / (float) TAHTA_GENISLIK;
-            float olcekY = (float) pencereYukseklik * kenarlik / (float) TAHTA_YUKSEKLIK;
+            float olcekX;
+            float olcekY;
+            if(TAHTA_GENISLIK > TAHTA_YUKSEKLIK){
+                olcekX = (float) pencereYukseklik * kenarlik / (float) TAHTA_GENISLIK;
+                olcekY = (float) pencereYukseklik * kenarlik / (float) TAHTA_GENISLIK;
+            }else{
+                olcekX = (float) pencereYukseklik * kenarlik / (float) TAHTA_YUKSEKLIK;
+                olcekY = (float) pencereYukseklik * kenarlik / (float) TAHTA_YUKSEKLIK;
+            }
+            
             int kaymaX = (int) ((float) pencereGenislik - ((float) TAHTA_GENISLIK * olcekX)) / 2;
             int kaymaY = (int) ((float) pencereYukseklik - ((float) TAHTA_YUKSEKLIK * olcekY)) / 2;
 
@@ -584,32 +630,49 @@ public class Oyun extends JPanel {
             BilgiGoster(g2d);
         } else {
             g2d.drawString("Oyun bitti ", 100, 100);
+
+            g2d.drawString("OyuncuA adım" + Integer.toString(oyuncuA.adimSayisi)
+                    + " harcanan " + Integer.toString(oyuncuA.harcananAltin) + " kasa" + Integer.toString(oyuncuA.altin)
+                    + " toplanan " + Integer.toString(oyuncuA.toplananAltin) + "\n", 100, 200);
+            g2d.drawString("OyuncuB adım" + Integer.toString(oyuncuB.adimSayisi)
+                    + " harcanan " + Integer.toString(oyuncuB.harcananAltin) + " kasa" + Integer.toString(oyuncuB.altin)
+                    + " toplanan " + Integer.toString(oyuncuB.toplananAltin) + "\n", 100, 300);
+            g2d.drawString("OyuncuC adım" + Integer.toString(oyuncuC.adimSayisi)
+                    + " harcanan " + Integer.toString(oyuncuC.harcananAltin) + " kasa" + Integer.toString(oyuncuC.altin)
+                    + " toplanan " + Integer.toString(oyuncuC.toplananAltin) + "\n", 100, 400);
+            g2d.drawString("OyuncuD adım" + Integer.toString(oyuncuD.adimSayisi)
+                    + " harcanan " + Integer.toString(oyuncuD.harcananAltin) + " kasa" + Integer.toString(oyuncuD.altin)
+                    + " toplanan " + Integer.toString(oyuncuD.toplananAltin) + "\n", 100, 500);
+
         }
 
     }
 
     public void BilgiGoster(Graphics2D g) {
+        //Gui çizimleri
+        
+        
         //Bilgileri ekrana çizen fonksiyon
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.PLAIN, 15));
         if (oyuncuA != null && oyuncuA.altin > 0) {
             g.drawString("Oyuncu A altın: " + oyuncuA.altin, pencereGenislik - 200, 20);
-        }else{
+        } else {
             g.drawString("Oyuncu A altını bitti ve elendi.", pencereGenislik - 200, 20);
         }
         if (oyuncuB != null && oyuncuB.altin > 0) {
             g.drawString("Oyuncu B altın: " + oyuncuB.altin, pencereGenislik - 200, 40);
-        }else{
+        } else {
             g.drawString("Oyuncu B altını bitti ve elendi.", pencereGenislik - 200, 40);
         }
         if (oyuncuC != null && oyuncuC.altin > 0) {
             g.drawString("Oyuncu C altın: " + oyuncuC.altin, pencereGenislik - 200, 60);
-        }else{
+        } else {
             g.drawString("Oyuncu C altını bitti ve elendi.", pencereGenislik - 200, 60);
         }
         if (oyuncuD != null && oyuncuD.altin > 0) {
             g.drawString("Oyuncu D altın: " + oyuncuD.altin, pencereGenislik - 200, 80);
-        }else{
+        } else {
             g.drawString("Oyuncu D altını bitti ve elendi.", pencereGenislik - 200, 80);
         }
     }
