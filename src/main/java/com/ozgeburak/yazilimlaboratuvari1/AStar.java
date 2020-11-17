@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
  
 class AStar {
-    private final List<Dugum> acikKume;
-    private final List<Dugum> kapaliKume;
-    private final List<Dugum> yol;
-    private final int[][] harita;
-    private Dugum mevcutDugum;
-    private final int baslangicX;
-    private final int baslangicY;
+    private List<Dugum> acikKume;
+    private List<Dugum> kapaliKume;
+    private List<Dugum> yol;
+    private int[][] harita;
+    private static Dugum mevcutDugum;
+    private int baslangicX;
+    private int baslangicY;
     private int bitisX, bitisY;
  
 
@@ -28,6 +28,16 @@ class AStar {
     
     // Girilen hedefX ve hedefY parametrelerine göre yol buluyor
     // eğer bulamazsa null dönüyor.
+    
+    public void sifirla(){
+        this.acikKume = new ArrayList<>();
+        this.kapaliKume = new ArrayList<>();
+        this.yol = new ArrayList<>();
+        this.harita = harita;
+        this.mevcutDugum = new Dugum(null, baslangicX, baslangicY, 0, 0);
+        this.baslangicX = baslangicX;
+        this.baslangicY = baslangicY;
+    }
     
     public List<Dugum> yolBul(int hedefX, int hedefY) {
         this.bitisX = hedefX;

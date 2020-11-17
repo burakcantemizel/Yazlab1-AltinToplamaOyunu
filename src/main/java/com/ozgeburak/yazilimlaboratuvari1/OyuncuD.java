@@ -25,6 +25,11 @@ public class OyuncuD extends Oyuncu {
     }
 
     void sezgiselMaaliyetliHedefBelirle(Harita harita, Oyuncu oyuncuA, Oyuncu oyuncuB, Oyuncu oyuncuC) throws IOException {
+        if(this.altin < Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET){
+            this.yasiyor = false;
+            return;
+        }
+        
         if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
 
             boolean Adanonce = false;
@@ -140,10 +145,12 @@ public class OyuncuD extends Oyuncu {
             // g'yi hamledeki adim sayisina bölüp üste yuvarlayacağız
             // g / hamledeki adim sayisi * hamle maaliyeti - hedefteki altin miktari
             // üsteki formül bize karli hamleyi verecek ve bunlari kiyaslicaz
+            
+            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
             for (int i = 0; i < Dozelkareler.size(); i++) {
                 if (Dozelkareler.get(i).altin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
                     List<Dugum> yol = as.yolBul(Dozelkareler.get(i).koordinatX, Dozelkareler.get(i).koordinatY);
+                    as.sifirla();
                     if (yol != null) {
                         //En kisa bulma kismi artik farkli olacak
                         if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - Dozelkareler.get(i).altinMiktari

@@ -424,6 +424,7 @@ public class SecimEkrani extends javax.swing.JPanel {
                 }
             });
             
+            arkaplanDongu.stop();
             AnaSinif.pencere.remove(this);
     }//GEN-LAST:event_jButton1MouseClicked
 

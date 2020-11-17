@@ -28,6 +28,11 @@ public class OyuncuA extends Oyuncu {
     }
 
     void hedefBelirle(Harita harita) throws IOException {
+        if(this.altin < Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET){
+            this.yasiyor = false;
+            return;
+        }
+        
         if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
             if (altinKaldiMiKontrol(harita) == false) {
                 return;
@@ -45,10 +50,15 @@ public class OyuncuA extends Oyuncu {
             this.hedefKareIndeks = 0;
 
             //Altin olan kareler yerine direkt karelerde altin varsa diye bakarsak
+            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+            List<Dugum> yol;
+            //System.out.println("bekle");
             for (int i = 0; i < harita.kareler.size(); i++) {
                 if (harita.kareler.get(i).altin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-                    List<Dugum> yol = as.yolBul(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    //System.out.println("bekle 2");
+                    yol = as.yolBul(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    //System.out.println("bekle 3");
+                    as.sifirla();
                     if (yol != null) {
                         if (yol.get(yol.size() - 1).g <= enKisaYol.get(enKisaYol.size() - 1).g) {
                             enKisaYol = yol;
@@ -57,6 +67,8 @@ public class OyuncuA extends Oyuncu {
                     }
                 }
             }
+            
+            System.out.println("bekle 4");
 
             this.mevcutHedefVarMi = true;
             this.hedefYol = enKisaYol;

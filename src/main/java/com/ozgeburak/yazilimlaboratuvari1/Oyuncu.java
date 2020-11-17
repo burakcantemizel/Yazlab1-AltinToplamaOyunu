@@ -96,6 +96,11 @@ public class Oyuncu {
 
     //B ve C Oyuncuları Ortak Kullanıyor.
     void maaliyetliHedefBelirle(Harita harita, String oyuncu, int hamleMaaliyeti, int hedefBelirlemeMaaliyeti) throws IOException {
+        if(this.altin < hedefBelirlemeMaaliyeti){
+            this.yasiyor = false;
+            return;
+        }
+        
         if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
             if (altinKaldiMiKontrol(harita) == false) {
                 return;
@@ -123,10 +128,11 @@ public class Oyuncu {
             // g'yi hamledeki adim sayisina bölüp üste yuvarlayacağız
             // g / hamledeki adim sayisi * hamle maaliyeti - hedefteki altin miktari
             // üsteki formül bize karli hamleyi verecek ve bunlari kiyaslicaz
+            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
             for (int i = 0; i < harita.kareler.size(); i++) {
                 if (harita.kareler.get(i).altin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
                     List<Dugum> yol = as.yolBul(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    as.sifirla();
                     if (yol != null) {
                         //En kisa bulma kismi artik farkli olacak
                         if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.kareler.get(i).altinMiktari

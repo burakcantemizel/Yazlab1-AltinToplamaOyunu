@@ -17,10 +17,7 @@ import javax.imageio.ImageIO;
 
 
 public class Kare {
-  static BufferedImage resimAcik = null;
-  static BufferedImage resimKoyu = null;
-  static BufferedImage altinResim = null;
-  static BufferedImage gizliAltinResim = null;
+  
   int koordinatX;
   int koordinatY;
   int pozisyonX;
@@ -32,8 +29,7 @@ public class Kare {
   boolean gizliAltin = false;
   int altinMiktari = 0;
   
-  List neighbors;
-  Kare pathParent;
+
   
   Kare(int koordinatX, int koordinatY){
     this.koordinatX = koordinatX;
@@ -43,14 +39,7 @@ public class Kare {
     this.pozisyonX = koordinatX * genislik;
     this.pozisyonY = koordinatY * yukseklik;
     
-            try {
-            if(Kare.resimAcik == null ) Kare.resimAcik = ImageIO.read(new File("kaynaklar/zeminAcik.png"));
-             if(Kare.resimKoyu == null )Kare.resimKoyu = ImageIO.read(new File("kaynaklar/zeminKoyu.png"));
-             if(Kare.altinResim == null )Kare.altinResim = ImageIO.read(new File("kaynaklar/altin.png"));
-              if(Kare.gizliAltinResim == null )Kare.gizliAltinResim = ImageIO.read(new File("kaynaklar/gizliAltin.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(OyuncuA.class.getName()).log(Level.SEVERE, null, ex);
-        }
+           
   }
   
   
@@ -70,9 +59,9 @@ public class Kare {
     }
     */
     if( (koordinatX % 2 == 0 && koordinatY % 2 == 0) || (koordinatX % 2 == 1 && koordinatY % 2 == 1) ){
-        g.drawImage(Kare.resimAcik, koordinatX * genislik, koordinatY * yukseklik, null);
+        g.drawImage(Oyun.resimAcik, koordinatX * genislik, koordinatY * yukseklik, null);
     }else{
-        g.drawImage(Kare.resimKoyu, koordinatX * genislik, koordinatY * yukseklik, null);
+        g.drawImage(Oyun.resimKoyu, koordinatX * genislik, koordinatY * yukseklik, null);
     }
     
     
@@ -89,7 +78,7 @@ public class Kare {
         g.setColor(Color.BLACK);
         g.drawOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, genislik/2, yukseklik/2);
         */
-       g.drawImage(Kare.altinResim, koordinatX * genislik, koordinatY * yukseklik, null);
+       g.drawImage(Oyun.altinResim, koordinatX * genislik, koordinatY * yukseklik, null);
     }else if(gizliAltin == true){
         /*
         g.setColor(Color.ORANGE);
@@ -97,7 +86,7 @@ public class Kare {
         g.setColor(Color.BLACK);
         g.drawOval(pozisyonX + genislik/2 - 6, pozisyonY + yukseklik/2 - 6, genislik/2, yukseklik/2);
         */
-        g.drawImage(Kare.gizliAltinResim, koordinatX * genislik, koordinatY * yukseklik, null);
+        g.drawImage(Oyun.gizliAltinResim, koordinatX * genislik, koordinatY * yukseklik, null);
     }
     
     if(altin == true || gizliAltin == true){
