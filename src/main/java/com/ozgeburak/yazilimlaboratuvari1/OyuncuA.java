@@ -39,24 +39,39 @@ public class OyuncuA extends Oyuncu {
             }
 
             //En kısa nesneyi belirleyeceğiz
+            /*
             AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
             List<Dugum> enKisaYol = null;
-            for (Kare kare : harita.kareler) {
-                if (kare.altin == true) {
+            for (Kare kare : harita.altinOlanKareler) {
                     enKisaYol = as.yolBul(kare.koordinatX, kare.koordinatY);
                     break;
-                }
+                
             }
             this.hedefKareIndeks = 0;
+            */
+            int enKisaIndex = 0;
 
+            
+            //Önce en kısa altini bulup daha sonra en kisa altina astar yapcak
+            
+            for(int i = 0; i < harita.altinOlanKareler.size(); i++){
+                if(manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY) <=
+                        manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY)){
+                    enKisaIndex = i;
+                }
+            }
+            
+            AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
+            List<Dugum> enKisaYol = as.yolBul(harita.altinOlanKareler.get(enKisaIndex).koordinatX,harita.altinOlanKareler.get(enKisaIndex).koordinatY);
+            
+            /*
             //Altin olan kareler yerine direkt karelerde altin varsa diye bakarsak
             as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
             List<Dugum> yol;
             //System.out.println("bekle");
-            for (int i = 0; i < harita.kareler.size(); i++) {
-                if (harita.kareler.get(i).altin == true) {
+            for (int i = 0; i < harita.altinOlanKareler.size(); i++) {
                     //System.out.println("bekle 2");
-                    yol = as.yolBul(harita.kareler.get(i).koordinatX, harita.kareler.get(i).koordinatY);
+                    yol = as.yolBul(harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY);
                     //System.out.println("bekle 3");
                     as.sifirla();
                     if (yol != null) {
@@ -65,8 +80,9 @@ public class OyuncuA extends Oyuncu {
                             this.hedefKareIndeks = i;
                         }
                     }
-                }
+                
             }
+            */
             
             System.out.println("bekle 4");
 
@@ -74,8 +90,8 @@ public class OyuncuA extends Oyuncu {
             this.hedefYol = enKisaYol;
             this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
 
-            for (Kare kare : harita.kareler) {
-                if (kare.altin == true && kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
+            for (Kare kare : harita.altinOlanKareler) {
+                if (kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
                     this.hedefAltin = kare;
                     break;
                 }

@@ -15,6 +15,7 @@ public class Harita {
     int gizliAltinSayisi;
     int maaliyetsizMatris[][];
     ArrayList<Kare> altinOlanKareler;
+    ArrayList<Kare> gizliAltinOlanKareler;
 
     public Harita(int yatayKareSayisi, int dikeyKareSayisi) {
         maaliyetsizMatris = new int[dikeyKareSayisi][yatayKareSayisi];
@@ -29,7 +30,7 @@ public class Harita {
         this.toplamKareSayisi = yatayKareSayisi * dikeyKareSayisi;
         this.kareler = new ArrayList<Kare>();
         this.altinOlanKareler = new ArrayList<Kare>();
-
+        this.gizliAltinOlanKareler = new ArrayList<Kare>();  
         random = new java.util.Random();
         Olustur();
         //4 adet ozel baslangic karesi var altin spawnlanmayacak onlari isaretliyoruz
@@ -104,6 +105,8 @@ public class Harita {
         for (Kare kare : kareler) {
             if (kare.altin == true) {
                 altinOlanKareler.add(kare);
+            }else if(kare.gizliAltin == true){
+                gizliAltinOlanKareler.add(kare);
             }
         }
 

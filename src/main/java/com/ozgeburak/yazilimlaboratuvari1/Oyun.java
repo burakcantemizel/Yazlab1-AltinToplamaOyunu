@@ -195,13 +195,14 @@ public class Oyun extends JPanel {
                             if (oyuncuA.koordinatX == oyuncuA.hedefkare.x && oyuncuA.koordinatY == oyuncuA.hedefkare.y) {
 
                                 //Ayni yerdeyse altini alacak ve hareket etmeyecek.
-                                for (Kare kare : harita.kareler) {
+                                for (Kare kare : harita.altinOlanKareler) {
                                     if (kare.koordinatX == oyuncuA.koordinatX && kare.koordinatY == oyuncuA.koordinatY) {
                                         //System.out.println("Alinan Altin Miktari " + kare.altinMiktari);
                                         oyuncuA.altin += kare.altinMiktari;
                                         oyuncuA.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuA.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuA.altin + "\n");
+                                        harita.altinOlanKareler.remove(kare);
                                         //altin miktarini oyuncuya ekleyecegiz
                                         oyunSonuKontrol();
                                         Thread.sleep(oyunHizi.getValue());
@@ -232,12 +233,16 @@ public class Oyun extends JPanel {
                             }
 
                             //Ayrıca her hareketten sonra gizli altinda mi diye de bakacagiz
-                            for (Kare kare : harita.kareler) {
-                                if (kare.gizliAltin == true && kare.koordinatX == oyuncuA.koordinatX && kare.koordinatY == oyuncuA.koordinatY) {
+                            for (Kare kare : harita.gizliAltinOlanKareler) {
+                                if (kare.koordinatX == oyuncuA.koordinatX && kare.koordinatY == oyuncuA.koordinatY) {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
+                                    
+                                    harita.altinOlanKareler.add(kare);
                                     fwOyuncuA.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
+                                    harita.gizliAltinOlanKareler.remove(kare);
+                                    break;
                                 }
                             }
 
@@ -308,12 +313,13 @@ public class Oyun extends JPanel {
                             //Her hareketten sonra altini aldi mi diye bakacagiz
                             if (oyuncuB.koordinatX == oyuncuB.hedefkare.x && oyuncuB.koordinatY == oyuncuB.hedefkare.y) {
                                 //Ayni yerdeyse altini alacak ve hareket etmeyecek.
-                                for (Kare kare : harita.kareler) {
+                                for (Kare kare : harita.altinOlanKareler) {
                                     if (kare.koordinatX == oyuncuB.koordinatX && kare.koordinatY == oyuncuB.koordinatY) {
                                         oyuncuB.altin += kare.altinMiktari;
                                         oyuncuB.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuB.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuB.altin + "\n");
+                                        harita.altinOlanKareler.remove(kare);
                                         Thread.sleep(oyunHizi.getValue());
                                         oyunSonuKontrol();
                                         break;
@@ -342,12 +348,16 @@ public class Oyun extends JPanel {
                             }
 
                             //Ayrıca her hareketten sonra gizli altinda mi diye de bakacagiz
-                            for (Kare kare : harita.kareler) {
-                                if (kare.gizliAltin == true && kare.koordinatX == oyuncuB.koordinatX && kare.koordinatY == oyuncuB.koordinatY) {
+                            for (Kare kare : harita.gizliAltinOlanKareler) {
+                                if (kare.koordinatX == oyuncuB.koordinatX && kare.koordinatY == oyuncuB.koordinatY) {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
+                                    
+                                    harita.altinOlanKareler.add(kare);
                                     fwOyuncuB.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
+                                    harita.gizliAltinOlanKareler.remove(kare);
+                                    break;
                                 }
                             }
 
@@ -418,12 +428,13 @@ public class Oyun extends JPanel {
                             //Her hareketten sonra altini aldi mi diye bakacagiz
                             if (oyuncuC.koordinatX == oyuncuC.hedefkare.x && oyuncuC.koordinatY == oyuncuC.hedefkare.y) {
                                 //Ayni yerdeyse altini alacak ve hareket etmeyecek.
-                                for (Kare kare : harita.kareler) {
+                                for (Kare kare : harita.altinOlanKareler) {
                                     if (kare.koordinatX == oyuncuC.koordinatX && kare.koordinatY == oyuncuC.koordinatY) {
                                         oyuncuC.altin += kare.altinMiktari;
                                         oyuncuC.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuC.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuC.altin + "\n");
+                                        harita.altinOlanKareler.remove(kare);
                                         Thread.sleep(oyunHizi.getValue());
                                         oyunSonuKontrol();
                                         break;
@@ -451,12 +462,16 @@ public class Oyun extends JPanel {
                             }
 
                             //Ayrıca her hareketten sonra gizli altinda mi diye de bakacagiz
-                            for (Kare kare : harita.kareler) {
-                                if (kare.gizliAltin == true && kare.koordinatX == oyuncuC.koordinatX && kare.koordinatY == oyuncuC.koordinatY) {
+                            for (Kare kare : harita.gizliAltinOlanKareler) {
+                                if (kare.koordinatX == oyuncuC.koordinatX && kare.koordinatY == oyuncuC.koordinatY) {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
+                                    
+                                    harita.altinOlanKareler.add(kare);
                                     fwOyuncuC.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
+                                    harita.gizliAltinOlanKareler.remove(kare);
+                                    break;
                                 }
                             }
 
@@ -526,12 +541,13 @@ public class Oyun extends JPanel {
                             //Her hareketten sonra altini aldi mi diye bakacagiz
                             if (oyuncuD.koordinatX == oyuncuD.hedefkare.x && oyuncuD.koordinatY == oyuncuD.hedefkare.y) {
                                 //Ayni yerdeyse altini alacak ve hareket etmeyecek.
-                                for (Kare kare : harita.kareler) {
+                                for (Kare kare : harita.altinOlanKareler) {
                                     if (kare.koordinatX == oyuncuD.koordinatX && kare.koordinatY == oyuncuD.koordinatY) {
                                         oyuncuD.altin += kare.altinMiktari;
                                         oyuncuD.toplananAltin += kare.altinMiktari;
                                         kare.altin = false;
                                         fwOyuncuD.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuD.altin + "\n");
+                                        harita.altinOlanKareler.remove(kare);
                                         oyunSonuKontrol();
                                         Thread.sleep(oyunHizi.getValue());
                                         break;
@@ -559,12 +575,16 @@ public class Oyun extends JPanel {
                             }
 
                             //Ayrıca her hareketten sonra gizli altinda mi diye de bakacagiz
-                            for (Kare kare : harita.kareler) {
-                                if (kare.gizliAltin == true && kare.koordinatX == oyuncuD.koordinatX && kare.koordinatY == oyuncuD.koordinatY) {
+                            for (Kare kare : harita.gizliAltinOlanKareler) {
+                                if (kare.koordinatX == oyuncuD.koordinatX && kare.koordinatY == oyuncuD.koordinatY) {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
+                                    
+                                    harita.altinOlanKareler.add(kare);
                                     fwOyuncuD.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
+                                    harita.gizliAltinOlanKareler.remove(kare);
+                                    break;
                                 }
                             }
 
