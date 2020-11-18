@@ -4,8 +4,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+//Harita Sınıfı Oyun Alanını Olusturan Sınıf
 public class Harita {
-
+    
+    //Değişken tanımlamaları
     ArrayList<Kare> kareler;
     int yatayKareSayisi;
     int dikeyKareSayisi;
@@ -17,7 +19,11 @@ public class Harita {
     ArrayList<Kare> altinOlanKareler;
     ArrayList<Kare> gizliAltinOlanKareler;
 
+    
     public Harita(int yatayKareSayisi, int dikeyKareSayisi) {
+        
+        //Bu boş maaliyetsiz matris astar algoritmasındaki yol bilgisini
+        //almak için kullanılıyor.
         maaliyetsizMatris = new int[dikeyKareSayisi][yatayKareSayisi];
         for (int i = 0; i < dikeyKareSayisi; i++) {
             for (int j = 0; j < yatayKareSayisi; j++) {
@@ -32,7 +38,10 @@ public class Harita {
         this.altinOlanKareler = new ArrayList<Kare>();
         this.gizliAltinOlanKareler = new ArrayList<Kare>();  
         random = new java.util.Random();
+        
+        //Kare Nesneleri Olusturuluyor.
         Olustur();
+        
         //4 adet ozel baslangic karesi var altin spawnlanmayacak onlari isaretliyoruz
         KareBul(0, 0).baslangicKaresi = true;
         KareBul(yatayKareSayisi - 1, 0).baslangicKaresi = true;
@@ -42,6 +51,7 @@ public class Harita {
 
     }
 
+    //Haritadaki tum kareleri olusuturoyuz ve haritaya ekliyoruz.
     void Olustur() {
         for (int i = 0; i < yatayKareSayisi; i++) {
             for (int j = 0; j < dikeyKareSayisi; j++) {
@@ -50,13 +60,19 @@ public class Harita {
         }
     }
 
+    //Altinlari Yerlestiren Fonksiyon
     void AltinlariYerlestir() {
         altinSayisi = 0;
         gizliAltinSayisi = 0;
+        
+        float tmpAltinFor = (float)toplamKareSayisi * ((float) Sabitler.ALTIN_ORANI / 100.0f );
+        if(Sabitler.ALTIN_ORANI == 100){
+            tmpAltinFor = toplamKareSayisi-4;
+        }
 
-        //Karelerin %20 sine Altin Yerlestiricez.
+        //Karelerin %x sine Altin Yerlestiricez.
         //Altinlari ve miktarlarini yerlestiriyoruz
-        for (float i = 0; i < (float)toplamKareSayisi * ((float) Sabitler.ALTIN_ORANI / 100.0f ); i++) {
+        for (float i = 0; i < tmpAltinFor ; i++) {
             int secilenKare = random.nextInt(toplamKareSayisi);
 
             if (kareler.get(secilenKare).altin == false && kareler.get(secilenKare).baslangicKaresi == false) {
@@ -77,10 +93,10 @@ public class Harita {
             }
         }
 
-        //Altin olan karelerinde %10 unu gizli altina ceviriyoruz
-        //Altinlarin %10 unda gizli Altin bulunacak
-        //Max %50 
-        for (float i = 0; i < (float)altinSayisi * ((float) Sabitler.GIZLI_ALTIN_ORANI / 100.0f); i++) {
+        //Altin olan karelerinde %x unu gizli altina ceviriyoruz
+        //Altinlarin %x unda gizli Altin bulunacak
+        float tmpGizliAltinFor = (float)altinSayisi * ((float) Sabitler.GIZLI_ALTIN_ORANI / 100.0f);
+        for (float i = 0; i < tmpGizliAltinFor; i++) {
             int secilenKare = random.nextInt(toplamKareSayisi);
 
             if (kareler.get(secilenKare).altin == true) {

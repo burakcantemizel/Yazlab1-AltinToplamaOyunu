@@ -205,17 +205,16 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel18.setBackground(new java.awt.Color(193, 142, 59));
         jLabel18.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel18.setText("Harita Altın Oranı(Min:0 Max:80)");
+        jLabel18.setText("Harita Altın Oranı(Min:0 Max:100)");
         jLabel18.setToolTipText("");
         SecimMenusu.add(jLabel18);
 
-        girdi3.setMaximum(80);
         girdi3.setValue(20);
         SecimMenusu.add(girdi3);
 
         jLabel19.setBackground(new java.awt.Color(193, 142, 59));
         jLabel19.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel19.setText("Harita Gizli Altın Oranı(Min:0 Max:50)");
+        jLabel19.setText("Altınlarda Gizli Altın Oranı(Min:0 Max:80)");
         SecimMenusu.add(jLabel19);
 
         girdi4.setValue(10);

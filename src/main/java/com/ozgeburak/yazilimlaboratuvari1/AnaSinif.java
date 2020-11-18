@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 
+//AnaSinif main methodu burada bulunuyor.
 public class AnaSinif extends JFrame {
   
     static JFrame pencere;
@@ -24,52 +25,21 @@ public class AnaSinif extends JFrame {
     
     public static void main(String[] args) throws InterruptedException, IOException{
         
-        
+            //Gui tema kütüphanesini kuruyoruz
+            //Böylece javanın standart swing arayüzü daha güzel görünümlü bir hale gelecek
             LafManager.install();
-            pencere = new JFrame("Yazılım Laboratuvarı 1");
+            
+            //Pencere Başlığı
+            pencere = new JFrame("Yazılım Laboratuvarı 1 - Altın Toplama Oyunu");
            
+            //Secim ekranini olusturuyoruz
             SecimEkrani secimEkrani = new SecimEkrani();
-  
-            pencere.add(secimEkrani);
-            pencere.pack();
-            pencere.setResizable(false);
-            pencere.setVisible(true);
-            pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            pencere.setLocationRelativeTo(null);
-            
-            
-            //pencere.remove(secimEkrani);
-            
-            /*
-            Oyun oyun = new Oyun();
-            oyun.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
-            
-            pencere.add(oyun);
-            
-            pencere.pack();
-            pencere.setResizable(true);
-            pencere.setVisible(true);
-            pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            pencere.setLocationRelativeTo(null);
-            
-            pencere.addComponentListener(new ComponentAdapter( ) {
-            public void componentResized(ComponentEvent ev) {
-            Oyun.pencereGenislik = oyun.getWidth();
-            Oyun.pencereYukseklik = oyun.getHeight();
-            }
-            });
-            
-            //Ana Oyun Kontrolü
-            oyun.ayarla();
-            
-            while(true){
-            oyun.guncelle();
-            Thread.sleep(1);
-            }
-            */
-            
-            
-            
+            pencere.add(secimEkrani); // pencereye ekleme
+            pencere.pack(); // pencereyi panele oturtuyoruz
+            pencere.setResizable(false); // boyutlandırma menülerde kapalı
+            pencere.setVisible(true); // görünür hale getirdik
+            pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // x butonu ile çıkma için
+            pencere.setLocationRelativeTo(null); // ekranın ortasına konumlandırdık
             
         
     }

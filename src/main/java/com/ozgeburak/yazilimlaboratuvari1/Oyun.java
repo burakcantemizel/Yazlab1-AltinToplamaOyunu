@@ -804,7 +804,7 @@ public class Oyun extends JPanel {
                 kalanaltin++;
             }
         }
-
+       
         if (kalanaltin <= 0 || oyuncuA.yasiyor == false && oyuncuB.yasiyor == false && oyuncuC.yasiyor == false && oyuncuD.yasiyor == false) {
             this.repaint();
             Thread.sleep(300 * 3);
