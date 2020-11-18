@@ -52,7 +52,7 @@ public class Oyuncu {
 
         this.hedefkare = null;
         this.hedefYol = null;
-        this.hedefKareIndeks = -1;
+        this.hedefKareIndeks = 0;
         this.hedefAltin = null;
 
         //Oyun Sonu Degerleri
@@ -95,11 +95,14 @@ public class Oyuncu {
             this.yasiyor = false;
             return;
         }
-
-        if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
-            if (altinKaldiMiKontrol(harita) == false) {
+        System.out.println("test 1");
+        //if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
+            if (altinKaldiMiKontrol(harita) == false) { //altın kalmadıysa
                 return;
             }
+            
+            
+            System.out.println("test 2");
 
             int enKisaIndex = 0;
             Kare maaliyetAlinacakKare = harita.altinOlanKareler.get(0);
@@ -153,6 +156,8 @@ public class Oyuncu {
             //System.out.println((int)kar);
             this.altin -= hedefBelirlemeMaaliyeti;
             this.harcananAltin += hedefBelirlemeMaaliyeti;
+            
+            System.out.println("test 3");
 
             if (oyuncu == "B" && this.hedefkare != null && this.hedefYol != null) {
                 Oyun.fwOyuncuB.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
@@ -164,7 +169,7 @@ public class Oyuncu {
                 Oyun.fwOyuncuC.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
                 Oyun.fwOyuncuC.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
             }
-        }
+        //}
     }
 
     boolean YasiyorMu() {

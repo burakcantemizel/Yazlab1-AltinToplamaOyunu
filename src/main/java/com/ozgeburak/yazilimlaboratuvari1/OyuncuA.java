@@ -33,7 +33,7 @@ public class OyuncuA extends Oyuncu {
             return;
         }
         
-        if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
+        //if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
             if (altinKaldiMiKontrol(harita) == false) {
                 return;
             }
@@ -75,7 +75,7 @@ public class OyuncuA extends Oyuncu {
             this.hedefYol.remove(0); // üstünde durduğu node'u sildik.
             //System.out.println(this.hedefYol.get(this.hedefYol.size()-1).g);
 
-        }
+        //}
 
     }
 

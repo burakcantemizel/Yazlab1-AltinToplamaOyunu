@@ -84,7 +84,7 @@ public class Oyun extends JPanel {
             if (gizliAltinResim == null) {
                 gizliAltinResim = ImageIO.read(new File("kaynaklar/gizliAltin.png"));
             }
-            
+
             uiA = ImageIO.read(new File("kaynaklar/uiA.png"));
             uiB = ImageIO.read(new File("kaynaklar/uiB.png"));
             uiC = ImageIO.read(new File("kaynaklar/uiC.png"));
@@ -125,7 +125,6 @@ public class Oyun extends JPanel {
         oyunHizi = new JSlider(1, 1000, 1);
         oyunHizi.setValue(300);
 
-        
         //AnaSinif.pencere.add(oyunHizi);
         //oyunHizi.setLocation(pencereGenislik/2, pencereYukseklik - 20);
         //this.add(oyunHizi, BorderLayout.SOUTH);
@@ -177,14 +176,13 @@ public class Oyun extends JPanel {
                     }
 
                     if (oyuncuA.yasiyor == true) {
-                        boolean yenidenHedefBelirlendi = false;
 
-                        if (yenidenHedefBelirlendi == false) {
-                            if (oyuncuA.hedefAltin.altin == false) {
-                                oyuncuA.hedefBelirle(harita);
-                                yenidenHedefBelirlendi = true;
-                                Thread.sleep(oyunHizi.getValue());
-                            }
+                        if (oyuncuA.hedefAltin.altin == false) {
+                            
+                            oyuncuA.hedefBelirle(harita);
+
+                            Thread.sleep(oyunHizi.getValue());
+
                         }
 
                         for (int i = 0; i < oyuncuA.kalanHareket; i++) {
@@ -220,7 +218,7 @@ public class Oyun extends JPanel {
                                         oyunSonuKontrol();
                                         this.repaint();
                                         Thread.sleep(oyunHizi.getValue());
-                                        
+
                                         break;
                                     }
                                 }
@@ -253,7 +251,7 @@ public class Oyun extends JPanel {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
-                                    
+
                                     harita.altinOlanKareler.add(kare);
                                     fwOyuncuA.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
                                     harita.gizliAltinOlanKareler.remove(kare);
@@ -307,6 +305,7 @@ public class Oyun extends JPanel {
                         for (int i = 0; i < oyuncuB.kalanHareket; i++) {
                             if (oyuncuB.hedefAltin != null && yenidenHedefBelirlendi == false) {
                                 if (oyuncuB.hedefAltin.altin == false) {
+
                                     oyuncuB.maaliyetliHedefBelirle(harita, "B", Sabitler.OYUNCU_B_HAMLE_MAALIYET, Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET);
                                     yenidenHedefBelirlendi = true;
                                     if (oyuncuB.olumKontrol()) {
@@ -371,7 +370,7 @@ public class Oyun extends JPanel {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
-                                    
+
                                     harita.altinOlanKareler.add(kare);
                                     fwOyuncuB.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
                                     harita.gizliAltinOlanKareler.remove(kare);
@@ -425,6 +424,7 @@ public class Oyun extends JPanel {
                         for (int i = 0; i < oyuncuC.kalanHareket; i++) {
                             if (oyuncuC.hedefAltin != null && yenidenHedefBelirlendi == false) {
                                 if (oyuncuC.hedefAltin.altin == false) {
+
                                     oyuncuC.maaliyetliHedefBelirle(harita, "C", Sabitler.OYUNCU_C_HAMLE_MAALIYET, Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET);
                                     yenidenHedefBelirlendi = true;
                                     if (oyuncuC.olumKontrol()) {
@@ -488,7 +488,7 @@ public class Oyun extends JPanel {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
-                                    
+
                                     harita.altinOlanKareler.add(kare);
                                     fwOyuncuC.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
                                     harita.gizliAltinOlanKareler.remove(kare);
@@ -571,7 +571,7 @@ public class Oyun extends JPanel {
                                         kare.altin = false;
                                         fwOyuncuD.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuD.altin + "\n");
                                         harita.altinOlanKareler.remove(kare);
-                                        
+
                                         oyunSonuKontrol();
                                         this.repaint();
                                         Thread.sleep(oyunHizi.getValue());
@@ -605,7 +605,7 @@ public class Oyun extends JPanel {
                                     //O kare artık gizli altin değil normal altin olacak
                                     kare.gizliAltin = false;
                                     kare.altin = true;
-                                    
+
                                     harita.altinOlanKareler.add(kare);
                                     fwOyuncuD.write("Gizli altin aciga cikarildi. x: " + kare.koordinatX + " y: " + kare.koordinatY + "\n");
                                     harita.gizliAltinOlanKareler.remove(kare);
@@ -625,7 +625,6 @@ public class Oyun extends JPanel {
         }
 
         this.repaint();
-        
 
     }
 
@@ -713,7 +712,6 @@ public class Oyun extends JPanel {
 
             BilgiGoster(g2d);
         }
-       
 
     }
 
@@ -723,20 +721,20 @@ public class Oyun extends JPanel {
         //Bilgileri ekrana çizen fonksiyon
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.PLAIN, 15));
-        
+
         //g.drawString("Oyun Hızı", pencereGenislik / 2 - 200, 30);
-        int offX = uiA.getWidth()/2;
-        int offY = uiA.getHeight()/2 + 5;
-        g.drawImage(uiA, 0,0, null);
+        int offX = uiA.getWidth() / 2;
+        int offY = uiA.getHeight() / 2 + 5;
+        g.drawImage(uiA, 0, 0, null);
         g.drawImage(uiB, pencereGenislik - uiB.getWidth(), 0, null);
         g.drawImage(uiC, 0, pencereYukseklik - uiC.getHeight(), null);
         g.drawImage(uiD, pencereGenislik - uiB.getWidth(), pencereYukseklik - uiC.getHeight(), null);
-        
+
         if (oyuncuA != null && oyuncuA.altin > 0) {
-            
-            g.drawString("Altın: " + oyuncuA.altin, 0 + offX ,0 + offY);
+
+            g.drawString("Altın: " + oyuncuA.altin, 0 + offX, 0 + offY);
         } else {
-            g.drawString("Elendi.", 0 + offX ,0 + offY);
+            g.drawString("Elendi.", 0 + offX, 0 + offY);
         }
         if (oyuncuB != null && oyuncuB.altin > 0) {
             g.drawString("Altın: " + oyuncuB.altin, pencereGenislik - uiB.getWidth() + offX, 0 + offY);
@@ -744,9 +742,9 @@ public class Oyun extends JPanel {
             g.drawString("Elendi.", pencereGenislik - uiB.getWidth() + offX, 0 + offY);
         }
         if (oyuncuC != null && oyuncuC.altin > 0) {
-            g.drawString("Altın: " + oyuncuC.altin, 0 + offX, pencereYukseklik - uiC.getHeight() + offY );
+            g.drawString("Altın: " + oyuncuC.altin, 0 + offX, pencereYukseklik - uiC.getHeight() + offY);
         } else {
-            g.drawString("Elendi.", 0 + offX, pencereYukseklik - uiC.getHeight() + offY );
+            g.drawString("Elendi.", 0 + offX, pencereYukseklik - uiC.getHeight() + offY);
         }
         if (oyuncuD != null && oyuncuD.altin > 0) {
             g.drawString("Altın: " + oyuncuD.altin, pencereGenislik - uiB.getWidth() + offX, pencereYukseklik - uiC.getHeight() + offY);
@@ -763,7 +761,7 @@ public class Oyun extends JPanel {
                 kalanaltin++;
             }
         }
-       
+
         if (kalanaltin <= 0 || oyuncuA.yasiyor == false && oyuncuB.yasiyor == false && oyuncuC.yasiyor == false && oyuncuD.yasiyor == false) {
             this.repaint();
             Thread.sleep(300 * 3);
@@ -784,39 +782,37 @@ public class Oyun extends JPanel {
 
         return false;
     }
-    
-    public void sonucEkrani() throws IOException{
+
+    public void sonucEkrani() throws IOException {
         OyunSonuTablosu tablo = new OyunSonuTablosu();
-            tablo.cikti1.setText(Integer.toString(oyuncuA.adimSayisi));
-            tablo.cikti2.setText(Integer.toString(oyuncuA.altin));
-            tablo.cikti3.setText(Integer.toString(oyuncuA.harcananAltin));
-            tablo.cikti4.setText(Integer.toString(oyuncuA.toplananAltin));
-            
-            tablo.cikti5.setText(Integer.toString(oyuncuB.adimSayisi));
-            tablo.cikti6.setText(Integer.toString(oyuncuB.altin));
-            tablo.cikti7.setText(Integer.toString(oyuncuB.harcananAltin));
-            tablo.cikti8.setText(Integer.toString(oyuncuB.toplananAltin));
-            
-            tablo.cikti9.setText(Integer.toString(oyuncuC.adimSayisi));
-            tablo.cikti10.setText(Integer.toString(oyuncuC.altin));
-            tablo.cikti11.setText(Integer.toString(oyuncuC.harcananAltin));
-            tablo.cikti12.setText(Integer.toString(oyuncuC.toplananAltin));
-            
-            tablo.cikti13.setText(Integer.toString(oyuncuD.adimSayisi));
-            tablo.cikti14.setText(Integer.toString(oyuncuD.altin));
-            tablo.cikti15.setText(Integer.toString(oyuncuD.harcananAltin));
-            tablo.cikti16.setText(Integer.toString(oyuncuD.toplananAltin));
-            
-            
-            
-            AnaSinif.pencere.add(tablo);
-            AnaSinif.pencere.pack();
-            AnaSinif.pencere.setResizable(false);
-            AnaSinif.pencere.setVisible(true);
-            AnaSinif.pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            AnaSinif.pencere.setLocationRelativeTo(null);
-            
-            AnaSinif.pencere.remove(this);
+        tablo.cikti1.setText(Integer.toString(oyuncuA.adimSayisi));
+        tablo.cikti2.setText(Integer.toString(oyuncuA.altin));
+        tablo.cikti3.setText(Integer.toString(oyuncuA.harcananAltin));
+        tablo.cikti4.setText(Integer.toString(oyuncuA.toplananAltin));
+
+        tablo.cikti5.setText(Integer.toString(oyuncuB.adimSayisi));
+        tablo.cikti6.setText(Integer.toString(oyuncuB.altin));
+        tablo.cikti7.setText(Integer.toString(oyuncuB.harcananAltin));
+        tablo.cikti8.setText(Integer.toString(oyuncuB.toplananAltin));
+
+        tablo.cikti9.setText(Integer.toString(oyuncuC.adimSayisi));
+        tablo.cikti10.setText(Integer.toString(oyuncuC.altin));
+        tablo.cikti11.setText(Integer.toString(oyuncuC.harcananAltin));
+        tablo.cikti12.setText(Integer.toString(oyuncuC.toplananAltin));
+
+        tablo.cikti13.setText(Integer.toString(oyuncuD.adimSayisi));
+        tablo.cikti14.setText(Integer.toString(oyuncuD.altin));
+        tablo.cikti15.setText(Integer.toString(oyuncuD.harcananAltin));
+        tablo.cikti16.setText(Integer.toString(oyuncuD.toplananAltin));
+
+        AnaSinif.pencere.add(tablo);
+        AnaSinif.pencere.pack();
+        AnaSinif.pencere.setResizable(false);
+        AnaSinif.pencere.setVisible(true);
+        AnaSinif.pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        AnaSinif.pencere.setLocationRelativeTo(null);
+
+        AnaSinif.pencere.remove(this);
     }
 
 }

@@ -30,7 +30,7 @@ public class OyuncuD extends Oyuncu {
             return;
         }
         
-        if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
+        //if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
 
             boolean Adanonce = false;
             boolean Bdenonce = false;
@@ -166,7 +166,7 @@ public class OyuncuD extends Oyuncu {
             this.hedefYol = enKisaYol;
             this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
 
-            for (Kare kare : harita.kareler) {
+            for (Kare kare : Dozelkareler) {
                 if (kare.altin == true && kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
                     this.hedefAltin = kare;
                     break;
@@ -181,7 +181,7 @@ public class OyuncuD extends Oyuncu {
             Oyun.fwOyuncuD.write("Diger Oyuncuların Avantajlı oldugu kareler dahil edilmeden en karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
             Oyun.fwOyuncuD.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
             Oyun.fwOyuncuD.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
-        }
+        //}
     }
 
 }
