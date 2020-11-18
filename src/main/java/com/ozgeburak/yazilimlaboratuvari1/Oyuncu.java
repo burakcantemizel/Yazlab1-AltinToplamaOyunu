@@ -36,7 +36,7 @@ public class Oyuncu {
     int harcananAltin;
     int toplananAltin;
     int adimSayisi;
-    
+
     Oyuncu(int koordinatX, int koordinatY) {
         this.koordinatX = koordinatX;
         this.koordinatY = koordinatY;
@@ -54,7 +54,7 @@ public class Oyuncu {
         this.hedefYol = null;
         this.hedefKareIndeks = -1;
         this.hedefAltin = null;
-        
+
         //Oyun Sonu Degerleri
         //this.altin -> kasadaki altin miktari
         this.harcananAltin = 0;
@@ -63,11 +63,6 @@ public class Oyuncu {
     }
 
     void Cizdir(Graphics2D G) {
-        //G.setColor(new Color(r,g,b));
-        //G.fillRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
-        //G.setColor(Color.BLACK);
-        //G.drawRect(koordinatX * genislik, koordinatY * yukseklik, genislik, yukseklik);
-
         G.drawImage(this.resim, koordinatX * genislik, koordinatY * yukseklik, null);
 
     }
@@ -96,38 +91,22 @@ public class Oyuncu {
 
     //B ve C Oyuncuları Ortak Kullanıyor.
     void maaliyetliHedefBelirle(Harita harita, String oyuncu, int hamleMaaliyeti, int hedefBelirlemeMaaliyeti) throws IOException {
-        if(this.altin < hedefBelirlemeMaaliyeti){
+        if (this.altin < hedefBelirlemeMaaliyeti) {
             this.yasiyor = false;
             return;
         }
-        
+
         if (this.mevcutHedefVarMi == false && this.hedefkare == null) {
             if (altinKaldiMiKontrol(harita) == false) {
                 return;
             }
 
-            //En kısa nesneyi belirleyeceğiz
-            /*
-            AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-            List<Dugum> enKisaYol = null;
-            Kare maaliyetAlinacakKare = null;
-            int kar = 0;
-            for (Kare kare : harita.altinOlanKareler) {
-                
-                    enKisaYol = as.yolBul(kare.koordinatX, kare.koordinatY);
-                    maaliyetAlinacakKare = kare;
-                    break;
-                
-            }
-            this.hedefKareIndeks = 0;
-            */
-            
             int enKisaIndex = 0;
             Kare maaliyetAlinacakKare = harita.altinOlanKareler.get(0);
             AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
             List<Dugum> enKisaYol = null;
             int kar;
-            
+
             //Altin olan kareler yerine direkt karelerde altin varsa diye bakarsak
             // .g bize yolun uzunlugunu veriyor 
             // 5 adımda gidilecekse .g = 5
@@ -136,61 +115,29 @@ public class Oyuncu {
             // g'yi hamledeki adim sayisina bölüp üste yuvarlayacağız
             // g / hamledeki adim sayisi * hamle maaliyeti - hedefteki altin miktari
             // üsteki formül bize karli hamleyi verecek ve bunlari kiyaslicaz
-            
-            for(int i = 0; i < harita.altinOlanKareler.size(); i++){
+            for (int i = 0; i < harita.altinOlanKareler.size(); i++) {
 
                 if (((int) Math.ceil((manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY) / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari
-                                < (((int) Math.ceil(manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY) / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - maaliyetAlinacakKare.altinMiktari) {
-                            enKisaIndex = i;
-                            maaliyetAlinacakKare = harita.altinOlanKareler.get(i);
-                            //kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari;
-                            this.hedefKareIndeks = i;
-                        } else if (((int) Math.ceil((manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY) / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari
-                                == (((int) Math.ceil(manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY) / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - maaliyetAlinacakKare.altinMiktari) {
-                            if (manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY)
-                                    <= manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY)) {
-                                enKisaIndex = i;
-                                maaliyetAlinacakKare = harita.altinOlanKareler.get(i);
-                                //kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari;
-                                this.hedefKareIndeks = i;
-                            }
-                        }
-                
-            }
-            
-            enKisaYol = as.yolBul(harita.altinOlanKareler.get(enKisaIndex).koordinatX,harita.altinOlanKareler.get(enKisaIndex).koordinatY);
-            
-            /*
-            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-            for (int i = 0; i < harita.altinOlanKareler.size(); i++) {
-                
-                    List<Dugum> yol = as.yolBul(harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY);
-                    as.sifirla();
-                    if (yol != null) {
-                        //En kisa bulma kismi artik farkli olacak
-                        if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari
-                                < (((int) Math.ceil(enKisaYol.get(enKisaYol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - maaliyetAlinacakKare.altinMiktari) {
-                            enKisaYol = yol;
-                            maaliyetAlinacakKare = harita.altinOlanKareler.get(i);
-                            kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari;
-                            this.hedefKareIndeks = i;
-                        } else if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari
-                                == (((int) Math.ceil(enKisaYol.get(enKisaYol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - maaliyetAlinacakKare.altinMiktari) {
-                            if (yol.get(yol.size() - 1).g <= enKisaYol.get(enKisaYol.size() - 1).g) {
-                                enKisaYol = yol;
-                                maaliyetAlinacakKare = harita.altinOlanKareler.get(i);
-                                kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari;
-                                this.hedefKareIndeks = i;
-                            }
-                        }
-
-                        //System.out.println(kar);
+                        < (((int) Math.ceil(manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY) / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - maaliyetAlinacakKare.altinMiktari) {
+                    enKisaIndex = i;
+                    maaliyetAlinacakKare = harita.altinOlanKareler.get(i);
+                    //kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari;
+                    this.hedefKareIndeks = i;
+                } else if (((int) Math.ceil((manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY) / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari
+                        == (((int) Math.ceil(manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY) / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - maaliyetAlinacakKare.altinMiktari) {
+                    if (manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY)
+                            <= manhattanUzaklik(this.koordinatX, this.koordinatY, harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY)) {
+                        enKisaIndex = i;
+                        maaliyetAlinacakKare = harita.altinOlanKareler.get(i);
+                        //kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * hamleMaaliyeti) - harita.altinOlanKareler.get(i).altinMiktari;
+                        this.hedefKareIndeks = i;
                     }
-                
+                }
+
             }
-            */
-            
-            
+
+            enKisaYol = as.yolBul(harita.altinOlanKareler.get(enKisaIndex).koordinatX, harita.altinOlanKareler.get(enKisaIndex).koordinatY);
+
             this.mevcutHedefVarMi = true;
             this.hedefYol = enKisaYol;
             this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
@@ -206,19 +153,14 @@ public class Oyuncu {
             //System.out.println((int)kar);
             this.altin -= hedefBelirlemeMaaliyeti;
             this.harcananAltin += hedefBelirlemeMaaliyeti;
-            
-            if(oyuncu == "B" && this.hedefkare != null && this.hedefYol != null){
+
+            if (oyuncu == "B" && this.hedefkare != null && this.hedefYol != null) {
                 Oyun.fwOyuncuB.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
                 Oyun.fwOyuncuB.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
                 Oyun.fwOyuncuB.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
-            }else if(oyuncu == "C" && this.hedefkare != null && this.hedefYol != null){
+            } else if (oyuncu == "C" && this.hedefkare != null && this.hedefYol != null) {
                 Oyun.fwOyuncuC.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
-                //System.out.println(this.hedefYol);
-                //System.out.println(this.hedefYol.size());
-                //System.out.println(this.hedefYol.get(this.hedefYol.size() - 1));
-                //System.out.println(this.hedefYol.get(this.hedefYol.size() - 1).g);
-                //System.out.println(this.hedefAltin);
-                //System.out.println(Oyun.fwOyuncuC);
+
                 Oyun.fwOyuncuC.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
                 Oyun.fwOyuncuC.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
             }
@@ -250,8 +192,8 @@ public class Oyuncu {
 
         return true;
     }
-    
-    int manhattanUzaklik(int x1,int y1,int x2,int y2){
+
+    int manhattanUzaklik(int x1, int y1, int x2, int y2) {
         return (int) (Math.abs(x1 - x2) + Math.abs(y1 - y2));
     }
 

@@ -121,6 +121,7 @@ public class Harita {
 
         System.out.println(gizliAltinSayisi + " " + altinSayisi);
         
+        //Altın ve Gizli Altın Listeleri
         for (Kare kare : kareler) {
             if (kare.altin == true) {
                 altinOlanKareler.add(kare);
@@ -131,6 +132,7 @@ public class Harita {
 
     }
 
+    //Kareleri ve altını haritaya cizdirme
     void Cizdir(Graphics2D g) {
         for (Kare kare : kareler) {
             kare.Cizdir(g);
@@ -145,6 +147,7 @@ public class Harita {
 
     }
 
+    //Listeden ilgili kareyi donduren fonksiyon
     Kare KareBul(int koordinatX, int koordinatY) {
         return kareler.get(koordinatX * dikeyKareSayisi + koordinatY);
     }

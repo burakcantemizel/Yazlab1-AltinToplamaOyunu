@@ -29,56 +29,34 @@ public class OyuncuC extends Oyuncu {
         int acigaCikan = 0;
 
         for (int tekrar = 0; tekrar < adet; tekrar++) {
-            
-            
-           
-             boolean gizliAltinVarMi = false;
-            
+
+            boolean gizliAltinVarMi = false;
+
             for (Kare kare : harita.gizliAltinOlanKareler) {
                 if (kare.gizliAltin == true) {
-                    //as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-                    //enKisaGizliAltinYol = as.yolBul(kare.koordinatX, kare.koordinatY);
-                    //enKisaGizliAltinKare = harita.gizliAltinOlanKareler.get(kare;
                     gizliAltinVarMi = true;
                     break;
                 }
             }
-            
+
             if (gizliAltinVarMi == false) {
                 return;
             }
             Kare enKisaGizliAltinKare = harita.gizliAltinOlanKareler.get(0);
             //AStar as;
             List<Dugum> enKisaGizliAltinYol = null;
-           
+
             int enKisaGizliAltinIndex = 0;
-            
-            /*
-            //En kisa gizli altini bulcaz
+
             for (int i = 0; i < harita.gizliAltinOlanKareler.size(); i++) {
                 if (harita.gizliAltinOlanKareler.get(i).gizliAltin == true) {
-                    as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-                    List<Dugum> yol = as.yolBul(harita.gizliAltinOlanKareler.get(i).koordinatX, harita.gizliAltinOlanKareler.get(i).koordinatY);
-                    if (yol != null) {
-                        if (yol.get(yol.size() - 1).g < enKisaGizliAltinYol.get(enKisaGizliAltinYol.size() - 1).g) {
-                            enKisaGizliAltinYol = yol;
-                            this.hedefKareIndeks = i;
-                        }
-                    }
-                }
-            }
-            */
-            
-            for(int i = 0; i < harita.gizliAltinOlanKareler.size(); i++){
-                if(harita.gizliAltinOlanKareler.get(i).gizliAltin == true){
-                    if(manhattanUzaklik(this.koordinatX, this.koordinatY, harita.gizliAltinOlanKareler.get(i).koordinatX, harita.gizliAltinOlanKareler.get(i).koordinatY) <=
-                        manhattanUzaklik(this.koordinatX, this.koordinatY, harita.gizliAltinOlanKareler.get(enKisaGizliAltinIndex).koordinatX, harita.gizliAltinOlanKareler.get(enKisaGizliAltinIndex).koordinatY)){
+                    if (manhattanUzaklik(this.koordinatX, this.koordinatY, harita.gizliAltinOlanKareler.get(i).koordinatX, harita.gizliAltinOlanKareler.get(i).koordinatY)
+                            <= manhattanUzaklik(this.koordinatX, this.koordinatY, harita.gizliAltinOlanKareler.get(enKisaGizliAltinIndex).koordinatX, harita.gizliAltinOlanKareler.get(enKisaGizliAltinIndex).koordinatY)) {
                         enKisaGizliAltinIndex = i;
                         enKisaGizliAltinKare = harita.gizliAltinOlanKareler.get(i);
                     }
                 }
             }
-            
 
             //Burdan sonra elimizde en kisa gizli altin var
             for (Kare kare : harita.gizliAltinOlanKareler) {
@@ -90,7 +68,7 @@ public class OyuncuC extends Oyuncu {
                     Oyun.fwOyuncuC.write("Gizli altin aciga cikarildi. x: " + Integer.toString(kare.koordinatX) + " y: " + Integer.toString(kare.koordinatY) + "\n");
                     harita.gizliAltinOlanKareler.remove(kare);
                     break;
-                    
+
                 }
             }
 

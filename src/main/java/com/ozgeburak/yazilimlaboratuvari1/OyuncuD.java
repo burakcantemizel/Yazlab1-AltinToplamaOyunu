@@ -123,20 +123,7 @@ public class OyuncuD extends Oyuncu {
                 return;
             }
 
-            //C'nin hedefine daha önce gidebiliyor mu?
-            //En kısa nesneyi belirleyeceğiz
-            /*
-            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-            List<Dugum> enKisaYol = null;
-            Kare maaliyetAlinacakKare = null;
-            int kar = 0;
-            for (Kare kare : Dozelkareler) {   
-                    enKisaYol = as.yolBul(kare.koordinatX, kare.koordinatY);
-                    maaliyetAlinacakKare = kare;
-                    break;
-            }
-            this.hedefKareIndeks = 0;
-            */
+
             int enKisaIndex = 0;
             Kare maaliyetAlinacakKare = Dozelkareler.get(0);
             as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
@@ -151,9 +138,6 @@ public class OyuncuD extends Oyuncu {
             // g'yi hamledeki adim sayisina bölüp üste yuvarlayacağız
             // g / hamledeki adim sayisi * hamle maaliyeti - hedefteki altin miktari
             // üsteki formül bize karli hamleyi verecek ve bunlari kiyaslicaz
-            
-            
-            
             
             for(int i = 0; i < Dozelkareler.size(); i++){
 
@@ -178,34 +162,6 @@ public class OyuncuD extends Oyuncu {
             
             enKisaYol = as.yolBul(Dozelkareler.get(enKisaIndex).koordinatX,Dozelkareler.get(enKisaIndex).koordinatY);
             
-            /*
-            
-            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-            for (int i = 0; i < Dozelkareler.size(); i++) {
-                    List<Dugum> yol = as.yolBul(Dozelkareler.get(i).koordinatX, Dozelkareler.get(i).koordinatY);
-                    as.sifirla();
-                    if (yol != null) {
-                        //En kisa bulma kismi artik farkli olacak
-                        if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - Dozelkareler.get(i).altinMiktari
-                                < (((int) Math.ceil(enKisaYol.get(enKisaYol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - maaliyetAlinacakKare.altinMiktari) {
-                            enKisaYol = yol;
-                            maaliyetAlinacakKare = Dozelkareler.get(i);
-                            kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - Dozelkareler.get(i).altinMiktari;
-                            this.hedefKareIndeks = i;
-                        } else if (((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - Dozelkareler.get(i).altinMiktari
-                                == (((int) Math.ceil(enKisaYol.get(enKisaYol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - maaliyetAlinacakKare.altinMiktari) {
-                            if (yol.get(yol.size() - 1).g <= enKisaYol.get(enKisaYol.size() - 1).g) {
-                                enKisaYol = yol;
-                                maaliyetAlinacakKare = Dozelkareler.get(i);
-                                kar = ((int) Math.ceil((yol.get(yol.size() - 1).g / (float) Sabitler.HAMLE_ADIM_SAYISI)) * Sabitler.OYUNCU_D_HAMLE_MAALIYET) - Dozelkareler.get(i).altinMiktari;
-                                this.hedefKareIndeks = i;
-                            }
-                        }
-                    }
-                
-            }
-            */
-
             this.mevcutHedefVarMi = true;
             this.hedefYol = enKisaYol;
             this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
@@ -222,7 +178,7 @@ public class OyuncuD extends Oyuncu {
             
             this.altin -= Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET;
             this.harcananAltin += Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET;
-            Oyun.fwOyuncuD.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
+            Oyun.fwOyuncuD.write("Diger Oyuncuların Avantajlı oldugu kareler dahil edilmeden en karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
             Oyun.fwOyuncuD.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
             Oyun.fwOyuncuD.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
         }

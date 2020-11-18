@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 
+//Menüdeki Bulut ve Altınların sınıfı
+//yapısal özellikleri ve cizdirme fonksiyonlarını barındırıyor
 public class MenuGrafigi {
     int x;
     int y;
@@ -38,6 +40,7 @@ public class MenuGrafigi {
          }
     }
     
+    //Menü Animasyonları
     void guncelle(){
         if(tip == "altin"){
             this.y += this.hiz;
@@ -57,12 +60,10 @@ public class MenuGrafigi {
                 this.x = -500;
             }
         }
-        
-       
-        
-
     }
     
+    
+    //Menü Grafiklerini Çizdirme
     void cizdir(Graphics g){
         if(tip == "altin"){
             g.drawImage(SecimEkrani.altin, this.x, this.y, null);

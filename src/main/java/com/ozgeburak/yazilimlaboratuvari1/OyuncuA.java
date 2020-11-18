@@ -37,18 +37,7 @@ public class OyuncuA extends Oyuncu {
             if (altinKaldiMiKontrol(harita) == false) {
                 return;
             }
-
-            //En kısa nesneyi belirleyeceğiz
-            /*
-            AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-            List<Dugum> enKisaYol = null;
-            for (Kare kare : harita.altinOlanKareler) {
-                    enKisaYol = as.yolBul(kare.koordinatX, kare.koordinatY);
-                    break;
-                
-            }
-            this.hedefKareIndeks = 0;
-            */
+            
             int enKisaIndex = 0;
 
             
@@ -64,27 +53,8 @@ public class OyuncuA extends Oyuncu {
             AStar as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
             List<Dugum> enKisaYol = as.yolBul(harita.altinOlanKareler.get(enKisaIndex).koordinatX,harita.altinOlanKareler.get(enKisaIndex).koordinatY);
             
-            /*
-            //Altin olan kareler yerine direkt karelerde altin varsa diye bakarsak
-            as = new AStar(harita.maaliyetsizMatris, this.koordinatX, this.koordinatY);
-            List<Dugum> yol;
-            //System.out.println("bekle");
-            for (int i = 0; i < harita.altinOlanKareler.size(); i++) {
-                    //System.out.println("bekle 2");
-                    yol = as.yolBul(harita.altinOlanKareler.get(i).koordinatX, harita.altinOlanKareler.get(i).koordinatY);
-                    //System.out.println("bekle 3");
-                    as.sifirla();
-                    if (yol != null) {
-                        if (yol.get(yol.size() - 1).g <= enKisaYol.get(enKisaYol.size() - 1).g) {
-                            enKisaYol = yol;
-                            this.hedefKareIndeks = i;
-                        }
-                    }
-                
-            }
-            */
             
-            System.out.println("bekle 4");
+           
 
             this.mevcutHedefVarMi = true;
             this.hedefYol = enKisaYol;

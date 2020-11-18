@@ -56,6 +56,7 @@ public class Oyun extends JPanel {
     static BufferedImage resimKoyu = null;
     static BufferedImage altinResim = null;
     static BufferedImage gizliAltinResim = null;
+    static BufferedImage uiA, uiB, uiC, uiD;
 
     Thread oyunDongusu;
 
@@ -83,6 +84,11 @@ public class Oyun extends JPanel {
             if (gizliAltinResim == null) {
                 gizliAltinResim = ImageIO.read(new File("kaynaklar/gizliAltin.png"));
             }
+            
+            uiA = ImageIO.read(new File("kaynaklar/uiA.png"));
+            uiB = ImageIO.read(new File("kaynaklar/uiB.png"));
+            uiC = ImageIO.read(new File("kaynaklar/uiC.png"));
+            uiD = ImageIO.read(new File("kaynaklar/uiD.png"));
         } catch (IOException ex) {
             Logger.getLogger(OyuncuA.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -176,7 +182,6 @@ public class Oyun extends JPanel {
                         if (yenidenHedefBelirlendi == false) {
                             if (oyuncuA.hedefAltin.altin == false) {
                                 oyuncuA.hedefBelirle(harita);
-                                System.out.println("Hedef Belirleme 1 Altını alındı ve hedef belirledi" + oyuncuA.hedefkare);
                                 yenidenHedefBelirlendi = true;
                                 Thread.sleep(oyunHizi.getValue());
                             }
@@ -192,7 +197,7 @@ public class Oyun extends JPanel {
                                 oyuncuA.koordinatY = oyuncuA.hedefYol.get(0).y;
                                 oyuncuA.hedefYol.remove(0);
                                 oyuncuA.adimSayisi++;
-                                fwOyuncuA.write("x: " + Integer.toString(oyuncuA.koordinatX) + " y: " + Integer.toString(oyuncuA.koordinatY) + "konumuna hareket etti. \n");
+                                fwOyuncuA.write("x: " + Integer.toString(oyuncuA.koordinatX) + " y: " + Integer.toString(oyuncuA.koordinatY) + " konumuna hareket etti. \n");
                                 this.repaint();
                                 Thread.sleep(oyunHizi.getValue() * 3);
                             }
@@ -229,7 +234,7 @@ public class Oyun extends JPanel {
                                 //Bu Noktadan sonra altını aldı ve hedefsiz kaldı
                                 if (oyuncuA.mevcutHedefVarMi == false && oyuncuA.hedefkare == null) {
                                     oyuncuA.hedefBelirle(harita);
-                                    System.out.println("Hedef Belirleme 2 Altın aldı ve hedef belirledi" + oyuncuA.hedefkare);
+                                    //System.out.println("Hedef Belirleme 2 Altın aldı ve hedef belirledi" + oyuncuA.hedefkare);
                                     oyuncuA.olumKontrol();
                                     oyunSonuKontrol();
                                     Thread.sleep(oyunHizi.getValue());
@@ -318,7 +323,7 @@ public class Oyun extends JPanel {
                                 oyuncuB.hedefYol.remove(0);
                                 this.repaint();
                                 oyuncuB.adimSayisi++;
-                                fwOyuncuB.write("x: " + Integer.toString(oyuncuB.koordinatX) + " y: " + Integer.toString(oyuncuB.koordinatY) + "konumuna hareket etti. \n");
+                                fwOyuncuB.write("x: " + Integer.toString(oyuncuB.koordinatX) + " y: " + Integer.toString(oyuncuB.koordinatY) + " konumuna hareket etti. \n");
                                 Thread.sleep(oyunHizi.getValue() * 3);
                             }
 
@@ -436,7 +441,7 @@ public class Oyun extends JPanel {
                                 oyuncuC.hedefYol.remove(0);
                                 oyuncuC.adimSayisi++;
                                 this.repaint();
-                                fwOyuncuC.write("x: " + Integer.toString(oyuncuC.koordinatX) + " y: " + Integer.toString(oyuncuC.koordinatY) + "konumuna hareket etti. \n");
+                                fwOyuncuC.write("x: " + Integer.toString(oyuncuC.koordinatX) + " y: " + Integer.toString(oyuncuC.koordinatY) + " konumuna hareket etti. \n");
                                 Thread.sleep(oyunHizi.getValue() * 3);
                             }
 
@@ -551,7 +556,7 @@ public class Oyun extends JPanel {
                                 oyuncuD.koordinatY = oyuncuD.hedefYol.get(0).y;
                                 oyuncuD.hedefYol.remove(0);
                                 oyuncuD.adimSayisi++;
-                                fwOyuncuD.write("x: " + Integer.toString(oyuncuD.koordinatX) + " y: " + Integer.toString(oyuncuD.koordinatY) + "konumuna hareket etti. \n");
+                                fwOyuncuD.write("x: " + Integer.toString(oyuncuD.koordinatX) + " y: " + Integer.toString(oyuncuD.koordinatY) + " konumuna hareket etti. \n");
                                 this.repaint();
                                 Thread.sleep(oyunHizi.getValue() * 3);
                             }
@@ -621,41 +626,7 @@ public class Oyun extends JPanel {
 
         this.repaint();
         
-        if(oyunSonu == true){
-            
-            OyunSonuTablosu tablo = new OyunSonuTablosu();
-            tablo.cikti1.setText(Integer.toString(oyuncuA.adimSayisi));
-            tablo.cikti2.setText(Integer.toString(oyuncuA.altin));
-            tablo.cikti3.setText(Integer.toString(oyuncuA.harcananAltin));
-            tablo.cikti4.setText(Integer.toString(oyuncuA.toplananAltin));
-            
-            tablo.cikti5.setText(Integer.toString(oyuncuB.adimSayisi));
-            tablo.cikti6.setText(Integer.toString(oyuncuB.altin));
-            tablo.cikti7.setText(Integer.toString(oyuncuB.harcananAltin));
-            tablo.cikti8.setText(Integer.toString(oyuncuB.toplananAltin));
-            
-            tablo.cikti9.setText(Integer.toString(oyuncuC.adimSayisi));
-            tablo.cikti10.setText(Integer.toString(oyuncuC.altin));
-            tablo.cikti11.setText(Integer.toString(oyuncuC.harcananAltin));
-            tablo.cikti12.setText(Integer.toString(oyuncuC.toplananAltin));
-            
-            tablo.cikti13.setText(Integer.toString(oyuncuD.adimSayisi));
-            tablo.cikti14.setText(Integer.toString(oyuncuD.altin));
-            tablo.cikti15.setText(Integer.toString(oyuncuD.harcananAltin));
-            tablo.cikti16.setText(Integer.toString(oyuncuD.toplananAltin));
-            
-            
-            
-            AnaSinif.pencere.add(tablo);
-            AnaSinif.pencere.pack();
-            AnaSinif.pencere.setResizable(false);
-            AnaSinif.pencere.setVisible(true);
-            AnaSinif.pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            AnaSinif.pencere.setLocationRelativeTo(null);
-            
-            AnaSinif.pencere.remove(this);
-            oyunDongusu.stop();
-        }
+
     }
 
     @Override
@@ -742,26 +713,7 @@ public class Oyun extends JPanel {
 
             BilgiGoster(g2d);
         }
-        /*
-        else {
-            
-            g2d.drawString("Oyun bitti ", 100, 100);
-
-            g2d.drawString("OyuncuA adım" + Integer.toString(oyuncuA.adimSayisi)
-                    + " harcanan " + Integer.toString(oyuncuA.harcananAltin) + " kasa" + Integer.toString(oyuncuA.altin)
-                    + " toplanan " + Integer.toString(oyuncuA.toplananAltin) + "\n", 100, 200);
-            g2d.drawString("OyuncuB adım" + Integer.toString(oyuncuB.adimSayisi)
-                    + " harcanan " + Integer.toString(oyuncuB.harcananAltin) + " kasa" + Integer.toString(oyuncuB.altin)
-                    + " toplanan " + Integer.toString(oyuncuB.toplananAltin) + "\n", 100, 300);
-            g2d.drawString("OyuncuC adım" + Integer.toString(oyuncuC.adimSayisi)
-                    + " harcanan " + Integer.toString(oyuncuC.harcananAltin) + " kasa" + Integer.toString(oyuncuC.altin)
-                    + " toplanan " + Integer.toString(oyuncuC.toplananAltin) + "\n", 100, 400);
-            g2d.drawString("OyuncuD adım" + Integer.toString(oyuncuD.adimSayisi)
-                    + " harcanan " + Integer.toString(oyuncuD.harcananAltin) + " kasa" + Integer.toString(oyuncuD.altin)
-                    + " toplanan " + Integer.toString(oyuncuD.toplananAltin) + "\n", 100, 500);
-
-        }
-        */
+       
 
     }
 
@@ -773,26 +725,33 @@ public class Oyun extends JPanel {
         g.setFont(new Font("Arial", Font.PLAIN, 15));
         
         //g.drawString("Oyun Hızı", pencereGenislik / 2 - 200, 30);
+        int offX = uiA.getWidth()/2;
+        int offY = uiA.getHeight()/2 + 5;
+        g.drawImage(uiA, 0,0, null);
+        g.drawImage(uiB, pencereGenislik - uiB.getWidth(), 0, null);
+        g.drawImage(uiC, 0, pencereYukseklik - uiC.getHeight(), null);
+        g.drawImage(uiD, pencereGenislik - uiB.getWidth(), pencereYukseklik - uiC.getHeight(), null);
         
         if (oyuncuA != null && oyuncuA.altin > 0) {
-            g.drawString("Oyuncu A altın: " + oyuncuA.altin, 10, 20);
+            
+            g.drawString("Altın: " + oyuncuA.altin, 0 + offX ,0 + offY);
         } else {
-            g.drawString("Oyuncu A elendi.", 10, 20);
+            g.drawString("Elendi.", 0 + offX ,0 + offY);
         }
         if (oyuncuB != null && oyuncuB.altin > 0) {
-            g.drawString("Oyuncu B altın: " + oyuncuB.altin, 10, 40);
+            g.drawString("Altın: " + oyuncuB.altin, pencereGenislik - uiB.getWidth() + offX, 0 + offY);
         } else {
-            g.drawString("Oyuncu B elendi.", 10, 40);
+            g.drawString("Elendi.", pencereGenislik - uiB.getWidth() + offX, 0 + offY);
         }
         if (oyuncuC != null && oyuncuC.altin > 0) {
-            g.drawString("Oyuncu C altın: " + oyuncuC.altin, 10, 60);
+            g.drawString("Altın: " + oyuncuC.altin, 0 + offX, pencereYukseklik - uiC.getHeight() + offY );
         } else {
-            g.drawString("Oyuncu C elendi.", 10, 60);
+            g.drawString("Elendi.", 0 + offX, pencereYukseklik - uiC.getHeight() + offY );
         }
         if (oyuncuD != null && oyuncuD.altin > 0) {
-            g.drawString("Oyuncu D altın: " + oyuncuD.altin, 10, 80);
+            g.drawString("Altın: " + oyuncuD.altin, pencereGenislik - uiB.getWidth() + offX, pencereYukseklik - uiC.getHeight() + offY);
         } else {
-            g.drawString("Oyuncu D elendi.", 10, 80);
+            g.drawString("Elendi.", pencereGenislik - uiB.getWidth() + offX, pencereYukseklik - uiC.getHeight() + offY);
         }
     }
 
@@ -818,10 +777,46 @@ public class Oyun extends JPanel {
             oyuncuB.yasiyor = false;
             oyuncuC.yasiyor = false;
             oyuncuD.yasiyor = false;
+            sonucEkrani();
+            //sonuc gosterme
             return true;
         }
 
         return false;
+    }
+    
+    public void sonucEkrani() throws IOException{
+        OyunSonuTablosu tablo = new OyunSonuTablosu();
+            tablo.cikti1.setText(Integer.toString(oyuncuA.adimSayisi));
+            tablo.cikti2.setText(Integer.toString(oyuncuA.altin));
+            tablo.cikti3.setText(Integer.toString(oyuncuA.harcananAltin));
+            tablo.cikti4.setText(Integer.toString(oyuncuA.toplananAltin));
+            
+            tablo.cikti5.setText(Integer.toString(oyuncuB.adimSayisi));
+            tablo.cikti6.setText(Integer.toString(oyuncuB.altin));
+            tablo.cikti7.setText(Integer.toString(oyuncuB.harcananAltin));
+            tablo.cikti8.setText(Integer.toString(oyuncuB.toplananAltin));
+            
+            tablo.cikti9.setText(Integer.toString(oyuncuC.adimSayisi));
+            tablo.cikti10.setText(Integer.toString(oyuncuC.altin));
+            tablo.cikti11.setText(Integer.toString(oyuncuC.harcananAltin));
+            tablo.cikti12.setText(Integer.toString(oyuncuC.toplananAltin));
+            
+            tablo.cikti13.setText(Integer.toString(oyuncuD.adimSayisi));
+            tablo.cikti14.setText(Integer.toString(oyuncuD.altin));
+            tablo.cikti15.setText(Integer.toString(oyuncuD.harcananAltin));
+            tablo.cikti16.setText(Integer.toString(oyuncuD.toplananAltin));
+            
+            
+            
+            AnaSinif.pencere.add(tablo);
+            AnaSinif.pencere.pack();
+            AnaSinif.pencere.setResizable(false);
+            AnaSinif.pencere.setVisible(true);
+            AnaSinif.pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            AnaSinif.pencere.setLocationRelativeTo(null);
+            
+            AnaSinif.pencere.remove(this);
     }
 
 }
