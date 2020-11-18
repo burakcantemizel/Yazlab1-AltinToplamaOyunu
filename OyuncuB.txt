@@ -1,12 +1,19 @@
 Tur : 1
-En karlı hedef belirlendi. Hedef kare x: 3 y: 2
-Hedefin uzakligi: 3.0 hedefteki altin miktari: 20
+En karlı hedef belirlendi. Hedef kare x: 4 y: 2
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 20
 Hedef Belirleme Maaliyeti: 10 kalan altin: 190
 Hamle Maaliyeti: 5 kalan altin: 185
-x: 3 y: 0 konumuna hareket etti. 
-x: 3 y: 1 konumuna hareket etti. 
-x: 3 y: 2 konumuna hareket etti. 
+x: 4 y: 1 konumuna hareket etti. 
+x: 4 y: 2 konumuna hareket etti. 
 Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 205
-En karlı hedef belirlendi. Hedef kare x: 0 y: 3
-Hedefin uzakligi: 4.0 hedefteki altin miktari: 15
+En karlı hedef belirlendi. Hedef kare x: 3 y: 1
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 10 kalan altin: 195
+Tur : 2
+Hamle Maaliyeti: 5 kalan altin: 190
+x: 3 y: 2 konumuna hareket etti. 
+x: 3 y: 1 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 205
+En karlı hedef belirlendi. Hedef kare x: 2 y: 0
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
 Hedef Belirleme Maaliyeti: 10 kalan altin: 195

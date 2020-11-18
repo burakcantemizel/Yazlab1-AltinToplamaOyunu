@@ -1,8 +1,8 @@
 Tur : 1
-Diger Oyuncuların Avantajlı oldugu kareler dahil edilmeden en karlı hedef belirlendi. Hedef kare x: 3 y: 3
-Hedefin uzakligi: 2.0 hedefteki altin miktari: 5
+Diger Oyuncuların Avantajlı oldugu kareler dahil edilmeden en karlı hedef belirlendi. Hedef kare x: 2 y: 0
+Hedefin uzakligi: 6.0 hedefteki altin miktari: 15
 Hedef Belirleme Maaliyeti: 20 kalan altin: 180
 Hamle Maaliyeti: 5 kalan altin: 175
 x: 3 y: 4 konumuna hareket etti. 
-x: 3 y: 3 konumuna hareket etti. 
-Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 180
+x: 2 y: 4 konumuna hareket etti. 
+x: 2 y: 3 konumuna hareket etti. 

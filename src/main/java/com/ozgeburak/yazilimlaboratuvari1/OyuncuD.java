@@ -92,7 +92,11 @@ public class OyuncuD extends Oyuncu {
                 }
             }
 
-            ArrayList<Kare> Dozelkareler = (ArrayList<Kare>) harita.altinOlanKareler.clone();
+            //ArrayList<Kare> Dozelkareler = (ArrayList<Kare>) harita.altinOlanKareler.clone();
+            ArrayList<Kare> Dozelkareler = new ArrayList<Kare>()    ;
+            for(Kare kare : harita.altinOlanKareler){
+                Dozelkareler.add(kare);
+            }
 
             if (Adanonce == false && oyuncuA.yasiyor == true) {
                 Dozelkareler.remove(oyuncuA.hedefAltin);
@@ -116,12 +120,14 @@ public class OyuncuD extends Oyuncu {
 
             if (kalanaltin <= 0) {
                 this.yasiyor = false;
+                //Digerlerinden once gidemedigi kare yoksa olcek
                 return;
             }
+            
+            
+            
+            //Eğer altin yoksa d zaten oluyor
 
-            if (kalanaltin == 1 && Adanonce == false && Bdenonce == false && Cdenonce) {
-                return;
-            }
 
 
             int enKisaIndex = 0;
@@ -167,7 +173,7 @@ public class OyuncuD extends Oyuncu {
             this.hedefkare = enKisaYol.get(enKisaYol.size() - 1);
 
             for (Kare kare : Dozelkareler) {
-                if (kare.altin == true && kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
+                if (kare.koordinatX == this.hedefkare.x && kare.koordinatY == this.hedefkare.y) {
                     this.hedefAltin = kare;
                     break;
                 }

@@ -1,11 +1,15 @@
 Tur : 1
-Gizli altin aciga cikarildi. x: 3 y: 3
-En karlı hedef belirlendi. Hedef kare x: 0 y: 3
-Hedefin uzakligi: 1.0 hedefteki altin miktari: 15
+Gizli altin aciga cikarildi. x: 2 y: 0
+En karlı hedef belirlendi. Hedef kare x: 2 y: 0
+Hedefin uzakligi: 6.0 hedefteki altin miktari: 15
 Hedef Belirleme Maaliyeti: 15 kalan altin: 185
 Hamle Maaliyeti: 5 kalan altin: 180
 x: 0 y: 3 konumuna hareket etti. 
-Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 195
-En karlı hedef belirlendi. Hedef kare x: 1 y: 4
-Hedefin uzakligi: 2.0 hedefteki altin miktari: 10
-Hedef Belirleme Maaliyeti: 15 kalan altin: 180
+x: 0 y: 2 konumuna hareket etti. 
+x: 0 y: 1 konumuna hareket etti. 
+Tur : 2
+Hamle Maaliyeti: 5 kalan altin: 175
+x: 0 y: 0 konumuna hareket etti. 
+x: 1 y: 0 konumuna hareket etti. 
+x: 2 y: 0 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 190

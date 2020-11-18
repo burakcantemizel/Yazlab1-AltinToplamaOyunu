@@ -538,7 +538,7 @@ public class Oyun extends JPanel {
                         //Mevcut bir hedefi var ve ilerliyor.
                         //Artık oyuncuA her tur ilerleyerek hedefe gidebilir 3 kare ilerleyerek
                         for (int i = 0; i < oyuncuD.kalanHareket; i++) {
-                            if (oyuncuD.hedefAltin != null && yenidenHedefBelirlendi) {
+                            if (oyuncuD.hedefAltin != null && yenidenHedefBelirlendi == false) {
                                 if (oyuncuD.hedefAltin.altin == false) {
                                     oyunSonuKontrol();
                                     oyuncuD.sezgiselMaaliyetliHedefBelirle(harita, oyuncuA, oyuncuB, oyuncuC);
@@ -562,7 +562,8 @@ public class Oyun extends JPanel {
                             }
 
                             //Her hareketten sonra altini aldi mi diye bakacagiz
-                            if (oyuncuD.koordinatX == oyuncuD.hedefkare.x && oyuncuD.koordinatY == oyuncuD.hedefkare.y) {
+                            if(oyuncuD.hedefkare != null){
+                                if (oyuncuD.koordinatX == oyuncuD.hedefkare.x && oyuncuD.koordinatY == oyuncuD.hedefkare.y) {
                                 //Ayni yerdeyse altini alacak ve hareket etmeyecek.
                                 for (Kare kare : harita.altinOlanKareler) {
                                     if (kare.koordinatX == oyuncuD.koordinatX && kare.koordinatY == oyuncuD.koordinatY) {
@@ -598,6 +599,8 @@ public class Oyun extends JPanel {
                                 break;
 
                             }
+                            }
+                            
 
                             //Ayrıca her hareketten sonra gizli altinda mi diye de bakacagiz
                             for (Kare kare : harita.gizliAltinOlanKareler) {
