@@ -92,7 +92,13 @@ public class Kare {
     if(altin == true || gizliAltin == true){
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial",Font.PLAIN, 35));
-        g.drawString(Integer.toString(altinMiktari), pozisyonX + genislik/2 - 4, pozisyonY + yukseklik/2 + 2);
+        int oteleme;
+        if(altinMiktari == 5){
+            oteleme = 10;
+        }else{
+            oteleme = 20;
+        }
+        g.drawString(Integer.toString(altinMiktari), pozisyonX + genislik/2 - oteleme , pozisyonY + yukseklik/2 + 15);
     }
   }
   

@@ -5,6 +5,8 @@
  */
 package com.ozgeburak.yazilimlaboratuvari1;
 
+import static com.ozgeburak.yazilimlaboratuvari1.Oyun.pencereGenislik;
+import static com.ozgeburak.yazilimlaboratuvari1.Oyun.pencereYukseklik;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -28,17 +30,18 @@ import javax.swing.JLabel;
  * @author burak
  */
 public class SecimEkrani extends javax.swing.JPanel {
-    BufferedImage menuArkaplan; 
-    Timer tick; 
+
+    static BufferedImage menuArkaplan;
+    Timer tick;
     Thread arkaplanDongu;
-    
+
     static BufferedImage altin;
-    static BufferedImage bulut1,bulut2,bulut3,bulut4,bulut5;
-    
+    static BufferedImage bulut1, bulut2, bulut3, bulut4, bulut5;
+
     ArrayList<MenuGrafigi> bulutlar;
     ArrayList<MenuGrafigi> altinlar;
     Random r;
-    
+
     /**
      * Creates new form SecimEkrani
      */
@@ -46,96 +49,87 @@ public class SecimEkrani extends javax.swing.JPanel {
         //this.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
         //SecimMenusu.setOpaque(false);
         r = new Random();
-        
+
         try {
             initComponents();
-            
+
             //SecimMenusu.setBackground(new Color(255, 255, 255, 0));
-            
-        menuArkaplan = ImageIO.read(new File("kaynaklar/MenuArkasi.png"));
+            menuArkaplan = ImageIO.read(new File("kaynaklar/MenuArkasi.png"));
         } catch (IOException ex) {
             Logger.getLogger(SecimEkrani.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        this.setBackground(new Color(141,183,242));
-        
-         try {
+
+        this.setBackground(new Color(141, 183, 242));
+
+        try {
             altin = ImageIO.read(new File("kaynaklar/altin2x.png"));
             bulut1 = ImageIO.read(new File("kaynaklar/bulut1.png"));
             bulut2 = ImageIO.read(new File("kaynaklar/bulut2.png"));
             bulut3 = ImageIO.read(new File("kaynaklar/bulut3.png"));
             bulut4 = ImageIO.read(new File("kaynaklar/bulut4.png"));
             bulut5 = ImageIO.read(new File("kaynaklar/bulut5.png"));
-           
+
         } catch (IOException ex) {
             Logger.getLogger(MenuGrafigi.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-         bulutlar = new ArrayList<MenuGrafigi>();
-         altinlar = new ArrayList<MenuGrafigi>();
-         
-         for(int i = 0; i < 10; i++){
-             bulutlar.add(new MenuGrafigi(r.nextInt(1280), r.nextInt(720),"bulut"));
-         }
-         
-         for(int i = 0; i < 50; i++){
-             altinlar.add(new MenuGrafigi(-200 + r.nextInt(1280+200), -1 * r.nextInt(720),"altin"));
-         }
-         
-         tick = new Timer();
-         arkaplanDongu = new Thread(){
-             @Override
-             public void run(){
-                 while(true){
-                 for(MenuGrafigi altin :  altinlar){
-                    altin.guncelle();
+
+        bulutlar = new ArrayList<MenuGrafigi>();
+        altinlar = new ArrayList<MenuGrafigi>();
+
+        for (int i = 0; i < 10; i++) {
+            bulutlar.add(new MenuGrafigi(r.nextInt(1280), r.nextInt(720), "bulut"));
+        }
+
+        for (int i = 0; i < 50; i++) {
+            altinlar.add(new MenuGrafigi(-200 + r.nextInt(1280 + 200), -1 * r.nextInt(720), "altin"));
+        }
+
+        tick = new Timer();
+        arkaplanDongu = new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    for (MenuGrafigi altin : altinlar) {
+                        altin.guncelle();
+                    }
+
+                    for (MenuGrafigi bulut : bulutlar) {
+                        bulut.guncelle();
+                    }
+                    repaint();
+                    try {
+                        Thread.sleep(1000 / 60);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(SecimEkrani.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //System.out.println("test");
                 }
-                 
-                       for(MenuGrafigi bulut :  bulutlar){
-                    bulut.guncelle();
-                }
-                 repaint();
-                try {
-                    Thread.sleep(1000/60);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(SecimEkrani.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                //System.out.println("test");
-                 }
-                
-                
+
             }
-         };
-         arkaplanDongu.start();
-       
+        };
+        arkaplanDongu.start();
 
     }
-    
+
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawRect(SecimMenusu.getX(),SecimMenusu.getY(),SecimMenusu.getWidth(),SecimMenusu.getHeight());
-        
-   
-        
-        for(MenuGrafigi altin :  altinlar){
+        g.drawRect(SecimMenusu.getX(), SecimMenusu.getY(), SecimMenusu.getWidth(), SecimMenusu.getHeight());
+
+        for (MenuGrafigi altin : altinlar) {
             altin.cizdir(g);
         }
-        
-               for(MenuGrafigi bulut :  bulutlar){
+
+        for (MenuGrafigi bulut : bulutlar) {
             bulut.cizdir(g);
         }
-        
-        
+
         int offset = 10;
-        g.drawImage(menuArkaplan, SecimMenusu.getX() - offset, SecimMenusu.getY() - offset, 
-                SecimMenusu.getX() + SecimMenusu.getWidth() + offset, SecimMenusu.getY() + SecimMenusu.getHeight() + offset, 
+        g.drawImage(menuArkaplan, SecimMenusu.getX() - offset, SecimMenusu.getY() - offset,
+                SecimMenusu.getX() + SecimMenusu.getWidth() + offset, SecimMenusu.getY() + SecimMenusu.getHeight() + offset,
                 0, 0, menuArkaplan.getWidth(), menuArkaplan.getHeight(), null);
-        
-        
-      
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,6 +175,8 @@ public class SecimEkrani extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
@@ -189,7 +185,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel16.setBackground(new java.awt.Color(193, 142, 59));
         jLabel16.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel16.setText("Harita Yatay Kare Sayısı");
+        jLabel16.setText("Harita Yatay Kare Sayısı(Min:5 Max:100)");
         SecimMenusu.add(jLabel16);
 
         girdi1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -199,7 +195,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel17.setBackground(new java.awt.Color(193, 142, 59));
         jLabel17.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel17.setText("Harita Dikey Kare Sayısı");
+        jLabel17.setText("Harita Dikey Kare Sayısı(Min:5 Max:100)");
         SecimMenusu.add(jLabel17);
 
         girdi2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -209,16 +205,17 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel18.setBackground(new java.awt.Color(193, 142, 59));
         jLabel18.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel18.setText("Harita Altın Oranı");
+        jLabel18.setText("Harita Altın Oranı(Min:0 Max:80)");
         jLabel18.setToolTipText("");
         SecimMenusu.add(jLabel18);
 
+        girdi3.setMaximum(80);
         girdi3.setValue(20);
         SecimMenusu.add(girdi3);
 
         jLabel19.setBackground(new java.awt.Color(193, 142, 59));
         jLabel19.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel19.setText("Harita Gizli Altın Oranı");
+        jLabel19.setText("Harita Gizli Altın Oranı(Min:0 Max:50)");
         SecimMenusu.add(jLabel19);
 
         girdi4.setValue(10);
@@ -226,7 +223,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel20.setBackground(new java.awt.Color(193, 142, 59));
         jLabel20.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel20.setText("Oyuncu Başlangıç Altın Miktarı");
+        jLabel20.setText("Oyuncu Başlangıç Altın Miktarı(Min:0)");
         SecimMenusu.add(jLabel20);
 
         girdi5.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -236,7 +233,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel21.setBackground(new java.awt.Color(193, 142, 59));
         jLabel21.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel21.setText("Hamle Adım Sayısı");
+        jLabel21.setText("Hamle Adım Sayısı(Min:1)");
         SecimMenusu.add(jLabel21);
 
         girdi6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -246,7 +243,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel22.setBackground(new java.awt.Color(193, 142, 59));
         jLabel22.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel22.setText("Oyuncu A Hamle Maaliyeti");
+        jLabel22.setText("Oyuncu A Hamle Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel22);
 
         girdi7.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -256,7 +253,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel23.setBackground(new java.awt.Color(193, 142, 59));
         jLabel23.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel23.setText("Oyuncu A Hedef Belirleme Maaliyeti");
+        jLabel23.setText("Oyuncu A Hedef Belirleme Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel23);
 
         girdi8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -266,7 +263,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel24.setBackground(new java.awt.Color(193, 142, 59));
         jLabel24.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel24.setText("Oyuncu B Hamle Maaliyeti");
+        jLabel24.setText("Oyuncu B Hamle Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel24);
 
         girdi9.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -276,7 +273,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel25.setBackground(new java.awt.Color(193, 142, 59));
         jLabel25.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel25.setText("Oyuncu B Hedef Belirleme Maaliyeti");
+        jLabel25.setText("Oyuncu B Hedef Belirleme Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel25);
 
         girdi10.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -286,7 +283,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel26.setBackground(new java.awt.Color(193, 142, 59));
         jLabel26.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel26.setText("Oyuncu C Hamle Maaliyeti");
+        jLabel26.setText("Oyuncu C Hamle Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel26);
 
         girdi11.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -296,7 +293,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel27.setBackground(new java.awt.Color(193, 142, 59));
         jLabel27.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel27.setText("Oyuncu C Hedef Belirleme Maaliyeti");
+        jLabel27.setText("Oyuncu C Hedef Belirleme Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel27);
 
         girdi12.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -306,7 +303,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel28.setBackground(new java.awt.Color(193, 142, 59));
         jLabel28.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel28.setText("Oyuncu C Gizli Altın Açma Sayısı");
+        jLabel28.setText("Oyuncu C Gizli Altın Açma Sayısı(Min:0)");
         SecimMenusu.add(jLabel28);
 
         girdi13.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -316,7 +313,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel29.setBackground(new java.awt.Color(193, 142, 59));
         jLabel29.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel29.setText("Oyuncu D Hamle Maaliyeti");
+        jLabel29.setText("Oyuncu D Hamle Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel29);
 
         girdi14.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -326,7 +323,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jLabel30.setBackground(new java.awt.Color(193, 142, 59));
         jLabel30.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        jLabel30.setText("Oyuncu D Hedef Belirleme Maaliyeti");
+        jLabel30.setText("Oyuncu D Hedef Belirleme Maaliyeti(Min:0)");
         SecimMenusu.add(jLabel30);
 
         girdi15.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
@@ -335,9 +332,9 @@ public class SecimEkrani extends javax.swing.JPanel {
         girdi15.setToolTipText("");
         SecimMenusu.add(girdi15);
 
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Oyun Ayarlari");
+        jLabel1.setText("Altın Toplama Oyunu");
 
         jButton1.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jButton1.setText("Oyunu Başlat");
@@ -349,30 +346,46 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jButton2.setText("Çıkış");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Hata Mesajları");
+        jLabel2.setText("Yanlış deger girdilerinde sınır degerler atanır. Dosyalar oyun sonu yazdırılır.");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Özge Poyraz - Burak Can Temizel");
+
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Oyun hızını sliderı sola kaydırarak arttırabilirsiniz.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(336, Short.MAX_VALUE)
+                .addContainerGap(382, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(SecimMenusu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(336, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(64, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SecimMenusu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,51 +395,126 @@ public class SecimEkrani extends javax.swing.JPanel {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         //Değer atamalari
-        Sabitler.HARITA_SUTUN = Integer.parseInt(girdi1.getText());
-        Sabitler.HARITA_SATIR = Integer.parseInt(girdi2.getText());;
-        Sabitler.ALTIN_ORANI = girdi3.getValue();
-        Sabitler.GIZLI_ALTIN_ORANI = girdi4.getValue();
-        Sabitler.OYUNCU_ALTIN_MIKTARI = Integer.parseInt(girdi5.getText());;
-        Sabitler.HAMLE_ADIM_SAYISI = Integer.parseInt(girdi6.getText());;
-        Sabitler.OYUNCU_A_HAMLE_MAALIYET = Integer.parseInt(girdi7.getText());;
-        Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi8.getText());;
-        Sabitler.OYUNCU_B_HAMLE_MAALIYET = Integer.parseInt(girdi9.getText());;
-        Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi10.getText());;
-        Sabitler.OYUNCU_C_HAMLE_MAALIYET = Integer.parseInt(girdi11.getText());;
-        Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi12.getText());;
-        Sabitler.OYUNCU_C_ACILACAK_GIZLI_ALTIN_SAYISI = Integer.parseInt(girdi13.getText());;
-        Sabitler.OYUNCU_D_HAMLE_MAALIYET = Integer.parseInt(girdi14.getText());;
-        Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi15.getText());;
-        
-        //Burada oyun nesnesi oluşacak
-        Oyun oyun = new Oyun();
+
+        try {
+            if (Integer.parseInt(girdi1.getText()) < 5) {
+                girdi1.setText("5");
+            }
+            if (Integer.parseInt(girdi1.getText()) > 100) {
+                girdi1.setText("100");
+            }
+            Sabitler.HARITA_SUTUN = Integer.parseInt(girdi1.getText());
+
+            if (Integer.parseInt(girdi2.getText()) < 5) {
+                girdi2.setText("5");
+            }
+            if (Integer.parseInt(girdi2.getText()) > 100) {
+                girdi2.setText("100");
+            }
+            Sabitler.HARITA_SATIR = Integer.parseInt(girdi2.getText());
+
+            //Kendinden ayarli
+            Sabitler.ALTIN_ORANI = girdi3.getValue();
+            Sabitler.GIZLI_ALTIN_ORANI = girdi4.getValue();
+
+            if (Integer.parseInt(girdi5.getText()) < 0) {
+                girdi5.setText("0");
+            }
+            Sabitler.OYUNCU_ALTIN_MIKTARI = Integer.parseInt(girdi5.getText());;
+            
+            if (Integer.parseInt(girdi6.getText()) < 1) {
+                girdi6.setText("1");
+            }
+            Sabitler.HAMLE_ADIM_SAYISI = Integer.parseInt(girdi6.getText());;
+            
+            if (Integer.parseInt(girdi7.getText()) < 0) {
+                girdi7.setText("0");
+            }
+            Sabitler.OYUNCU_A_HAMLE_MAALIYET = Integer.parseInt(girdi7.getText());;
+            
+            if (Integer.parseInt(girdi8.getText()) < 0) {
+                girdi8.setText("0");
+            }
+            Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi8.getText());;
+            
+            if (Integer.parseInt(girdi9.getText()) < 0) {
+                girdi9.setText("0");
+            }
+            Sabitler.OYUNCU_B_HAMLE_MAALIYET = Integer.parseInt(girdi9.getText());;
+            
+            if (Integer.parseInt(girdi10.getText()) < 0) {
+                girdi10.setText("0");
+            }
+            Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi10.getText());;
+            
+            if (Integer.parseInt(girdi11.getText()) < 0) {
+                girdi11.setText("0");
+            }
+            Sabitler.OYUNCU_C_HAMLE_MAALIYET = Integer.parseInt(girdi11.getText());;
+            
+            if (Integer.parseInt(girdi12.getText()) < 0) {
+                girdi12.setText("0");
+            }
+            Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi12.getText());;
+            
+            if (Integer.parseInt(girdi13.getText()) < 0) {
+                girdi13.setText("0");
+            }
+            Sabitler.OYUNCU_C_ACILACAK_GIZLI_ALTIN_SAYISI = Integer.parseInt(girdi13.getText());;
+            
+            if (Integer.parseInt(girdi14.getText()) < 0) {
+                girdi14.setText("0");
+            }
+            Sabitler.OYUNCU_D_HAMLE_MAALIYET = Integer.parseInt(girdi14.getText());;
+            
+            if (Integer.parseInt(girdi15.getText()) < 0) {
+                girdi15.setText("0");
+            }
+            Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET = Integer.parseInt(girdi15.getText());;
+
+            //Burada oyun nesnesi oluşacak
+            Oyun oyun = new Oyun();
             oyun.setPreferredSize(new Dimension(Oyun.pencereGenislik, Oyun.pencereYukseklik));
-            
+
             AnaSinif.pencere.add(oyun);
-            
+
             AnaSinif.pencere.pack();
             AnaSinif.pencere.setResizable(true);
             AnaSinif.pencere.setVisible(true);
             AnaSinif.pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             AnaSinif.pencere.setLocationRelativeTo(null);
-            
-            AnaSinif.pencere.addComponentListener(new ComponentAdapter( ) {
+
+            AnaSinif.pencere.addComponentListener(new ComponentAdapter() {
                 public void componentResized(ComponentEvent ev) {
-                Oyun.pencereGenislik = oyun.getWidth();
-                Oyun.pencereYukseklik = oyun.getHeight();
+                    Oyun.pencereGenislik = oyun.getWidth();
+                    Oyun.pencereYukseklik = oyun.getHeight();
+                    //oyun.oyunHizi.setBounds(pencereGenislik/2 - 60, pencereYukseklik - 25, 120, 30);
                 }
             });
-            
+
             arkaplanDongu.stop();
             AnaSinif.pencere.remove(this);
+        } catch (Exception ex) {
+
+        }
+
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -464,12 +552,9 @@ public class SecimEkrani extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
-
-    
-    
-    
-    
 
 }

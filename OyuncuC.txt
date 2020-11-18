@@ -1,0 +1,259 @@
+Tur : 1
+Gizli altin aciga cikarildi. x: 6 y: 19
+Gizli altin aciga cikarildi. x: 9 y: 17
+En karlý hedef belirlendi. Hedef kare x: 3 y: 16
+Hedefin uzakligi: 6.0 hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 15 kalan altin: 185
+Hamle Maaliyeti: 5 kalan altin: 180
+x: 0 y: 18konumuna hareket etti. 
+x: 0 y: 17konumuna hareket etti. 
+x: 0 y: 16konumuna hareket etti. 
+Tur : 2
+Gizli altin aciga cikarildi. x: 2 y: 0
+Gizli altin aciga cikarildi. x: 6 y: 3
+Hamle Maaliyeti: 5 kalan altin: 175
+x: 1 y: 16konumuna hareket etti. 
+x: 2 y: 16konumuna hareket etti. 
+x: 3 y: 16konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 195
+En karlý hedef belirlendi. Hedef kare x: 3 y: 15
+Hedefin uzakligi: 1.0 hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 15 kalan altin: 180
+Tur : 3
+Gizli altin aciga cikarildi. x: 4 y: 0
+Gizli altin aciga cikarildi. x: 15 y: 9
+Hamle Maaliyeti: 5 kalan altin: 175
+x: 3 y: 15konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 195
+En karlý hedef belirlendi. Hedef kare x: 6 y: 15
+Hedefin uzakligi: 3.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 180
+Tur : 4
+Gizli altin aciga cikarildi. x: 9 y: 2
+Gizli altin aciga cikarildi. x: 11 y: 1
+Hamle Maaliyeti: 5 kalan altin: 175
+x: 4 y: 15konumuna hareket etti. 
+x: 5 y: 15konumuna hareket etti. 
+x: 6 y: 15konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 190
+En karlý hedef belirlendi. Hedef kare x: 6 y: 17
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 175
+Tur : 5
+Hamle Maaliyeti: 5 kalan altin: 170
+x: 6 y: 16konumuna hareket etti. 
+x: 6 y: 17konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 185
+En karlý hedef belirlendi. Hedef kare x: 6 y: 19
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 170
+Tur : 6
+Hamle Maaliyeti: 5 kalan altin: 165
+x: 6 y: 18konumuna hareket etti. 
+x: 6 y: 19konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 180
+En karlý hedef belirlendi. Hedef kare x: 5 y: 18
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 165
+Tur : 7
+Hamle Maaliyeti: 5 kalan altin: 160
+x: 5 y: 19konumuna hareket etti. 
+x: 5 y: 18konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 175
+En karlý hedef belirlendi. Hedef kare x: 4 y: 17
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 160
+Tur : 8
+Hamle Maaliyeti: 5 kalan altin: 155
+x: 4 y: 18konumuna hareket etti. 
+x: 4 y: 17konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 170
+En karlý hedef belirlendi. Hedef kare x: 5 y: 19
+Hedefin uzakligi: 3.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 155
+Tur : 9
+Hamle Maaliyeti: 5 kalan altin: 150
+x: 4 y: 18konumuna hareket etti. 
+x: 4 y: 19konumuna hareket etti. 
+x: 5 y: 19konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 160
+En karlý hedef belirlendi. Hedef kare x: 7 y: 19
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 145
+Tur : 10
+Hamle Maaliyeti: 5 kalan altin: 140
+x: 6 y: 19konumuna hareket etti. 
+x: 7 y: 19konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 150
+En karlý hedef belirlendi. Hedef kare x: 9 y: 19
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 135
+Tur : 11
+Hamle Maaliyeti: 5 kalan altin: 130
+x: 8 y: 19konumuna hareket etti. 
+x: 9 y: 19konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 140
+En karlý hedef belirlendi. Hedef kare x: 9 y: 17
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 125
+Tur : 12
+Hamle Maaliyeti: 5 kalan altin: 120
+x: 9 y: 18konumuna hareket etti. 
+x: 9 y: 17konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 135
+En karlý hedef belirlendi. Hedef kare x: 11 y: 15
+Hedefin uzakligi: 4.0 hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 15 kalan altin: 120
+Tur : 13
+Hamle Maaliyeti: 5 kalan altin: 115
+x: 9 y: 16konumuna hareket etti. 
+x: 9 y: 15konumuna hareket etti. 
+x: 10 y: 15konumuna hareket etti. 
+Tur : 14
+Hamle Maaliyeti: 5 kalan altin: 110
+x: 11 y: 15konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 130
+En karlý hedef belirlendi. Hedef kare x: 13 y: 16
+Hedefin uzakligi: 3.0 hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 15 kalan altin: 115
+Tur : 15
+Hamle Maaliyeti: 5 kalan altin: 110
+x: 11 y: 16konumuna hareket etti. 
+x: 12 y: 16konumuna hareket etti. 
+x: 13 y: 16konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 130
+En karlý hedef belirlendi. Hedef kare x: 14 y: 17
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 15 kalan altin: 115
+Tur : 16
+Hamle Maaliyeti: 5 kalan altin: 110
+x: 13 y: 17konumuna hareket etti. 
+x: 14 y: 17konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 130
+En karlý hedef belirlendi. Hedef kare x: 16 y: 17
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 115
+Tur : 17
+Hamle Maaliyeti: 5 kalan altin: 110
+x: 15 y: 17konumuna hareket etti. 
+x: 16 y: 17konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 120
+En karlý hedef belirlendi. Hedef kare x: 17 y: 18
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 105
+Tur : 18
+Hamle Maaliyeti: 5 kalan altin: 100
+x: 16 y: 18konumuna hareket etti. 
+x: 17 y: 18konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 110
+En karlý hedef belirlendi. Hedef kare x: 14 y: 12
+Hedefin uzakligi: 9.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 95
+Tur : 19
+Hamle Maaliyeti: 5 kalan altin: 90
+x: 16 y: 18konumuna hareket etti. 
+x: 15 y: 18konumuna hareket etti. 
+x: 14 y: 18konumuna hareket etti. 
+Tur : 20
+Hamle Maaliyeti: 5 kalan altin: 85
+x: 14 y: 17konumuna hareket etti. 
+x: 14 y: 16konumuna hareket etti. 
+x: 14 y: 15konumuna hareket etti. 
+Tur : 21
+Hamle Maaliyeti: 5 kalan altin: 80
+x: 14 y: 14konumuna hareket etti. 
+x: 14 y: 13konumuna hareket etti. 
+x: 14 y: 12konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 95
+En karlý hedef belirlendi. Hedef kare x: 12 y: 13
+Hedefin uzakligi: 3.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 80
+Tur : 22
+Hamle Maaliyeti: 5 kalan altin: 75
+x: 13 y: 12konumuna hareket etti. 
+x: 12 y: 12konumuna hareket etti. 
+x: 12 y: 13konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 90
+En karlý hedef belirlendi. Hedef kare x: 10 y: 13
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 75
+Tur : 23
+Hamle Maaliyeti: 5 kalan altin: 70
+x: 11 y: 13konumuna hareket etti. 
+x: 10 y: 13konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 85
+En karlý hedef belirlendi. Hedef kare x: 11 y: 13
+Hedefin uzakligi: 1.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 70
+Tur : 24
+Hamle Maaliyeti: 5 kalan altin: 65
+x: 11 y: 13konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 75
+En karlý hedef belirlendi. Hedef kare x: 11 y: 11
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 60
+Tur : 25
+Hamle Maaliyeti: 5 kalan altin: 55
+x: 11 y: 12konumuna hareket etti. 
+x: 11 y: 11konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 65
+En karlý hedef belirlendi. Hedef kare x: 13 y: 12
+Hedefin uzakligi: 3.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 50
+Tur : 26
+Hamle Maaliyeti: 5 kalan altin: 45
+x: 11 y: 12konumuna hareket etti. 
+x: 12 y: 12konumuna hareket etti. 
+x: 13 y: 12konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 55
+En karlý hedef belirlendi. Hedef kare x: 16 y: 12
+Hedefin uzakligi: 3.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 40
+Tur : 27
+Hamle Maaliyeti: 5 kalan altin: 35
+x: 14 y: 12konumuna hareket etti. 
+x: 15 y: 12konumuna hareket etti. 
+x: 16 y: 12konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 45
+En karlý hedef belirlendi. Hedef kare x: 15 y: 13
+Hedefin uzakligi: 2.0 hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 15 kalan altin: 30
+Tur : 28
+Hamle Maaliyeti: 5 kalan altin: 25
+x: 15 y: 12konumuna hareket etti. 
+x: 15 y: 13konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 35
+En karlý hedef belirlendi. Hedef kare x: 12 y: 12
+Hedefin uzakligi: 4.0 hedefteki altin miktari: 5
+Hedef Belirleme Maaliyeti: 15 kalan altin: 20
+Tur : 29
+Hamle Maaliyeti: 5 kalan altin: 15
+x: 14 y: 13konumuna hareket etti. 
+x: 13 y: 13konumuna hareket etti. 
+x: 12 y: 13konumuna hareket etti. 
+Tur : 30
+Hamle Maaliyeti: 5 kalan altin: 10
+x: 12 y: 12konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 15
+En karlý hedef belirlendi. Hedef kare x: 1 y: 11
+Hedefin uzakligi: 12.0 hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 15 kalan altin: 0
+Tur : 31
+Tur : 32
+Tur : 33
+Tur : 34
+Tur : 35
+Tur : 36
+Tur : 37
+Tur : 38
+Tur : 39
+Tur : 40
+Tur : 41
+Tur : 42
+Tur : 43
+Tur : 44
+Tur : 45
+Tur : 46
+Tur : 47
+Tur : 48
+Tur : 49

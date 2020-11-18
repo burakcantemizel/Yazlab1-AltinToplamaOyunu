@@ -1,7 +1,9 @@
 package com.ozgeburak.yazilimlaboratuvari1;
 
 import com.ozgeburak.yazilimlaboratuvari1.AStar;
+import static com.ozgeburak.yazilimlaboratuvari1.AnaSinif.pencere;
 import com.ozgeburak.yazilimlaboratuvari1.Dugum;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -23,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
@@ -46,7 +49,7 @@ public class Oyun extends JPanel {
     static FileWriter fwOyuncuA, fwOyuncuB, fwOyuncuC, fwOyuncuD;
     static BufferedWriter writerOyuncuA, writerOyuncuB, writerOyuncuC, writerOyuncuD;
 
-    private JSlider oyunHizi;
+    public JSlider oyunHizi;
     private int tur;
 
     static BufferedImage resimAcik = null;
@@ -116,8 +119,11 @@ public class Oyun extends JPanel {
         oyunHizi = new JSlider(1, 1000, 1);
         oyunHizi.setValue(300);
 
-        //Slider pozisyonu ayarlanacak -------------------------------------------------------------------------------------------------------------------------------------------
-        oyunHizi.setBounds(Sabitler.OYUN_GENISLIK - 120, Sabitler.OYUN_YUKSEKLIK - 60, 120, 30);
+        
+        //AnaSinif.pencere.add(oyunHizi);
+        //oyunHizi.setLocation(pencereGenislik/2, pencereYukseklik - 20);
+        //this.add(oyunHizi, BorderLayout.SOUTH);
+        oyunHizi.setBounds(pencereGenislik / 2 - 100, 0, 200, 30);
         this.add(oyunHizi);
 
         //Arkaplan
@@ -155,6 +161,8 @@ public class Oyun extends JPanel {
                             oyuncuA.altin -= Sabitler.OYUNCU_A_HAMLE_MAALIYET;
                             oyuncuA.harcananAltin += Sabitler.OYUNCU_A_HAMLE_MAALIYET;
                             fwOyuncuA.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_A_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuA.altin) + "\n");
+                            Thread.sleep(oyunHizi.getValue());
+                            this.repaint();
                         } else {
                             oyuncuA.yasiyor = false;
                         }
@@ -205,7 +213,9 @@ public class Oyun extends JPanel {
                                         harita.altinOlanKareler.remove(kare);
                                         //altin miktarini oyuncuya ekleyecegiz
                                         oyunSonuKontrol();
+                                        this.repaint();
                                         Thread.sleep(oyunHizi.getValue());
+                                        
                                         break;
                                     }
                                 }
@@ -276,6 +286,8 @@ public class Oyun extends JPanel {
                             oyuncuB.altin -= Sabitler.OYUNCU_B_HAMLE_MAALIYET;
                             oyuncuB.harcananAltin += Sabitler.OYUNCU_B_HAMLE_MAALIYET;
                             fwOyuncuB.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_B_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuB.altin) + "\n");
+                            Thread.sleep(oyunHizi.getValue());
+                            this.repaint();
                         } else {
                             oyuncuB.yasiyor = false;
                         }
@@ -320,6 +332,7 @@ public class Oyun extends JPanel {
                                         kare.altin = false;
                                         fwOyuncuB.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuB.altin + "\n");
                                         harita.altinOlanKareler.remove(kare);
+                                        this.repaint();
                                         Thread.sleep(oyunHizi.getValue());
                                         oyunSonuKontrol();
                                         break;
@@ -392,6 +405,8 @@ public class Oyun extends JPanel {
                             oyuncuC.altin -= Sabitler.OYUNCU_C_HAMLE_MAALIYET;
                             oyuncuC.harcananAltin += Sabitler.OYUNCU_C_HAMLE_MAALIYET;
                             fwOyuncuC.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_C_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuC.altin) + "\n");
+                            Thread.sleep(oyunHizi.getValue());
+                            this.repaint();
                         } else {
                             oyuncuC.yasiyor = false;
                         }
@@ -435,6 +450,7 @@ public class Oyun extends JPanel {
                                         kare.altin = false;
                                         fwOyuncuC.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuC.altin + "\n");
                                         harita.altinOlanKareler.remove(kare);
+                                        this.repaint();
                                         Thread.sleep(oyunHizi.getValue());
                                         oyunSonuKontrol();
                                         break;
@@ -503,6 +519,8 @@ public class Oyun extends JPanel {
                             oyuncuD.altin -= Sabitler.OYUNCU_D_HAMLE_MAALIYET;
                             oyuncuD.harcananAltin += Sabitler.OYUNCU_D_HAMLE_MAALIYET;
                             fwOyuncuD.write("Hamle Maaliyeti: " + Sabitler.OYUNCU_D_HAMLE_MAALIYET + " kalan altin: " + Integer.toString(oyuncuD.altin) + "\n");
+                            Thread.sleep(oyunHizi.getValue());
+                            this.repaint();
                         } else {
                             oyuncuD.yasiyor = false;
                         }
@@ -548,7 +566,9 @@ public class Oyun extends JPanel {
                                         kare.altin = false;
                                         fwOyuncuD.write("Altin toplandi. Toplanan Altin Miktari: " + kare.altinMiktari + " kalan altin: " + oyuncuD.altin + "\n");
                                         harita.altinOlanKareler.remove(kare);
+                                        
                                         oyunSonuKontrol();
+                                        this.repaint();
                                         Thread.sleep(oyunHizi.getValue());
                                         break;
                                     }
@@ -600,7 +620,42 @@ public class Oyun extends JPanel {
         }
 
         this.repaint();
-
+        
+        if(oyunSonu == true){
+            
+            OyunSonuTablosu tablo = new OyunSonuTablosu();
+            tablo.cikti1.setText(Integer.toString(oyuncuA.adimSayisi));
+            tablo.cikti2.setText(Integer.toString(oyuncuA.altin));
+            tablo.cikti3.setText(Integer.toString(oyuncuA.harcananAltin));
+            tablo.cikti4.setText(Integer.toString(oyuncuA.toplananAltin));
+            
+            tablo.cikti5.setText(Integer.toString(oyuncuB.adimSayisi));
+            tablo.cikti6.setText(Integer.toString(oyuncuB.altin));
+            tablo.cikti7.setText(Integer.toString(oyuncuB.harcananAltin));
+            tablo.cikti8.setText(Integer.toString(oyuncuB.toplananAltin));
+            
+            tablo.cikti9.setText(Integer.toString(oyuncuC.adimSayisi));
+            tablo.cikti10.setText(Integer.toString(oyuncuC.altin));
+            tablo.cikti11.setText(Integer.toString(oyuncuC.harcananAltin));
+            tablo.cikti12.setText(Integer.toString(oyuncuC.toplananAltin));
+            
+            tablo.cikti13.setText(Integer.toString(oyuncuD.adimSayisi));
+            tablo.cikti14.setText(Integer.toString(oyuncuD.altin));
+            tablo.cikti15.setText(Integer.toString(oyuncuD.harcananAltin));
+            tablo.cikti16.setText(Integer.toString(oyuncuD.toplananAltin));
+            
+            
+            
+            AnaSinif.pencere.add(tablo);
+            AnaSinif.pencere.pack();
+            AnaSinif.pencere.setResizable(false);
+            AnaSinif.pencere.setVisible(true);
+            AnaSinif.pencere.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            AnaSinif.pencere.setLocationRelativeTo(null);
+            
+            AnaSinif.pencere.remove(this);
+            oyunDongusu.stop();
+        }
     }
 
     @Override
@@ -686,7 +741,10 @@ public class Oyun extends JPanel {
             g2d.translate(-kaymaX, -kaymaY);
 
             BilgiGoster(g2d);
-        } else {
+        }
+        /*
+        else {
+            
             g2d.drawString("Oyun bitti ", 100, 100);
 
             g2d.drawString("OyuncuA adım" + Integer.toString(oyuncuA.adimSayisi)
@@ -703,6 +761,7 @@ public class Oyun extends JPanel {
                     + " toplanan " + Integer.toString(oyuncuD.toplananAltin) + "\n", 100, 500);
 
         }
+        */
 
     }
 
@@ -712,25 +771,28 @@ public class Oyun extends JPanel {
         //Bilgileri ekrana çizen fonksiyon
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.PLAIN, 15));
+        
+        //g.drawString("Oyun Hızı", pencereGenislik / 2 - 200, 30);
+        
         if (oyuncuA != null && oyuncuA.altin > 0) {
-            g.drawString("Oyuncu A altın: " + oyuncuA.altin, pencereGenislik - 200, 20);
+            g.drawString("Oyuncu A altın: " + oyuncuA.altin, 10, 20);
         } else {
-            g.drawString("Oyuncu A altını bitti ve elendi.", pencereGenislik - 200, 20);
+            g.drawString("Oyuncu A elendi.", 10, 20);
         }
         if (oyuncuB != null && oyuncuB.altin > 0) {
-            g.drawString("Oyuncu B altın: " + oyuncuB.altin, pencereGenislik - 200, 40);
+            g.drawString("Oyuncu B altın: " + oyuncuB.altin, 10, 40);
         } else {
-            g.drawString("Oyuncu B altını bitti ve elendi.", pencereGenislik - 200, 40);
+            g.drawString("Oyuncu B elendi.", 10, 40);
         }
         if (oyuncuC != null && oyuncuC.altin > 0) {
-            g.drawString("Oyuncu C altın: " + oyuncuC.altin, pencereGenislik - 200, 60);
+            g.drawString("Oyuncu C altın: " + oyuncuC.altin, 10, 60);
         } else {
-            g.drawString("Oyuncu C altını bitti ve elendi.", pencereGenislik - 200, 60);
+            g.drawString("Oyuncu C elendi.", 10, 60);
         }
         if (oyuncuD != null && oyuncuD.altin > 0) {
-            g.drawString("Oyuncu D altın: " + oyuncuD.altin, pencereGenislik - 200, 80);
+            g.drawString("Oyuncu D altın: " + oyuncuD.altin, 10, 80);
         } else {
-            g.drawString("Oyuncu D altını bitti ve elendi.", pencereGenislik - 200, 80);
+            g.drawString("Oyuncu D elendi.", 10, 80);
         }
     }
 
@@ -743,7 +805,7 @@ public class Oyun extends JPanel {
             }
         }
 
-        if (kalanaltin <= 0) {
+        if (kalanaltin <= 0 || oyuncuA.yasiyor == false && oyuncuB.yasiyor == false && oyuncuC.yasiyor == false && oyuncuD.yasiyor == false) {
             this.repaint();
             Thread.sleep(300 * 3);
             oyunSonu = true;
@@ -752,20 +814,6 @@ public class Oyun extends JPanel {
             fwOyuncuC.close();
             fwOyuncuD.close();
             System.out.println("Oyun bitti");
-            oyuncuA.yasiyor = false;
-            oyuncuB.yasiyor = false;
-            oyuncuC.yasiyor = false;
-            oyuncuD.yasiyor = false;
-            return true;
-        } else if (oyuncuA.yasiyor == false && oyuncuB.yasiyor == false && oyuncuC.yasiyor == false && oyuncuD.yasiyor == false) {
-            this.repaint();
-            Thread.sleep(300 * 3);
-            oyunSonu = true;
-            fwOyuncuA.close();
-            fwOyuncuB.close();
-            fwOyuncuC.close();
-            fwOyuncuD.close();
-            System.out.println("Oyun bitti 2");
             oyuncuA.yasiyor = false;
             oyuncuB.yasiyor = false;
             oyuncuC.yasiyor = false;

@@ -5,17 +5,46 @@
  */
 package com.ozgeburak.yazilimlaboratuvari1;
 
+import static com.ozgeburak.yazilimlaboratuvari1.SecimEkrani.menuArkaplan;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author burak
  */
 public class OyunSonuTablosu extends javax.swing.JPanel {
-
+    BufferedImage menuArkaplan;
     /**
      * Creates new form OyunSonuTablosu
      */
-    public OyunSonuTablosu() {
-        initComponents();
+    public OyunSonuTablosu() throws IOException {
+        
+            initComponents();
+            
+            
+            
+            menuArkaplan = ImageIO.read(new File("kaynaklar/MenuArkasi.png"));
+            
+            this.setBackground(new Color(141, 183, 242));
+       
+    }
+    
+    @Override
+    public void paintComponent(Graphics g){
+         super.paintComponent(g);
+        
+        int offset = 10;
+        
+        g.drawImage(menuArkaplan, ciktiTablosu.getX() - offset, ciktiTablosu.getY() - offset,
+                ciktiTablosu.getX() + ciktiTablosu.getWidth() + offset, ciktiTablosu.getY() + ciktiTablosu.getHeight() + offset,
+                0, 0, menuArkaplan.getWidth(), menuArkaplan.getHeight(), null);
     }
 
     /**
@@ -27,178 +56,234 @@ public class OyunSonuTablosu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        ciktiTablosu = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        cikti1 = new javax.swing.JLabel();
+        cikti2 = new javax.swing.JLabel();
+        cikti3 = new javax.swing.JLabel();
+        cikti4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        cikti5 = new javax.swing.JLabel();
+        cikti6 = new javax.swing.JLabel();
+        cikti7 = new javax.swing.JLabel();
+        cikti8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        cikti9 = new javax.swing.JLabel();
+        cikti10 = new javax.swing.JLabel();
+        cikti11 = new javax.swing.JLabel();
+        cikti12 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        cikti13 = new javax.swing.JLabel();
+        cikti14 = new javax.swing.JLabel();
+        cikti15 = new javax.swing.JLabel();
+        cikti16 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(436, 430));
-        jPanel1.setLayout(new java.awt.GridLayout(5, 5));
-        jPanel1.add(jLabel4);
+        ciktiTablosu.setOpaque(false);
+        ciktiTablosu.setPreferredSize(new java.awt.Dimension(436, 430));
+        ciktiTablosu.setLayout(new java.awt.GridLayout(5, 5));
+
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel4);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Adım Sayısı");
-        jPanel1.add(jLabel3);
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel3);
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Kalan Altın");
-        jPanel1.add(jLabel9);
+        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel9);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Toplanan Altın");
-        jPanel1.add(jLabel10);
+        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel10);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Harcanan Altın");
-        jPanel1.add(jLabel2);
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel2);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("A Oyuncusu");
-        jPanel1.add(jLabel1);
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel1);
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("jLabel5");
-        jPanel1.add(jLabel5);
+        cikti1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti1.setText("cikti1");
+        cikti1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti1);
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("jLabel6");
-        jPanel1.add(jLabel6);
+        cikti2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti2.setText("cikti2");
+        cikti2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti2);
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("jLabel7");
-        jPanel1.add(jLabel7);
+        cikti3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti3.setText("cikti3");
+        cikti3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti3);
 
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("jLabel8");
-        jPanel1.add(jLabel8);
+        cikti4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti4.setText("cikti4");
+        cikti4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti4);
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("B Oyuncusu");
-        jPanel1.add(jLabel11);
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel11);
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("jLabel13");
-        jPanel1.add(jLabel13);
+        cikti5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti5.setText("cikti5");
+        cikti5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti5);
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("jLabel14");
-        jPanel1.add(jLabel14);
+        cikti6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti6.setText("cikti6");
+        cikti6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti6);
 
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("jLabel15");
-        jPanel1.add(jLabel15);
+        cikti7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti7.setText("cikti7");
+        cikti7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti7);
 
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("jLabel16");
-        jPanel1.add(jLabel16);
+        cikti8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti8.setText("cikti8");
+        cikti8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti8);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("C Oyuncusu");
-        jPanel1.add(jLabel12);
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel12);
 
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("jLabel18");
-        jPanel1.add(jLabel18);
+        cikti9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti9.setText("cikti9");
+        cikti9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti9);
 
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("jLabel19");
-        jPanel1.add(jLabel19);
+        cikti10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti10.setText("cikti10");
+        cikti10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti10);
 
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("jLabel20");
-        jPanel1.add(jLabel20);
+        cikti11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti11.setText("cikti11");
+        cikti11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti11);
 
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("jLabel21");
-        jPanel1.add(jLabel21);
+        cikti12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti12.setText("cikti12");
+        cikti12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti12);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("D Oyuncusu");
-        jPanel1.add(jLabel17);
+        jLabel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(jLabel17);
 
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("jLabel22");
-        jPanel1.add(jLabel22);
+        cikti13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti13.setText("cikti13");
+        cikti13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti13);
 
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("jLabel23");
-        jPanel1.add(jLabel23);
+        cikti14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti14.setText("cikti14");
+        cikti14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti14);
 
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("jLabel24");
-        jPanel1.add(jLabel24);
+        cikti15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti15.setText("cikti15");
+        cikti15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti15);
 
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("jLabel25");
-        jPanel1.add(jLabel25);
+        cikti16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cikti16.setText("cikti16");
+        cikti16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ciktiTablosu.add(cikti16);
+
+        jButton1.setText("Çıkış");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Ciktilar dosyalara yazdirildi.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ciktiTablosu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(333, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(ciktiTablosu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel cikti1;
+    public javax.swing.JLabel cikti10;
+    public javax.swing.JLabel cikti11;
+    public javax.swing.JLabel cikti12;
+    public javax.swing.JLabel cikti13;
+    public javax.swing.JLabel cikti14;
+    public javax.swing.JLabel cikti15;
+    public javax.swing.JLabel cikti16;
+    public javax.swing.JLabel cikti2;
+    public javax.swing.JLabel cikti3;
+    public javax.swing.JLabel cikti4;
+    public javax.swing.JLabel cikti5;
+    public javax.swing.JLabel cikti6;
+    public javax.swing.JLabel cikti7;
+    public javax.swing.JLabel cikti8;
+    public javax.swing.JLabel cikti9;
+    private javax.swing.JPanel ciktiTablosu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

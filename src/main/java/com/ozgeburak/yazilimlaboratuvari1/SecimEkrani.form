@@ -22,22 +22,24 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="336" max="32767" attributes="0"/>
+              <EmptySpace pref="382" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="SecimMenusu" max="32767" attributes="0"/>
                   <Component id="jLabel1" max="32767" attributes="0"/>
                   <Component id="jButton1" max="32767" attributes="0"/>
                   <Component id="jButton2" max="32767" attributes="0"/>
                   <Component id="jLabel2" max="32767" attributes="0"/>
+                  <Component id="jLabel3" max="32767" attributes="0"/>
+                  <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="336" max="32767" attributes="0"/>
+              <EmptySpace pref="382" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace pref="64" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="SecimMenusu" min="-2" max="-2" attributes="0"/>
@@ -47,7 +49,11 @@
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,7 +79,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Harita Yatay Kare Say&#x131;s&#x131;"/>
+            <Property name="text" type="java.lang.String" value="Harita Yatay Kare Say&#x131;s&#x131;(Min:5 Max:100)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi1">
@@ -93,7 +99,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Harita Dikey Kare Say&#x131;s&#x131;"/>
+            <Property name="text" type="java.lang.String" value="Harita Dikey Kare Say&#x131;s&#x131;(Min:5 Max:100)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi2">
@@ -113,12 +119,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Harita Alt&#x131;n Oran&#x131;"/>
+            <Property name="text" type="java.lang.String" value="Harita Alt&#x131;n Oran&#x131;(Min:0 Max:80)"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSlider" name="girdi3">
           <Properties>
+            <Property name="maximum" type="int" value="80"/>
             <Property name="value" type="int" value="20"/>
           </Properties>
         </Component>
@@ -130,7 +137,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Harita Gizli Alt&#x131;n Oran&#x131;"/>
+            <Property name="text" type="java.lang.String" value="Harita Gizli Alt&#x131;n Oran&#x131;(Min:0 Max:50)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSlider" name="girdi4">
@@ -146,7 +153,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu Ba&#x15f;lang&#x131;&#xe7; Alt&#x131;n Miktar&#x131;"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu Ba&#x15f;lang&#x131;&#xe7; Alt&#x131;n Miktar&#x131;(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi5">
@@ -166,7 +173,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hamle Ad&#x131;m Say&#x131;s&#x131;"/>
+            <Property name="text" type="java.lang.String" value="Hamle Ad&#x131;m Say&#x131;s&#x131;(Min:1)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi6">
@@ -186,7 +193,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu A Hamle Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu A Hamle Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi7">
@@ -206,7 +213,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu A Hedef Belirleme Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu A Hedef Belirleme Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi8">
@@ -226,7 +233,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu B Hamle Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu B Hamle Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi9">
@@ -246,7 +253,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu B Hedef Belirleme Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu B Hedef Belirleme Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi10">
@@ -266,7 +273,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu C Hamle Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu C Hamle Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi11">
@@ -286,7 +293,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu C Hedef Belirleme Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu C Hedef Belirleme Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi12">
@@ -306,7 +313,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu C Gizli Alt&#x131;n A&#xe7;ma Say&#x131;s&#x131;"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu C Gizli Alt&#x131;n A&#xe7;ma Say&#x131;s&#x131;(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi13">
@@ -326,7 +333,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu D Hamle Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu D Hamle Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi14">
@@ -346,7 +353,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Oyuncu D Hedef Belirleme Maaliyeti"/>
+            <Property name="text" type="java.lang.String" value="Oyuncu D Hedef Belirleme Maaliyeti(Min:0)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="girdi15">
@@ -364,10 +371,10 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tw Cen MT" size="14" style="1"/>
+          <Font name="Tw Cen MT" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Oyun Ayarlari"/>
+        <Property name="text" type="java.lang.String" value="Alt&#x131;n Toplama Oyunu"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -388,6 +395,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&#xc7;&#x131;k&#x131;&#x15f;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -398,7 +408,28 @@
           <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Hata Mesajlar&#x131;"/>
+        <Property name="text" type="java.lang.String" value="Yanl&#x131;&#x15f; deger girdilerinde s&#x131;n&#x131;r degerler atan&#x131;r. Dosyalar oyun sonu yazd&#x131;r&#x131;l&#x131;r."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="10" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="&#xd6;zge Poyraz - Burak Can Temizel"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tw Cen MT" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Oyun h&#x131;z&#x131;n&#x131; slider&#x131; sola kayd&#x131;rarak artt&#x131;rabilirsiniz."/>
       </Properties>
     </Component>
   </SubComponents>

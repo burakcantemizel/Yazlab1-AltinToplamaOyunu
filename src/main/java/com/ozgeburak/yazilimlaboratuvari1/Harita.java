@@ -56,7 +56,7 @@ public class Harita {
 
         //Karelerin %20 sine Altin Yerlestiricez.
         //Altinlari ve miktarlarini yerlestiriyoruz
-        for (float i = 0; i < toplamKareSayisi * (float) Sabitler.ALTIN_ORANI / 100.0f; i++) {
+        for (float i = 0; i < (float)toplamKareSayisi * ((float) Sabitler.ALTIN_ORANI / 100.0f ); i++) {
             int secilenKare = random.nextInt(toplamKareSayisi);
 
             if (kareler.get(secilenKare).altin == false && kareler.get(secilenKare).baslangicKaresi == false) {
@@ -79,7 +79,8 @@ public class Harita {
 
         //Altin olan karelerinde %10 unu gizli altina ceviriyoruz
         //Altinlarin %10 unda gizli Altin bulunacak
-        for (float i = 0; i < altinSayisi * (float) Sabitler.GIZLI_ALTIN_ORANI / 100.0f; i++) {
+        //Max %50 
+        for (float i = 0; i < (float)altinSayisi * ((float) Sabitler.GIZLI_ALTIN_ORANI / 100.0f); i++) {
             int secilenKare = random.nextInt(toplamKareSayisi);
 
             if (kareler.get(secilenKare).altin == true) {
@@ -102,6 +103,8 @@ public class Harita {
             }
         }
 
+        System.out.println(gizliAltinSayisi + " " + altinSayisi);
+        
         for (Kare kare : kareler) {
             if (kare.altin == true) {
                 altinOlanKareler.add(kare);
