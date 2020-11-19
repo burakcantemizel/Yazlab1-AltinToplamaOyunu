@@ -68,7 +68,7 @@ public class OyuncuA extends Oyuncu {
             }
 
             Oyun.fwOyuncuA.write("En yakın hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
-            Oyun.fwOyuncuA.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
+            Oyun.fwOyuncuA.write("hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
             this.altin -= Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET;
             this.harcananAltin += Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET;
             Oyun.fwOyuncuA.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_A_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");

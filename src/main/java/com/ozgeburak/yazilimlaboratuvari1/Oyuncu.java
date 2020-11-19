@@ -161,12 +161,13 @@ public class Oyuncu {
 
             if (oyuncu == "B" && this.hedefkare != null && this.hedefYol != null) {
                 Oyun.fwOyuncuB.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
-                Oyun.fwOyuncuB.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
+                Oyun.fwOyuncuB.write("Hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
                 Oyun.fwOyuncuB.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_B_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
             } else if (oyuncu == "C" && this.hedefkare != null && this.hedefYol != null) {
                 Oyun.fwOyuncuC.write("En karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
-
-                Oyun.fwOyuncuC.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
+                Oyun.fwOyuncuC.write("hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
+                System.out.println(this.hedefYol);
+                System.out.println(this.hedefAltin);
                 Oyun.fwOyuncuC.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_C_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
             }
         //}

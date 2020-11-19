@@ -185,7 +185,9 @@ public class OyuncuD extends Oyuncu {
             this.altin -= Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET;
             this.harcananAltin += Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET;
             Oyun.fwOyuncuD.write("Diger Oyuncuların Avantajlı oldugu kareler dahil edilmeden en karlı hedef belirlendi. Hedef kare x: " + this.hedefkare.x + " y: " + this.hedefkare.y + "\n");
-            Oyun.fwOyuncuD.write("Hedefin uzakligi: " + this.hedefYol.get(this.hedefYol.size() - 1).g + " hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
+            Oyun.fwOyuncuD.write("Hedefteki altin miktari: " + this.hedefAltin.altinMiktari + "\n");
+            System.out.println(this.hedefYol);
+            System.out.println(this.hedefAltin);
             Oyun.fwOyuncuD.write("Hedef Belirleme Maaliyeti: " + Sabitler.OYUNCU_D_HEDEF_BELIRLEME_MAALIYET + " kalan altin: " + Integer.toString(this.altin) + "\n");
         //}
     }
