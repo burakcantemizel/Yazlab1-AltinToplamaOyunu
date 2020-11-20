@@ -217,7 +217,6 @@ public class SecimEkrani extends javax.swing.JPanel {
         jLabel19.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel19.setText("Altınlarda Gizli Altın Oranı(Min:0 Max:100)");
         SecimMenusu.add(jLabel19);
-        jLabel19.getAccessibleContext().setAccessibleName("Altınlarda Gizli Altın Oranı(Min:0 Max:100)");
 
         girdi4.setValue(10);
         SecimMenusu.add(girdi4);
@@ -259,7 +258,7 @@ public class SecimEkrani extends javax.swing.JPanel {
 
         girdi8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         girdi8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        girdi8.setText("15");
+        girdi8.setText("5");
         SecimMenusu.add(girdi8);
 
         jLabel24.setBackground(new java.awt.Color(193, 142, 59));

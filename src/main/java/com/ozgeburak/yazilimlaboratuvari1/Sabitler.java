@@ -10,7 +10,7 @@ public class Sabitler {
     public static int OYUNCU_ALTIN_MIKTARI = 200;
     public static int HAMLE_ADIM_SAYISI = 3;
     public static int OYUNCU_A_HAMLE_MAALIYET = 5;
-    public static int OYUNCU_A_HEDEF_BELIRLEME_MAALIYET = 15;
+    public static int OYUNCU_A_HEDEF_BELIRLEME_MAALIYET = 5;
     public static int OYUNCU_B_HAMLE_MAALIYET = 5;
     public static int OYUNCU_B_HEDEF_BELIRLEME_MAALIYET = 10;
     public static int OYUNCU_C_HAMLE_MAALIYET = 5;
