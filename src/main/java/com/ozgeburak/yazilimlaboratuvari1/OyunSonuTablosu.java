@@ -105,12 +105,12 @@ public class OyunSonuTablosu extends javax.swing.JPanel {
         ciktiTablosu.add(jLabel9);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Toplanan Altın");
+        jLabel10.setText("Harcanan Altın");
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ciktiTablosu.add(jLabel10);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Harcanan Altın");
+        jLabel2.setText("Toplanan Altın");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ciktiTablosu.add(jLabel2);
 
@@ -221,13 +221,15 @@ public class OyunSonuTablosu extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setForeground(new java.awt.Color(204, 51, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ciktilar dosyalara yazdirildi.");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Altınlar Bitti ya da Oyuncular Elendi");
+        jLabel6.setText("Altınlar Bitti ya da Oyuncular Elendi!");
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Oyun Özeti");
 
@@ -253,7 +255,7 @@ public class OyunSonuTablosu extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
@@ -263,7 +265,7 @@ public class OyunSonuTablosu extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

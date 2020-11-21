@@ -1,0 +1,168 @@
+Tur : 1
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 18 y: 17
+Hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 20 kalan altin: 180
+Hamle Maaliyeti: 5 kalan altin: 175
+x: 18 y: 19 konumuna hareket etti. 
+x: 18 y: 18 konumuna hareket etti. 
+x: 18 y: 17 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 195
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 17 y: 18
+Hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 20 kalan altin: 175
+Tur : 2
+Hamle Maaliyeti: 5 kalan altin: 170
+x: 17 y: 17 konumuna hareket etti. 
+x: 17 y: 18 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 190
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 15 y: 17
+Hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 20 kalan altin: 170
+Tur : 3
+Hamle Maaliyeti: 5 kalan altin: 165
+x: 16 y: 18 konumuna hareket etti. 
+x: 15 y: 18 konumuna hareket etti. 
+x: 15 y: 17 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 180
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 14 y: 15
+Hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 20 kalan altin: 160
+Tur : 4
+Hamle Maaliyeti: 5 kalan altin: 155
+x: 14 y: 17 konumuna hareket etti. 
+x: 14 y: 16 konumuna hareket etti. 
+x: 14 y: 15 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 175
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 15 y: 13
+Hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 20 kalan altin: 155
+Tur : 5
+Hamle Maaliyeti: 5 kalan altin: 150
+x: 14 y: 14 konumuna hareket etti. 
+x: 14 y: 13 konumuna hareket etti. 
+x: 15 y: 13 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 165
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 18 y: 13
+Hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 20 kalan altin: 145
+Tur : 6
+Hamle Maaliyeti: 5 kalan altin: 140
+x: 16 y: 13 konumuna hareket etti. 
+x: 17 y: 13 konumuna hareket etti. 
+x: 18 y: 13 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 160
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 19 y: 11
+Hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 20 kalan altin: 140
+Tur : 7
+Hamle Maaliyeti: 5 kalan altin: 135
+x: 18 y: 12 konumuna hareket etti. 
+x: 18 y: 11 konumuna hareket etti. 
+x: 19 y: 11 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 155
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 17 y: 10
+Hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 20 kalan altin: 135
+Tur : 8
+Hamle Maaliyeti: 5 kalan altin: 130
+x: 18 y: 11 konumuna hareket etti. 
+x: 17 y: 11 konumuna hareket etti. 
+x: 17 y: 10 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 20 kalan altin: 150
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 15 y: 9
+Hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 20 kalan altin: 130
+Tur : 9
+Hamle Maaliyeti: 5 kalan altin: 125
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 17 y: 7
+Hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 20 kalan altin: 105
+x: 17 y: 9 konumuna hareket etti. 
+x: 17 y: 8 konumuna hareket etti. 
+x: 17 y: 7 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 115
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 18 y: 7
+Hedefteki altin miktari: 15
+Hedef Belirleme Maaliyeti: 20 kalan altin: 95
+Tur : 10
+Hamle Maaliyeti: 5 kalan altin: 90
+x: 18 y: 7 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 15 kalan altin: 105
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 19 y: 5
+Hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 20 kalan altin: 85
+Tur : 11
+Hamle Maaliyeti: 5 kalan altin: 80
+x: 18 y: 6 konumuna hareket etti. 
+x: 18 y: 5 konumuna hareket etti. 
+x: 19 y: 5 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 90
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 18 y: 4
+Hedefteki altin miktari: 5
+Hedef Belirleme Maaliyeti: 20 kalan altin: 70
+Tur : 12
+Hamle Maaliyeti: 5 kalan altin: 65
+x: 18 y: 5 konumuna hareket etti. 
+x: 18 y: 4 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 5 kalan altin: 70
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 13 y: 5
+Hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 20 kalan altin: 50
+Tur : 13
+Hamle Maaliyeti: 5 kalan altin: 45
+x: 17 y: 4 konumuna hareket etti. 
+x: 16 y: 4 konumuna hareket etti. 
+x: 15 y: 4 konumuna hareket etti. 
+Tur : 14
+Hamle Maaliyeti: 5 kalan altin: 40
+x: 14 y: 4 konumuna hareket etti. 
+x: 13 y: 4 konumuna hareket etti. 
+x: 13 y: 5 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 50
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 13 y: 10
+Hedefteki altin miktari: 10
+Hedef Belirleme Maaliyeti: 20 kalan altin: 30
+Tur : 15
+Hamle Maaliyeti: 5 kalan altin: 25
+x: 13 y: 6 konumuna hareket etti. 
+x: 13 y: 7 konumuna hareket etti. 
+x: 13 y: 8 konumuna hareket etti. 
+Tur : 16
+Hamle Maaliyeti: 5 kalan altin: 20
+x: 13 y: 9 konumuna hareket etti. 
+x: 13 y: 10 konumuna hareket etti. 
+Altin toplandi. Toplanan Altin Miktari: 10 kalan altin: 30
+Diger Oyuncularýn Avantajlý oldugu kareler dahil edilmeden en karlý hedef belirlendi. Hedef kare x: 10 y: 16
+Hedefteki altin miktari: 20
+Hedef Belirleme Maaliyeti: 20 kalan altin: 10
+Tur : 17
+Hamle Maaliyeti: 5 kalan altin: 5
+x: 12 y: 10 konumuna hareket etti. 
+x: 11 y: 10 konumuna hareket etti. 
+x: 10 y: 10 konumuna hareket etti. 
+Tur : 18
+Hamle Maaliyeti: 5 kalan altin: 0
+Tur : 19
+Tur : 20
+Tur : 21
+Tur : 22
+Tur : 23
+Tur : 24
+Tur : 25
+Tur : 26
+Tur : 27
+Tur : 28
+Tur : 29
+Tur : 30
+Tur : 31
+Tur : 32
+Tur : 33
+Tur : 34
+Tur : 35
+Tur : 36
+Tur : 37
+Tur : 38
+Tur : 39
+Tur : 40
+Tur : 41
+Tur : 42
