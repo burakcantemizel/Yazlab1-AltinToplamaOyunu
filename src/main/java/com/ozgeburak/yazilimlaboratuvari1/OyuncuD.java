@@ -48,11 +48,11 @@ public class OyuncuD extends Oyuncu {
 
                 //Yolun uzakligina degil daha az hamlede yiyip yiyemedigine bakmam gerek
                 int Ayaolanuzaklik = (int) Ayaolanyol.get(Ayaolanyol.size() - 1).g;
-                int AkacHamle = Ayaolanuzaklik / 3; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
+                int AkacHamle = Ayaolanuzaklik / Sabitler.HAMLE_ADIM_SAYISI; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
 
                 //Ayni hesabi A icin de yapicaz
                 int Aicinuzaklik = (int) oyuncuA.hedefYol.get(oyuncuA.hedefYol.size() - 1).g;
-                int AicinkacHamle = Aicinuzaklik / 3;
+                int AicinkacHamle = Aicinuzaklik / Sabitler.HAMLE_ADIM_SAYISI;
 
                 if (AkacHamle <= AicinkacHamle) {
                     Adanonce = true;
@@ -65,11 +65,11 @@ public class OyuncuD extends Oyuncu {
                 List<Dugum> Byeolanyol = as.yolBul(oyuncuB.hedefkare.x, oyuncuB.hedefkare.y);
 
                 int Byeolanuzaklik = (int) Byeolanyol.get(Byeolanyol.size() - 1).g;
-                int BkacHamle = Byeolanuzaklik / 3; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
+                int BkacHamle = Byeolanuzaklik / Sabitler.HAMLE_ADIM_SAYISI; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
 
                 //Ayni hesabi A icin de yapicaz
                 int Bicinuzaklik = (int) oyuncuB.hedefYol.get(oyuncuB.hedefYol.size() - 1).g;
-                int BicinkacHamle = Bicinuzaklik / 3;
+                int BicinkacHamle = Bicinuzaklik / Sabitler.HAMLE_ADIM_SAYISI;
 
                 if (BkacHamle <= BicinkacHamle) {
                     Bdenonce = true;
@@ -81,11 +81,11 @@ public class OyuncuD extends Oyuncu {
                 List<Dugum> Cyeolanyol = as.yolBul(oyuncuC.hedefkare.x, oyuncuC.hedefkare.y);
 
                 int Cyeolanuzaklik = (int) Cyeolanyol.get(Cyeolanyol.size() - 1).g;
-                int CkacHamle = Cyeolanuzaklik / 3; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
+                int CkacHamle = Cyeolanuzaklik / Sabitler.HAMLE_ADIM_SAYISI; // hamledeki adim sayisina bolerek kac hamlede gidecegini buluyoruz.
 
                 //Ayni hesabi A icin de yapicaz
                 int Cicinuzaklik = (int) oyuncuC.hedefYol.get(oyuncuC.hedefYol.size() - 1).g;
-                int CicinkacHamle = Cicinuzaklik / 3;
+                int CicinkacHamle = Cicinuzaklik / Sabitler.HAMLE_ADIM_SAYISI;
 
                 if (CkacHamle <= CicinkacHamle) {
                     Cdenonce = true;
